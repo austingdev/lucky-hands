@@ -128,7 +128,7 @@ return [
             'host'     => '127.0.0.1',
             'port'     => 6379,
             'database' => 3,
-			'password' => '*YOURREDISPASSWORD*',
+			'password' => env('REDIS_PASSWORD', ''),
         ],
 
     ],

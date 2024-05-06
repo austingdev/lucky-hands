@@ -43,6 +43,7 @@
         "webfontloader": "^1.6.28"
     },
     "dependencies": {
-        "@pixi/sound": "^4.2.0"
+        "@pixi/sound": "^4.2.0",
+        "dotenv": "^16.4.5"
     }
 }

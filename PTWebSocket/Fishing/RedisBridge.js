@@ -19,7 +19,7 @@ class RedisBridge{
         this.normalPercent = 30;
         client = redis.createClient(
 		{
-			password: 'thisisr3disp@ssword'
+			password: process.env.REDIS_PASSWORD
 		});
         // client.connect();
         client.on('error', error=>{

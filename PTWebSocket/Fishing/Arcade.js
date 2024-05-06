@@ -1,3 +1,4 @@
+require("dotenv").config()
 var WebSocket = require('ws').Server;
 const http = require('http');
 const url = require('url');
