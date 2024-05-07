@@ -71,7 +71,6 @@ export class Icon2 extends PIXI.Sprite{
 				endX = mc.position.x  - e.data.originalEvent.changedTouches[0].globalX;
 			}
 			if(endX > (stX - 10) && endX < (stX + 10)) {
-				console.log(data.id);
 				var tempMute = SOUND.MUTE;
 				SOUND.muteSounds();
 				SOUND.MUTE = tempMute;	

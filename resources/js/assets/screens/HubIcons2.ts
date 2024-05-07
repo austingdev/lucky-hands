@@ -53,6 +53,7 @@ export class HubIcons2 extends PIXI.Sprite{
 		
 		getGames((e:any)=>{
 			this.Games = JSON.parse(e);
+			console.log("===game list===", this.Games)
 			this.updateHub();
 		})
 	}

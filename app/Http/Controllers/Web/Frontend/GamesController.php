@@ -1564,6 +1564,7 @@ namespace VanguardLTE\Http\Controllers\Web\Frontend
             $migration_game_ids = [
                 2, // MonsterFrenzyPGD/Monster Frenzy
                 3, // AladdinAdventurePGD/Aladdin Adventure
+                5, // FishCircusPGD/Circus
                 26, // FishHunterGhostPGD/Zombie Awaken
                 27, // FishHunterKingKongPGD/KingKong Rampage
                 47, // FishHunterLuckyShamrockPGD/Golden Legend
@@ -1571,7 +1572,11 @@ namespace VanguardLTE\Http\Controllers\Web\Frontend
                 49, // FishHunterThunderDragonPGD/Thunder Dragon DELUXE
                 80, // FishWonderCatPGD/Wonder Fortune Cat
             ];
-            $games = \VanguardLTE\Game::where('view', 1)->whereIn('id', $migration_game_ids);
+            $games = \VanguardLTE\Game::where([
+                        'view' => 1, 
+                        // 'shop_id' => $user->shop_id
+                    ])
+                    ->whereIn('id', $migration_game_ids);
             $games_casino = (clone $games)->where('category_temp', '=', 1)->get();
             $games_fish = (clone $games)->where('category_temp', '=', 2)->get();
             $games_slot = (clone $games)->where('category_temp', '=', 3)->get();            

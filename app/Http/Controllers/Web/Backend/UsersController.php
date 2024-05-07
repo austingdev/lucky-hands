@@ -108,7 +108,7 @@ include_once(base_path() . '/app/ShopCore.php');
                 $last_parent = str_replace("]", "", $parents[count($parents) - 1]);
                 if($last_parent > auth()->user()->id)
                 {
-                    $direct_children[$last_parent]++;
+                    // $direct_children[$last_parent]++;
                     $offset = $this->findOffsetWithKey( $users, "'".$user->id."'");
                     if($offset !== false)
                     {
