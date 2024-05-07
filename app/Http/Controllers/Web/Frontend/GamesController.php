@@ -1548,6 +1548,86 @@ namespace VanguardLTE\Http\Controllers\Web\Frontend
             }
             return json_encode($gameData);
         }
+
+        public function migration_list()
+        {
+            $user = auth()->user();
+            $gameData = [
+                'slots' => [],
+                'fishes' => [],
+                'casinos' => []
+            ];
+            if($user == null)
+            {
+                return json_encode($gameData);
+            }
+            $migration_game_ids = [
+                2, // MonsterFrenzyPGD/Monster Frenzy
+                3, // AladdinAdventurePGD/Aladdin Adventure
+                26, // FishHunterGhostPGD/Zombie Awaken
+                27, // FishHunterKingKongPGD/KingKong Rampage
+                47, // FishHunterLuckyShamrockPGD/Golden Legend
+                48, // FishFortuneKingsPGD/Fortune Kings
+                49, // FishHunterThunderDragonPGD/Thunder Dragon DELUXE
+                80, // FishWonderCatPGD/Wonder Fortune Cat
+            ];
+            $games = \VanguardLTE\Game::where('view', 1)->whereIn('id', $migration_game_ids);
+            $games_casino = (clone $games)->where('category_temp', '=', 1)->get();
+            $games_fish = (clone $games)->where('category_temp', '=', 2)->get();
+            $games_slot = (clone $games)->where('category_temp', '=', 3)->get();            
+
+            foreach($games_slot as $game)
+            {
+                $data = [
+                    'id' => $game->id, 
+                    'src' => '/frontend/Default/ico/'. $game->name .'.png',
+                    'size' => 'small',
+                    'tag' => '',
+                    'url' => '/game/'.$game->name.'?api_exit=/',
+                    'orientation' => $game->orientation
+                ];
+                if($game->tag == 1)
+                    $data['tag'] = 'hot';
+                else if($game->tag == 2)
+                    $data['tag'] = 'new';
+                $gameData['slots'][] = $data;
+            }
+
+            foreach($games_fish as $game)
+            {
+                $data = [
+                    'id' => $game->id, 
+                    'src' => '/frontend/Default/ico/'. $game->name .'.png',
+                    'size' => 'big',
+                    'tag' => '',
+                    'url' => '/game/'.$game->name.'?api_exit=/',
+                    'orientation' => $game->orientation
+                ];
+                if($game->tag == 1)
+                    $data['tag'] = 'hot';
+                else if($game->tag == 2)
+                    $data['tag'] = 'new';
+                $gameData['fishes'][] = $data;
+            }
+
+            foreach($games_casino as $game)
+            {
+                $data = [
+                    'id' => $game->id, 
+                    'src' => '/frontend/Default/ico/'. $game->name .'.png',
+                    'size' => 'big',
+                    'tag' => '',
+                    'url' => '/game/'.$game->name.'?api_exit=/',
+                    'orientation' => $game->orientation
+                ];
+                if($game->tag == 1)
+                    $data['tag'] = 'hot';
+                else if($game->tag == 2)
+                    $data['tag'] = 'new';
+                $gameData['casinos'][] = $data;
+            }
+            return json_encode($gameData);
+        }
     }
 
 }

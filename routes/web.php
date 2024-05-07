@@ -435,8 +435,10 @@ Route::domain('www.'.config('app.domain'))->namespace('Frontend')->middleware(['
 
     Route::get('/gamelist', [
         'as' => 'gamelist',
-        'uses' => 'GamesController@list'
+        // 'uses' => 'GamesController@list'
+        'uses' => 'GamesController@migration_list'
     ]);
+
     Route::get('reward', 'PagesController@getReward');
 });
 
