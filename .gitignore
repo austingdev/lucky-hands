@@ -7,7 +7,7 @@
 /storage/debugbar
 storage/logs/
 /storage/framework/views
-/vendor
+# /vendor
 /PTWebSocket/node_modules
 .env
 .env.backup
