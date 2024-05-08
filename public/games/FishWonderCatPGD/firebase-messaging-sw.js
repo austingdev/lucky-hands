@@ -1,0 +1,1 @@
+No Content: https://www.magiccity777.com/firebase-messaging-sw.js

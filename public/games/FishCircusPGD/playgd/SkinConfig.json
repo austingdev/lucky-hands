@@ -1,0 +1,606 @@
+{
+    "default" : {
+        "Lobby":["DownBar", "TopBar", "Profile", "BulletinBoard"],
+        "Game":["Profile"],
+        "DownBar":{
+            "bundle_name":"Skin_Default",
+            "version":"3216.0",
+            "prefab_name_horizontal": "Prefabs/DownBarMgr",
+            "prefab_name_vertical": "Prefabs/DownBarMgr",
+            "layer_name": "DownBar",
+            "component":"DownBar"
+        },
+        "TopBar":{
+            "bundle_name":"Skin_Default",
+            "version":"3216.0",
+            "prefab_name_horizontal": "Prefabs/TopBarMgr",
+            "layer_name": "TopBar",
+            "component":"TopBar"
+        },
+        "Profile":{
+            "bundle_name":"Profile",
+            "version":"3128.1",
+            "prefab_name_horizontal": "Prefabs/Profile",
+            "prefab_name_vertical": "Prefabs/ProfileVertical",
+            "layer_name": "Profile",
+            "component":"Profile"
+        },
+        "BulletinBoard":{
+            "bundle_name":"BulletinBoard",
+            "version":"3216.0",
+            "prefab_name_horizontal": "Prefabs/BulletinBoard",
+			"prefab_name_vertical": "Prefabs/BulletinBoard",
+            "layer_name": "BulletinBoard",
+            "component":"BulletinBoard"
+        },
+        "RankBonus":{
+            "bundle_name":"Skin_Default",
+            "version":"3216.0",
+            "prefab_name_horizontal": "Prefabs/RankBonus_H",
+            "prefab_name_vertical": "Prefabs/RankBonus_V",
+            "layer_name": "LoadRes",
+            "component":"RankBonus"
+        },
+        "OceanHeart":{
+            "bundle_name":"Skin_Default",
+            "version":"3216.0",
+            "prefab_name_horizontal": "Prefabs/OceanHeart",
+            "layer_name": "LoadRes",
+            "component":"OceanHeart"
+        },
+        "PuzzleEgg":{
+            "bundle_name":"Skin_Default",
+            "version":"3216.0",
+            "prefab_name_horizontal": "Prefabs/PuzzleEgg",
+            "layer_name": "LoadRes",
+            "component":"PuzzleEgg"
+        },
+		"DropEggNormal":{
+            "bundle_name":"Skin_Default",
+            "version":"3216.0",
+            "prefab_name_horizontal": "Prefabs/PuzzleEggOther/DropEggNormal",
+            "component":"DropEggNormal"
+        },
+		"DropEggClassic":{
+            "bundle_name":"Skin_Default",
+            "version":"3216.0",
+            "prefab_name_horizontal": "Prefabs/PuzzleEggOther/DropEggClassic",
+            "component":"DropEggClassic"
+        },
+		"DropEggLegend":{
+            "bundle_name":"Skin_Default",
+            "version":"3216.0",
+            "prefab_name_horizontal": "Prefabs/PuzzleEggOther/DropEggLegend",
+            "component":"DropEggLegend"
+        },
+		"PuzzleEggIconFlag":{
+            "bundle_name":"Skin_Default",
+            "version":"3216.0",
+            "prefab_name_horizontal": "Prefabs/PuzzleEggOther/IconFlag",
+            "component":"PuzzleEggIconFlag"
+        }
+    },
+    "halloween" : {
+        "Lobby":["Background", "DownBar", "TopBar", "Profile", "BulletinBoard"],
+        "Game":["Profile"],
+        "Background":{
+            "bundle_name":"Skin_Halloween",
+            "version":"3216.0",
+            "prefab_name_horizontal": "Prefabs/Background",
+            "layer_name": "Background",
+            "component":""
+        },
+        "DownBar":{
+            "bundle_name":"Skin_Default",
+            "version":"3216.0",
+            "prefab_name_horizontal": "Prefabs/DownBarMgr",
+            "layer_name": "DownBar",
+            "component":"DownBar"
+        },
+        "TopBar":{
+            "bundle_name":"Skin_Halloween",
+            "version":"3216.0",
+            "prefab_name_horizontal": "Prefabs/TopBarMgr",
+            "layer_name": "TopBar",
+            "component":"TopBar"
+        },
+        "Profile":{
+            "bundle_name":"Profile",
+            "version":"3128.1",
+            "prefab_name_horizontal": "Prefabs/Profile",
+            "prefab_name_vertical": "Prefabs/ProfileVertical",
+            "layer_name": "Profile",
+            "component":"Profile"
+        },
+        "BulletinBoard":{
+            "bundle_name":"BulletinBoard",
+            "version":"3216.0",
+            "prefab_name_horizontal": "Prefabs/BulletinBoard",
+            "layer_name": "BulletinBoard",
+            "component":"BulletinBoard"
+        },
+        "RankBonus":{
+            "bundle_name":"Skin_Halloween",
+            "version":"3216.0",
+            "prefab_name_horizontal": "Prefabs/RankBonus_H",
+            "prefab_name_vertical": "Prefabs/RankBonus_V",
+            "layer_name": "LoadRes",
+            "component":"RankBonus"
+        },
+        "OceanHeart":{
+            "bundle_name":"Skin_Halloween",
+            "version":"3216.0",
+            "prefab_name_horizontal": "Prefabs/OceanHeart",
+            "layer_name": "LoadRes",
+            "component":"OceanHeart"
+        },
+        "PuzzleEgg":{
+            "bundle_name":"Skin_Halloween",
+            "version":"3216.0",
+            "prefab_name_horizontal": "Prefabs/PuzzleEgg",
+            "layer_name": "LoadRes",
+            "component":"PuzzleEgg"
+        },
+		"DropEggNormal":{
+            "bundle_name":"Skin_Halloween",
+            "version":"3216.0",
+            "prefab_name_horizontal": "Prefabs/PuzzleEggOther/DropEggNormal",
+            "component":"DropEggNormal"
+        },
+		"DropEggClassic":{
+            "bundle_name":"Skin_Halloween",
+            "version":"3216.0",
+            "prefab_name_horizontal": "Prefabs/PuzzleEggOther/DropEggClassic",
+            "component":"DropEggClassic"
+        },
+		"DropEggLegend":{
+            "bundle_name":"Skin_Halloween",
+            "version":"3216.0",
+            "prefab_name_horizontal": "Prefabs/PuzzleEggOther/DropEggLegend",
+            "component":"DropEggLegend"
+        },
+		"PuzzleEggIconFlag":{
+            "bundle_name":"Skin_Halloween",
+            "version":"3216.0",
+            "prefab_name_horizontal": "Prefabs/PuzzleEggOther/IconFlag",
+            "component":"PuzzleEggIconFlag"
+        }
+    },
+    "thanksgiving" : {
+        "Lobby":["Background", "DownBar", "TopBar", "Profile", "BulletinBoard"],
+        "Game":["Profile"],
+        "Background":{
+            "bundle_name":"Skin_ThxGiv",
+            "version":"3216.0",
+            "prefab_name_horizontal": "Prefabs/Background",
+            "layer_name": "Background",
+            "component":""
+        },
+        "DownBar":{
+            "bundle_name":"Skin_Default",
+            "version":"3216.0",
+            "prefab_name_horizontal": "Prefabs/DownBarMgr",
+            "layer_name": "DownBar",
+            "component":"DownBar"
+        },
+        "TopBar":{
+            "bundle_name":"Skin_ThxGiv",
+            "version":"3216.0",
+            "prefab_name_horizontal": "Prefabs/TopBarMgr",
+            "layer_name": "TopBar",
+            "component":"TopBar"
+        },
+        "Profile":{
+            "bundle_name":"Profile",
+            "version":"3128.1",
+            "prefab_name_horizontal": "Prefabs/Profile",
+            "prefab_name_vertical": "Prefabs/ProfileVertical",
+            "layer_name": "Profile",
+            "component":"Profile"
+        },
+        "BulletinBoard":{
+            "bundle_name":"BulletinBoard",
+            "version":"3216.0",
+            "prefab_name_horizontal": "Prefabs/BulletinBoard",
+            "layer_name": "BulletinBoard",
+            "component":"BulletinBoard"
+        },
+        "RankBonus":{
+            "bundle_name":"Skin_ThxGiv",
+            "version":"3216.0",
+            "prefab_name_horizontal": "Prefabs/RankBonus_H",
+            "prefab_name_vertical": "Prefabs/RankBonus_V",
+            "layer_name": "LoadRes",
+            "component":"RankBonus"
+        },
+        "OceanHeart":{
+            "bundle_name":"Skin_ThxGiv",
+            "version":"3216.0",
+            "prefab_name_horizontal": "Prefabs/OceanHeart",
+            "layer_name": "LoadRes",
+            "component":"OceanHeart"
+        },
+        "PuzzleEgg":{
+            "bundle_name":"Skin_ThxGiv",
+            "version":"3216.0",
+            "prefab_name_horizontal": "Prefabs/PuzzleEgg",
+            "layer_name": "LoadRes",
+            "component":"PuzzleEgg"
+        },
+		"DropEggNormal":{
+            "bundle_name":"Skin_ThxGiv",
+            "version":"3216.0",
+            "prefab_name_horizontal": "Prefabs/PuzzleEggOther/DropEggNormal",
+            "component":"DropEggNormal"
+        },
+		"DropEggClassic":{
+            "bundle_name":"Skin_ThxGiv",
+            "version":"3216.0",
+            "prefab_name_horizontal": "Prefabs/PuzzleEggOther/DropEggClassic",
+            "component":"DropEggClassic"
+        },
+		"DropEggLegend":{
+            "bundle_name":"Skin_ThxGiv",
+            "version":"3216.0",
+            "prefab_name_horizontal": "Prefabs/PuzzleEggOther/DropEggLegend",
+            "component":"DropEggLegend"
+        },
+		"PuzzleEggIconFlag":{
+            "bundle_name":"Skin_ThxGiv",
+            "version":"3216.0",
+            "prefab_name_horizontal": "Prefabs/PuzzleEggOther/IconFlag",
+            "component":"PuzzleEggIconFlag"
+        }
+    },
+	"xmas" : {
+        "Lobby":["Background","Foreground", "DownBar", "TopBar", "Profile", "BulletinBoard"],
+        "Game":["Profile"],
+		"Background":{
+            "bundle_name":"Skin_Xmas",
+            "version":"3216.0",
+            "prefab_name_horizontal": "Prefabs/Background",
+            "layer_name": "Background",
+            "component":""
+        },
+		"Foreground":{
+            "bundle_name":"Skin_Xmas",
+            "version":"3216.0",
+            "prefab_name_horizontal": "Prefabs/Foreground",
+            "layer_name": "Foreground",
+            "component":""
+        },
+        "DownBar":{
+            "bundle_name":"Skin_Default",
+            "version":"3216.0",
+            "prefab_name_horizontal": "Prefabs/DownBarMgr",
+            "layer_name": "DownBar",
+            "component":"DownBar"
+        },
+		"TopBar":{
+            "bundle_name":"Skin_Default",
+            "version":"3216.0",
+            "prefab_name_horizontal": "Prefabs/TopBarMgr",
+            "layer_name": "TopBar",
+            "component":"TopBar"
+        },
+        "Profile":{
+            "bundle_name":"Profile",
+            "version":"3128.1",
+            "prefab_name_horizontal": "Prefabs/Profile",
+            "prefab_name_vertical": "Prefabs/ProfileVertical",
+            "layer_name": "Profile",
+            "component":"Profile"
+        },
+        "BulletinBoard":{
+            "bundle_name":"BulletinBoard",
+            "version":"3216.0",
+            "prefab_name_horizontal": "Prefabs/BulletinBoard",
+            "layer_name": "BulletinBoard",
+            "component":"BulletinBoard"
+        },
+        "RankBonus":{
+            "bundle_name":"Skin_Xmas",
+            "version":"3216.0",
+            "prefab_name_horizontal": "Prefabs/RankBonus_H",
+            "prefab_name_vertical": "Prefabs/RankBonus_V",
+            "layer_name": "LoadRes",
+            "component":"RankBonus"
+        },
+        "OceanHeart":{
+            "bundle_name":"Skin_Xmas",
+            "version":"3216.0",
+            "prefab_name_horizontal": "Prefabs/OceanHeart",
+            "layer_name": "LoadRes",
+            "component":"OceanHeart"
+        },
+        "PuzzleEgg":{
+            "bundle_name":"Skin_Xmas",
+            "version":"3216.0",
+            "prefab_name_horizontal": "Prefabs/PuzzleEgg",
+            "layer_name": "LoadRes",
+            "component":"PuzzleEgg"
+        },
+		"DropEggNormal":{
+            "bundle_name":"Skin_Xmas",
+            "version":"3216.0",
+            "prefab_name_horizontal": "Prefabs/PuzzleEggOther/DropEggNormal",
+            "component":"DropEggNormal"
+        },
+		"DropEggClassic":{
+            "bundle_name":"Skin_Xmas",
+            "version":"3216.0",
+            "prefab_name_horizontal": "Prefabs/PuzzleEggOther/DropEggClassic",
+            "component":"DropEggClassic"
+        },
+		"DropEggLegend":{
+            "bundle_name":"Skin_Xmas",
+            "version":"3216.0",
+            "prefab_name_horizontal": "Prefabs/PuzzleEggOther/DropEggLegend",
+            "component":"DropEggLegend"
+        },
+		"PuzzleEggIconFlag":{
+            "bundle_name":"Skin_Xmas",
+            "version":"3216.0",
+            "prefab_name_horizontal": "Prefabs/PuzzleEggOther/IconFlag",
+            "component":"PuzzleEggIconFlag"
+        }
+    },
+	"newyear" : {
+        "Lobby":["Background", "DownBar", "TopBar", "Profile", "BulletinBoard"],
+        "Game":["Profile"],
+		"Background":{
+            "bundle_name":"Skin_NewYear",
+            "version":"3216.0",
+            "prefab_name_horizontal": "Prefabs/Background",
+            "layer_name": "Background",
+            "component":""
+        },
+        "DownBar":{
+            "bundle_name":"Skin_Default",
+            "version":"3216.0",
+            "prefab_name_horizontal": "Prefabs/DownBarMgr",
+            "layer_name": "DownBar",
+            "component":"DownBar"
+        },
+		"TopBar":{
+            "bundle_name":"Skin_Default",
+            "version":"3216.0",
+            "prefab_name_horizontal": "Prefabs/TopBarMgr",
+            "layer_name": "TopBar",
+            "component":"TopBar"
+        },
+        "Profile":{
+            "bundle_name":"Profile",
+            "version":"3128.1",
+            "prefab_name_horizontal": "Prefabs/Profile",
+            "prefab_name_vertical": "Prefabs/ProfileVertical",
+            "layer_name": "Profile",
+            "component":"Profile"
+        },
+        "BulletinBoard":{
+            "bundle_name":"BulletinBoard",
+            "version":"3216.0",
+            "prefab_name_horizontal": "Prefabs/BulletinBoard",
+            "layer_name": "BulletinBoard",
+            "component":"BulletinBoard"
+        },
+        "RankBonus":{
+            "bundle_name":"Skin_NewYear",
+            "version":"3216.0",
+            "prefab_name_horizontal": "Prefabs/RankBonus_H",
+            "prefab_name_vertical": "Prefabs/RankBonus_V",
+            "layer_name": "LoadRes",
+            "component":"RankBonus"
+        },
+        "OceanHeart":{
+            "bundle_name":"Skin_NewYear",
+            "version":"3216.0",
+            "prefab_name_horizontal": "Prefabs/OceanHeart",
+            "layer_name": "LoadRes",
+            "component":"OceanHeart"
+        },
+        "PuzzleEgg":{
+            "bundle_name":"Skin_NewYear",
+            "version":"3216.0",
+            "prefab_name_horizontal": "Prefabs/PuzzleEgg",
+            "layer_name": "LoadRes",
+            "component":"PuzzleEgg"
+        },
+		"DropEggNormal":{
+            "bundle_name":"Skin_NewYear",
+            "version":"3216.0",
+            "prefab_name_horizontal": "Prefabs/PuzzleEggOther/DropEggNormal",
+            "component":"DropEggNormal"
+        },
+		"DropEggClassic":{
+            "bundle_name":"Skin_NewYear",
+            "version":"3216.0",
+            "prefab_name_horizontal": "Prefabs/PuzzleEggOther/DropEggClassic",
+            "component":"DropEggClassic"
+        },
+		"DropEggLegend":{
+            "bundle_name":"Skin_NewYear",
+            "version":"3216.0",
+            "prefab_name_horizontal": "Prefabs/PuzzleEggOther/DropEggLegend",
+            "component":"DropEggLegend"
+        },
+		"PuzzleEggIconFlag":{
+            "bundle_name":"Skin_NewYear",
+            "version":"3216.0",
+            "prefab_name_horizontal": "Prefabs/PuzzleEggOther/IconFlag",
+            "component":"PuzzleEggIconFlag"
+        }
+    },
+	"valentine" : {
+        "Lobby":["Background", "DownBar", "TopBar", "Profile", "BulletinBoard"],
+        "Game":["Profile"],
+		"Background":{
+            "bundle_name":"Skin_Valentine",
+            "version":"3216.0",
+            "prefab_name_horizontal": "Prefabs/Background",
+            "layer_name": "Background",
+            "component":""
+        },
+        "DownBar":{
+            "bundle_name":"Skin_Default",
+            "version":"3216.0",
+            "prefab_name_horizontal": "Prefabs/DownBarMgr",
+            "layer_name": "DownBar",
+            "component":"DownBar"
+        },
+		"TopBar":{
+            "bundle_name":"Skin_Default",
+            "version":"3216.0",
+            "prefab_name_horizontal": "Prefabs/TopBarMgr",
+            "layer_name": "TopBar",
+            "component":"TopBar"
+        },
+        "Profile":{
+            "bundle_name":"Profile",
+            "version":"3128.1",
+            "prefab_name_horizontal": "Prefabs/Profile",
+            "prefab_name_vertical": "Prefabs/ProfileVertical",
+            "layer_name": "Profile",
+            "component":"Profile"
+        },
+        "BulletinBoard":{
+            "bundle_name":"BulletinBoard",
+            "version":"3216.0",
+            "prefab_name_horizontal": "Prefabs/BulletinBoard",
+            "layer_name": "BulletinBoard",
+            "component":"BulletinBoard"
+        },
+        "RankBonus":{
+            "bundle_name":"Skin_Valentine",
+            "version":"3216.0",
+            "prefab_name_horizontal": "Prefabs/RankBonus_H",
+            "prefab_name_vertical": "Prefabs/RankBonus_V",
+            "layer_name": "LoadRes",
+            "component":"RankBonus"
+        },
+        "OceanHeart":{
+            "bundle_name":"Skin_Valentine",
+            "version":"3216.0",
+            "prefab_name_horizontal": "Prefabs/OceanHeart",
+            "layer_name": "LoadRes",
+            "component":"OceanHeart"
+        },
+        "PuzzleEgg":{
+            "bundle_name":"Skin_Valentine",
+            "version":"3216.0",
+            "prefab_name_horizontal": "Prefabs/PuzzleEgg",
+            "layer_name": "LoadRes",
+            "component":"PuzzleEgg"
+        },
+		"DropEggNormal":{
+            "bundle_name":"Skin_Valentine",
+            "version":"3216.0",
+            "prefab_name_horizontal": "Prefabs/PuzzleEggOther/DropEggNormal",
+            "component":"DropEggNormal"
+        },
+		"DropEggClassic":{
+            "bundle_name":"Skin_Valentine",
+            "version":"3216.0",
+            "prefab_name_horizontal": "Prefabs/PuzzleEggOther/DropEggClassic",
+            "component":"DropEggClassic"
+        },
+		"DropEggLegend":{
+            "bundle_name":"Skin_Valentine",
+            "version":"3216.0",
+            "prefab_name_horizontal": "Prefabs/PuzzleEggOther/DropEggLegend",
+            "component":"DropEggLegend"
+        },
+		"PuzzleEggIconFlag":{
+            "bundle_name":"Skin_Valentine",
+            "version":"3216.0",
+            "prefab_name_horizontal": "Prefabs/PuzzleEggOther/IconFlag",
+            "component":"PuzzleEggIconFlag"
+        }
+    },
+	"patrick" : {
+        "Lobby":["Background", "DownBar", "TopBar", "Profile", "BulletinBoard"],
+        "Game":["Profile"],
+		"Background":{
+            "bundle_name":"Skin_Patrick",
+            "version":"test8",
+            "prefab_name_horizontal": "Prefabs/Background",
+            "layer_name": "Background",
+            "component":""
+        },
+        "DownBar":{
+            "bundle_name":"Skin_Default",
+            "version":"3216.0",
+            "prefab_name_horizontal": "Prefabs/DownBarMgr",
+            "layer_name": "DownBar",
+            "component":"DownBar"
+        },
+		"TopBar":{
+            "bundle_name":"Skin_Default",
+            "version":"3216.0",
+            "prefab_name_horizontal": "Prefabs/TopBarMgr",
+            "layer_name": "TopBar",
+            "component":"TopBar"
+        },
+        "Profile":{
+            "bundle_name":"Profile",
+            "version":"3128.1",
+            "prefab_name_horizontal": "Prefabs/Profile",
+            "prefab_name_vertical": "Prefabs/ProfileVertical",
+            "layer_name": "Profile",
+            "component":"Profile"
+        },
+        "BulletinBoard":{
+            "bundle_name":"BulletinBoard",
+            "version":"3216.0",
+            "prefab_name_horizontal": "Prefabs/BulletinBoard",
+            "layer_name": "BulletinBoard",
+            "component":"BulletinBoard"
+        },
+        "RankBonus":{
+            "bundle_name":"Skin_Patrick",
+            "version":"test8",
+            "prefab_name_horizontal": "Prefabs/RankBonus_H",
+            "prefab_name_vertical": "Prefabs/RankBonus_V",
+            "layer_name": "LoadRes",
+            "component":"RankBonus"
+        },
+        "OceanHeart":{
+            "bundle_name":"Skin_Patrick",
+            "version":"test8",
+            "prefab_name_horizontal": "Prefabs/OceanHeart",
+            "layer_name": "LoadRes",
+            "component":"OceanHeart"
+        },
+        "PuzzleEgg":{
+            "bundle_name":"Skin_Patrick",
+            "version":"test8",
+            "prefab_name_horizontal": "Prefabs/PuzzleEgg",
+            "layer_name": "LoadRes",
+            "component":"PuzzleEgg"
+        },
+		"DropEggNormal":{
+            "bundle_name":"Skin_Patrick",
+            "version":"test8",
+            "prefab_name_horizontal": "Prefabs/PuzzleEggOther/DropEggNormal",
+            "component":"DropEggNormal"
+        },
+		"DropEggClassic":{
+            "bundle_name":"Skin_Patrick",
+            "version":"test8",
+            "prefab_name_horizontal": "Prefabs/PuzzleEggOther/DropEggClassic",
+            "component":"DropEggClassic"
+        },
+		"DropEggLegend":{
+            "bundle_name":"Skin_Patrick",
+            "version":"test8",
+            "prefab_name_horizontal": "Prefabs/PuzzleEggOther/DropEggLegend",
+            "component":"DropEggLegend"
+        },
+		"PuzzleEggIconFlag":{
+            "bundle_name":"Skin_Patrick",
+            "version":"test8",
+            "prefab_name_horizontal": "Prefabs/PuzzleEggOther/IconFlag",
+            "component":"PuzzleEggIconFlag"
+        }
+    }
+}

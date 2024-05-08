@@ -26,4 +26,13 @@ PTWebSocket/ssl
 # PTWebSocket/Fishing/DBConn.js
 Firebase/node_modules
 Firebase/DBConn.js
-public/games
+public/games/*
+!public/games/MonsterFrenzyPGD
+!public/games/AladdinAdventurePGD
+!public/games/FishCircusPGD
+!public/games/FishHunterGhostPGD
+!public/games/FishHunterKingKongPGD
+!public/games/FishHunterLuckyShamrockPGD
+!public/games/FishFortuneKingsPGD
+!public/games/FishHunterThunderDragonPGD
+!public/games/FishWonderCatPGD

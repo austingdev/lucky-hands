@@ -1,0 +1,46 @@
+{
+    "skin" : [
+        {
+            "name": "default",
+            "state": ["All"],
+            "start_time": "2021-01-28T00:00:00+00:00",
+            "end_time": "2023-12-28T00:00:00+00:00"
+        },
+		{
+            "name": "halloween",
+            "state": ["All"],
+            "start_time": "2022-10-01T00:00:00+00:00",
+            "end_time": "2022-10-30T00:00:00+00:00"
+        },
+        {
+            "name": "thanksgiving",
+            "state": ["All"],
+            "start_time": "2022-11-01T05:00:00+00:00",
+            "end_time": "2022-12-01T04:59:59+00:00"
+        },
+		{
+            "name": "xmas",
+            "state": ["All"],
+            "start_time": "2022-12-01T05:00:00+00:00",
+            "end_time": "2023-01-01T04:59:59+00:00"
+        },
+        {
+            "name": "newyear",
+            "state": ["All"],
+            "start_time": "2023-01-01T05:00:00+00:00",
+            "end_time": "2023-02-01T04:59:59+00:00"
+        },
+        {
+            "name": "valentine",
+            "state": ["All"],
+            "start_time": "2023-02-01T05:00:00+00:00",
+            "end_time": "2023-03-01T04:59:59+00:00"
+        },
+        {
+            "name": "patrick",
+            "state": ["All"],
+            "start_time": "2023-03-01T05:00:00+00:00",
+            "end_time": "2023-03-31T04:59:59+00:00"
+        }
+    ]
+}

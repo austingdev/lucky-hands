@@ -1,0 +1,69 @@
+{
+  "PreDownload":  {
+    "Common":  [
+      
+    ],
+    "Lobby":  [
+      "BulletinBoard"
+    ]
+  },	
+  "BulletinBoard": {
+    "Version": "2599.3",
+    "VersionDEV": "2599.3",
+    "path": "Prefabs/",
+    "MainPrefab": "BulletinBoard"
+  },
+  "FishHunter": {
+    "Version": "2741.0",
+    "VersionDEV": "2741.0"
+  },
+  "FishHunterAladdin": {
+    "Dependency": [
+      "FishHunter"
+    ],	  
+    "Version": "2599.0",
+    "VersionDEV": "2599.0"
+  },
+  "FishHunterGhost": {
+    "Dependency": [
+      "FishHunter"
+    ],	  
+    "Version": "2599.0",
+    "VersionDEV": "2599.0"
+  },
+  "FishFortuneKings": {
+    "Dependency": [
+      "FishHunter"
+    ],	  
+    "Version": "2599.0",
+    "VersionDEV": "2599.0"
+  },
+  "FishHunterKingKong": {
+    "Dependency": [
+      "FishHunter"
+    ],	  
+    "Version": "2599.0",
+    "VersionDEV": "2599.0"
+  },
+  "FishHunterLuckyShamrock": {
+    "Dependency": [
+      "FishHunter"
+    ],	  
+    "Version": "2599.0",
+    "VersionDEV": "2599.0"
+  },
+  "FishHunterThunderDragon": {
+    "Dependency": [
+      "FishHunter"
+    ],	  
+    "Version": "2741.0",
+    "VersionDEV": "2741.0"
+  },
+  "MonstersFrenzy": {
+    "Dependency": [
+      "FishHunter"
+    ],	  
+    "Version": "2741.0",
+    "VersionDEV": "2741.0"
+  }
+}

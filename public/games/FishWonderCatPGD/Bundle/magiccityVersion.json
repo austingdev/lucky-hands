@@ -1,0 +1,243 @@
+{
+    "AccountMgr":
+    {
+        "MainPrefab": "magicCityAccountMgr",
+        "Version": "2887.0",
+        "VersionDEV": "2887.0",
+        "path": "Prefabs/"
+    },
+    "BannerMgr":
+    {
+        "MainPrefab": "playgdBannerMgr",
+        "Version": "2887.0",
+        "VersionDEV": "2887.0",
+        "path": "Prefabs/"
+    },
+    "BulletinBoard":
+    {
+        "MainPrefab": "BulletinBoard",
+        "Version": "2887.0",
+        "VersionDEV": "2887.0",
+        "path": "Prefabs/"
+    },
+    "Common":
+    {
+        "MainPrefab": "",
+        "Version": "3021.0",
+        "VersionDEV": "3021.0",
+        "path": ""
+    },
+    "ConnectPanel":
+    {
+        "MainPrefab": "ConnectPanelMgr",
+        "Version": "2887.0",
+        "VersionDEV": "2887.0",
+        "path": "Prefabs/"
+    },  
+    "CrossLog":
+    {
+        "MainPrefab": "CrossLog",
+        "Version": "2960.0",
+        "VersionDEV": "2960.0",
+        "path": "Prefabs/"
+    },  
+    "DownBar":
+    {
+        "MainPrefab": "magicCityDownBar",
+        "Version": "2887.0",
+        "VersionDEV": "2887.0",
+        "path": "Prefabs/"
+    },
+    "EditMobileID":
+    {
+        "MainPrefab": "magicCityEditMobileID",
+        "Version": "2887.0",
+        "VersionDEV": "2887.0",
+        "path": "Prefabs/"
+    },
+    "EditPassword":
+    {
+        "MainPrefab": "magicCityEditPasswordMgr",
+        "Version": "2887.0",
+        "VersionDEV": "2887.0",
+        "path": "Prefabs/"
+    },
+    "EventIcon":
+    {
+        "MainPrefab": "",
+        "Version": "2887.0",
+        "VersionDEV": "2887.0",
+        "path": "Prefabs/"
+    },
+    "ExtraComps":
+    {
+        "MainPrefab": "magicCityExtraComps",
+        "Version": "2891.0",
+        "VersionDEV": "2891.0",
+        "path": "Prefabs/"
+    },
+    "FishHunter":
+    {
+        "Version": "3021.0",
+        "VersionDEV": "3021.0"
+    },
+    "FishHunterGhost":
+    {
+        "Dependency":
+        [
+            "FishHunter"
+        ],
+        "Version": "3021.0",
+        "VersionDEV": "3021.0"
+    },
+    "FishWonderCat":
+    {
+        "Dependency":
+        [
+            "FishHunter"
+        ],
+        "Version": "3021.0",
+        "VersionDEV": "3021.0"
+    },
+    "FishCircus":
+    {
+        "Dependency":
+        [
+            "FishHunter"
+        ],
+        "Version": "3021.1",
+        "VersionDEV": "3021.1"
+    },
+    "GameIconMgr":
+    {
+        "MainPrefab": "magicCityGameIconMgr",
+        "Version": "3037.0",
+        "VersionDEV": "3037.0",
+        "path": "Prefabs/"
+    },
+    "GameTypeMgr":
+    {
+        "MainPrefab": "magicCityGameTypeMgr",
+        "Version": "2887.0",
+        "VersionDEV": "2887.0",
+        "path": "Prefabs/"
+    },
+    "JackpotWinner":
+    {
+        "Dependency":
+        [
+            "Common"
+        ],
+        "MainPrefab": "magicCityJackpotWinner",
+        "Version": "11625.0",
+        "VersionDEV": "11625.0",
+        "path": "Prefabs/"
+    },
+    "JPReward":
+    {
+        "Dependency":
+        [
+            "Common"
+        ],
+        "MainPrefab": "magicCityJPReward",
+        "Version": "2887.0",
+        "VersionDEV": "2887.0",
+        "path": "Prefabs/"
+    },
+    "Loading":
+    {
+        "MainPrefab": "magiccityLoadingMgr",
+        "Version": "2887.0",
+        "VersionDEV": "2887.0",
+        "path": "Prefabs/"
+    },
+    "LobbyScene":
+    {
+        "MainPrefab": "LobbySceneReader",
+        "Version": "2887.0",
+        "VersionDEV": "2887.0",
+        "path": "Prefabs/"
+    },
+    "LoginUI":
+    {
+        "MainPrefab": "magicCityLoginUI",
+        "Version": "2887.0",
+        "VersionDEV": "2887.0",
+        "path": "Prefabs/"
+    },
+    "Menu":
+    {
+        "MainPrefab": "magicCityMenu",
+        "Version": "2887.0",
+        "VersionDEV": "2887.0",
+        "path": "Prefabs/"
+    },
+    "Music":
+    {
+        "MainPrefab": "magicCityMusicCtrl",
+        "Version": "2887.0",
+        "VersionDEV": "2887.0",
+        "path": "Prefabs/"
+    },
+    "MusicSetting":
+    {
+        "MainPrefab": "magicCityMusicSetting",
+        "Version": "2887.0",
+        "VersionDEV": "2887.0",
+        "path": "Prefabs/"
+    },
+    "PreDownload":
+    {
+        "Common":
+        [],
+        "Lobby":
+        []
+    },
+    "Purchase":
+    {
+        "MainPrefab": "magiccityPurchase",
+        "Version": "2887.0",
+        "VersionDEV": "2887.0",
+        "path": "Prefabs/"
+    },
+    "RulePage":
+    {
+        "MainPrefab": "RulePage",
+        "Version": "2887.0",
+        "VersionDEV": "2887.0",
+        "path": "Prefabs/"
+    },
+    "SkillGame":
+    {
+        "MainPrefab": "SkillGame",
+        "Version": "2887.0",
+        "VersionDEV": "2887.0",
+        "path": "Prefabs/"
+    },
+    "SlotCommonUI":
+    {
+        "MainPrefab": "magiccityCommonRoot",
+        "VerticalPrefab": "magiccityCommonRoot_Vertical",
+        "Version": "11670.0",
+        "VersionDEV": "11670.0",
+        "path": "Prefabs/"
+    },
+    "SystemBackground":
+    {
+        "Dependency":
+        [
+            "Common"
+        ],
+        "MainPrefab": "magicCitySystemBackground",
+        "Version": "2923.0",
+        "VersionDEV": "2923.0",
+        "path": "Prefabs/"
+    },
+    "TopBar":
+    {
+        "MainPrefab": "magicCityTopBar",
+        "Version": "2887.0",
+        "VersionDEV": "2887.0",
+        "path": "Prefabs/"
+    }
+}

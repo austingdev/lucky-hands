@@ -1,0 +1,133 @@
+{
+  "PreDownload":  {
+    "Common":  [
+	  "Common",
+      "Profile"
+    ],
+    "Lobby":  [
+      "BulletinBoard",
+	  "FishHunter"
+    ],
+    "GameFeature": {
+      "FishBattleShip": {
+        "BundleName":  "BattleShipOccupied",
+        "InLobby":  true,
+        "InGame":  true
+      }
+    }
+  },
+  "Common": {
+    "Version": "3128.1",
+    "VersionDEV": "3128.1"
+  },
+  "BulletinBoard":  {
+    "Version":  "3216.0",
+    "VersionDEV":  "3216.0",
+    "path":  "Prefabs/",
+    "MainPrefab":  "BulletinBoard"
+  },
+  "FishHunter":  {
+    "Version":  "3194.1",
+    "VersionDEV":  "3194.1"
+  },
+  "FishHunterAladdin":  {
+    "Dependency":  [
+      "FishHunter"
+    ],
+    "Version":  "3185.1",
+    "VersionDEV":  "3185.1"
+  },
+  "FishHunterGhost":  {
+    "Dependency":  [
+      "FishHunter"
+    ],
+    "Version":  "3185.1",
+    "VersionDEV":  "3185.1"
+  },
+  "FishFortuneKings":  {
+    "Dependency":  [
+      "FishHunter"
+    ],
+    "Version":  "3216.5",
+    "VersionDEV":  "3216.5"
+  },
+  "FishHunterKingKong":  {
+    "Dependency":  [
+      "FishHunter"
+    ],
+    "Version":  "3185.1",
+    "VersionDEV":  "3185.1"
+  },
+  "FishHunterLuckyShamrock":  {
+    "Dependency":  [
+      "FishHunter"
+    ],
+    "Version":  "3185.1",
+    "VersionDEV":  "3185.1"
+  },
+  "FishHunterThunderDragon":  {
+    "Dependency":  [
+      "FishHunter"
+    ],
+    "Version":  "3194.1",
+    "VersionDEV":  "3194.1"
+  },
+  "MonstersFrenzy":  {
+    "Dependency":  [
+      "FishHunter"
+    ],
+    "Version":  "3185.1",
+    "VersionDEV":  "3185.1"
+  },
+  "FishBattleShip": {
+    "Dependency":  [
+      "FishHunter"
+    ],
+    "Version":  "3185.1",
+    "VersionDEV":  "3185.1"
+  },
+  "FishKingOfCrab":  {
+    "Dependency": [
+      "FishHunter"
+    ],
+    "Version": "3185.1",
+    "VersionDEV": "3185.1"
+  },
+  "FishCircus": {
+    "Dependency":  [
+      "FishHunter"
+    ],
+    "Version":  "3187.1",
+    "VersionDEV":  "3187.1"
+  },  
+  "BattleShipOccupied": {
+    "Version": "3128.1",
+    "VersionDEV": "3128.1",
+    "path": "",
+    "MainPrefab": "BattleShipOccupiedUI"
+  },
+  "Avatar":  {
+    "Version":  "3128.1",
+    "VersionDEV":  "3128.1"
+  },
+  "SquareGameIcon":  {
+    "Version":  "3216.0",
+    "VersionDEV":  "3216.0"
+  },
+  "Profile":  {
+    "Dependency":  [
+      "Avatar",
+      "SquareGameIcon"
+    ],
+    "Version":  "3128.1",
+    "VersionDEV":  "3128.1",
+    "path":  "Prefabs/",
+    "MainPrefab":  "Profile"
+  },
+  "GameCloseTip":
+  {
+	"Version": "3216.2",
+    "VersionDEV": "3216.2",
+	"path": "Prefabs/"
+  }
+}

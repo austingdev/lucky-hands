@@ -1,0 +1,37 @@
+{
+  "LobbyCommon": {
+    "Module": [
+      "Loading",
+      "EditPassword",
+	    "Music",
+      "SystemBackground"
+    ],
+    "Common": [
+      "LoginUI",
+      "Common"
+    ]
+  },
+  "LobbyMgr": {
+    "Module": [
+      "GameTypeMgr",
+      "GameIconMgr",
+      "Menu",
+      "TopBar",
+      "DownBar",
+	    "MusicSetting",
+      "EditMobileID",
+      "AccountMgr",
+      "LobbyScene"
+    ]
+  },
+  "FeatureIconGame":[
+	"FishBattleShip"
+  ],
+  "FeatureUIGame":[
+	"FishBattleShip"
+  ],  
+  "Layer": [],
+  "GameIconMgr": {
+    "hasPrefab": true
+  }
+}
