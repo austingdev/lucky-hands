@@ -1,7 +1,7 @@
 /node_modules
 /public/hot
-/public/arcade_config.json
-/public/socket_config.json
+# /public/arcade_config.json
+# /public/socket_config.json
 /public/storage
 /storage/*.key
 /storage/debugbar
