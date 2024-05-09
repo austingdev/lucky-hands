@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;								 
 // Route::namespace('Frontend')->middleware(['siteisclosed', 'checker'])->group(function () {
-Route::domain('www.'.config('app.domain'))->namespace('Frontend')->middleware(['siteisclosed', 'checker'])->group(function () {
+Route::domain(config('app.domain'))->namespace('Frontend')->middleware(['siteisclosed', 'checker'])->group(function () {
 
     Route::get('login', [
         'as' => 'frontend.auth.login',
