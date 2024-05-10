@@ -9,6 +9,11 @@ Route::domain('www.'.config('app.domain'))->namespace('Frontend')->middleware(['
         'uses' => 'Auth\AuthController@getLogin'
     ]);
 
+    Route::get('relaxgaming-login', [
+        'as' => 'frontend.auth.relaxgaming-login',
+        'uses' => 'Auth\AuthController@getRelaxgamingLogin'
+    ]);
+
     Route::get('launcher/{game}/{token}','Auth\AuthController@apiLogin' );
 
     Route::get('refresh-csrf', function(){

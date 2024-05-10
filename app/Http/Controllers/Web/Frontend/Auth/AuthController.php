@@ -53,6 +53,17 @@ namespace VanguardLTE\Http\Controllers\Web\Frontend\Auth
             }
             return view('frontend.' . $frontend . '.auth.login', compact('directories'));
         }
+        public function getRelaxgamingLogin()
+        {
+            $frontend = $this->getBasicTheme();
+            $directories = [];
+            foreach( glob(resource_path() . '/lang/*', GLOB_ONLYDIR) as $fileinfo ) 
+            {
+                $dirname = basename($fileinfo);
+                $directories[$dirname] = $dirname;
+            }
+            return view('frontend.' . $frontend . '.auth.relaxgaming-login', compact('directories'));
+        }
         public function postLogin(\VanguardLTE\Http\Requests\Auth\LoginRequest $request, \VanguardLTE\Repositories\Session\SessionRepository $sessionRepository)
         {
             $throttles = settings('throttle_enabled');

@@ -7,6 +7,7 @@ Route::group(['middleware' => ['ipcheck']], function () {
 	Route::post('login', 'Auth\AuthController@login');	
 });	
 Route::post('logout', 'Auth\AuthController@logout');
+Route::post('verifyRGToken', 'Auth\AuthController@verifyRGToken');
 Route::post('gamelist', 'Games\GamesController@gamelist');
 Route::post('info', 'Jackpots\JackpotsController@jackpot_status');
 Route::post('changePassword', 'Users\UsersController@changePassword');

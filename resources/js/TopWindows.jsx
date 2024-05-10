@@ -1,6 +1,7 @@
 import React from 'react';
 import {EE} from "./App";
 import {LoginWin} from "./windows/LoginWin";
+import {RelaxGamingLogin} from "./windows/RelaxGamingLogin";
 import {RegWin} from "./windows/RegWin";
 import {NewPassWin} from "./windows/NewPassWin";
 import {InfoWin} from "./windows/InfoWin";
@@ -18,6 +19,7 @@ import {FreePlayWin} from "./windows/FreePlayWin";
 import {CashbackWin} from "./windows/CashbackWin";
 
 let PAGE_LOGIN = "PAGE_LOGIN";
+let SHOW_RELAXGAMING_LOGIN = "SHOW_RELAXGAMING_LOGIN";
 let PAGE_INFO = "PAGE_INFO";
 let PAGE_REG = "PAGE_REG";
 let PAGE_FREE_PLAY = "PAGE_FREE_PLAY";
@@ -76,6 +78,9 @@ class TopWindows extends React.Component {
 		EE.addListener('SHOW_LOGIN', ()=>{
 			this.setState({CURRENT_PAGE: PAGE_LOGIN});
 		});
+		EE.addListener('SHOW_RELAXGAMING_LOGIN', ()=>{
+			this.setState({CURRENT_PAGE: SHOW_RELAXGAMING_LOGIN});
+		});
 		EE.addListener('SHOW_INFO', ()=>{
 			this.setState({CURRENT_PAGE: PAGE_INFO});
 		});
@@ -122,6 +127,7 @@ class TopWindows extends React.Component {
 				{(this.state.CURRENT_PAGE === PAGE_REG && <RegWin onClose={this.onCloseAll}/> )}
 				{(this.state.CURRENT_PAGE === PAGE_FREE_PLAY && <FreePlayWin onClose={this.onCloseAll}/> )}
 				{(this.state.CURRENT_PAGE === PAGE_LOGIN && <LoginWin onClose={this.onCloseAll}/> )}
+				{(this.state.CURRENT_PAGE === SHOW_RELAXGAMING_LOGIN && <RelaxGamingLogin onClose={this.onCloseAll}/> )}
 				{(this.state.CURRENT_PAGE === SHOW_LUCKY && <LuckyWin onClose={this.onCloseAll}/> )}
 				{(this.state.CURRENT_PAGE === PAGE_CASHBACK && <CashbackWin amount={this.state.data} onClose={this.onCloseAll}/> )}
 				{(this.state.CURRENT_PAGE === PAGE_SIGNPHONE && <SignPhoneWin onClose={this.onCloseAll}/> )}

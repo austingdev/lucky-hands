@@ -6,6 +6,7 @@ const Q_LOGIN = "/login";
 const Q_SIGNUP = "/signup";
 const Q_LOGOUT = "logout";
 const Q_GAMES = "/gamelist";
+const Q_RG_LOGIN = "/api/verifyRGToken";
 const Q_MONEY = "info";
 const Q_PASS = "/password/change";
 const Q_SEND_SMS = "/sms/send";
@@ -90,6 +91,10 @@ export function signUp(data, callback) {
 	queryPost(Q_SIGNUP, data, (e)=>{		
 		callback(e);
 	});
+}
+
+export function relaxGamingVerifyToken(data, callback) {	
+	queryPost(Q_RG_LOGIN, data, callback);
 }
 
 export function post(path, params, method='post') {

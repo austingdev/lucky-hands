@@ -4,6 +4,7 @@ namespace VanguardLTE\Http\Controllers\Api\Auth
 {
 
     use Tymon\JWTAuth\Facades\JWTAuth;
+    use VanguardLTE\Lib\RelaxGamingServer;
 
     include_once(base_path() . '/app/ShopCore.php');
     include_once(base_path() . '/app/ShopGame.php');
@@ -99,6 +100,28 @@ namespace VanguardLTE\Http\Controllers\Api\Auth
             $id = $user->id;
             \VanguardLTE\User::where('id', '=', $id)->update(['api_token' => $token]);
             return $this->respondWithArray(compact('token'));
+        }
+        public function verifyRGToken(\Illuminate\Http\Request $request, \VanguardLTE\Repositories\Session\SessionRepository $sessionRepository)
+        {
+            $request->validate([
+                'gameId' => 'required', 
+                'token' => 'required'
+            ]);
+
+            $throttles = settings('throttle_enabled');
+            if( $throttles && $this->hasTooManyLoginAttempts($request) ) 
+            {
+                return $this->sendLockoutResponse($request);
+            }
+
+            $relaxgamingServer = new RelaxGamingServer();
+            $token = $relaxgamingServer->verifyToken($request->token);
+            $balance = $relaxgamingServer->getBalance();
+            
+            return response()->json([
+                'token' => $token,
+                'balance' => $balance,
+            ], 200);
         }
         private function invalidateToken($token)
         {
