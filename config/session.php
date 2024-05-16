@@ -16,7 +16,7 @@ return [
     |
     */
 
-    'driver' => env('SESSION_DRIVER', 'database'),
+    'driver' => env('SESSION_DRIVER', 'file'),
 
     /*
     |--------------------------------------------------------------------------
@@ -189,6 +189,6 @@ return [
     | Supported: "lax", "strict"
     |
     */
-    'same_site' => null,
+    'same_site' => 'none',
 
 ];

@@ -21,14 +21,15 @@ class RedisBridge{
 		{
 			password: process.env.REDIS_PASSWORD
 		});
-        // client.connect();
+        client.connect();
         client.on('error', error=>{
+            console.log('broken redis connection')
             console.error(error);
         });
 
         client.on('connect', async ()=>{
-            console.log('Reddis service connected');            
-        });       
+            console.log('Reddis service connected');
+        });
 
         this.startTime = new Date();
         this.isRun = true;
@@ -36,7 +37,7 @@ class RedisBridge{
 
     /**
      * get total bet/win value of player
-     * @param {*Player instance} player 
+     * @param {*Player instance} player
      */
     async getBetWin(player)
     {
@@ -47,10 +48,10 @@ class RedisBridge{
         var total_bet = await client.get(key2);
         if(total_win == undefined || total_bet == undefined)
         {
-            player.total_win = 0;        
-            player.total_bet = 0;  
+            player.total_win = 0;
+            player.total_bet = 0;
             client.set(key1, player.total_win);
-            client.set(key2, player.total_bet);                
+            client.set(key2, player.total_bet);
         }
         else
         {
@@ -61,7 +62,7 @@ class RedisBridge{
 
     /**
      * update bank value when bet
-     * @param {Player instance} player     
+     * @param {Player instance} player
      */
     async updateBank(player, bet_amount)
     {
@@ -69,35 +70,35 @@ class RedisBridge{
 
         //update player bet value
         var key = this.PLAYER_BET_KEY + player.userId;
-        var betData = await client.get(key);      
+        var betData = await client.get(key);
         if(betData == null || betData == 'NaN')
         {
             client.set(key, 0);
             betData = 0;
-        }  
+        }
         client.set(key, toFloat(betData) + bet_amount);
         // console.log("player bet amount: " + (toFloat(betData) + bet_amount));
-        
+
         key = this.PLAYER_TOTAL_BET_KEY + player.userId;
-        var total_bet = await client.get(key);      
+        var total_bet = await client.get(key);
         if(total_bet == null || total_bet == 'NaN')
         {
             client.set(key, player.total_bet);
             total_bet = player.total_bet;
-        }  
+        }
         client.set(key, toFloat(total_bet) + bet_amount);
-        player.total_bet += bet_amount;        
+        player.total_bet += bet_amount;
         // console.log("player bet amount: " + player.total_bet);
     }
 
     /**
      * Change bank value when win
-     * @param {Player instance} player 
-     * @param {normal bank value} bank 
-     * @param {skill bank value} skillBank 
+     * @param {Player instance} player
+     * @param {normal bank value} bank
+     * @param {skill bank value} skillBank
      */
     async updateBankDirect(player, normal, skill)
-    {        
+    {
         //update player win value
         var key = this.PLAYER_WIN_KEY + player.userId;
         var win = await client.get(key);
@@ -123,7 +124,7 @@ class RedisBridge{
 
     /**
      * save player data from redis cahce to database
-     * @param {Player instance} player 
+     * @param {Player instance} player
      */
     async synchronizePlayerToDB(player)
     {
@@ -136,14 +137,14 @@ class RedisBridge{
             var db_balance = toFloat(result[0]['balance']);
             key = this.PLAYER_LAST_BALANCE_KEY + player.userId;
             var last_balance = toFloat(await client.get(key));
-            
+
             // console.log("synchronizing balance to db, last_balance_db: " + last_balance + " current_balance_db: " + db_balance + " cur balance: " + balance + " new balance: " + (balance + db_balance - last_balance));
             balance += (db_balance - last_balance); //if db's balance is changed by admin, consider that delta value and change the player's balance
             client.set(this.PLAYER_BALANCE_KEY + player.userId, balance);
             client.set(this.PLAYER_LAST_BALANCE_KEY + player.userId, balance);
             player.balance = balance * 100;
             mysql_tools.sendQuery(dbconn, "UPDATE w_users SET balance = ?, summon = ?, freeze = ? WHERE id = ?", [ balance, player.summon, player.freeze, player.userId ]);
-        }        
+        }
 
         //player bet for saving time
         key = this.PLAYER_BET_KEY + player.userId;
@@ -202,15 +203,15 @@ class RedisBridge{
                         await mysql_tools.sendQuery(dbconn, "UPDATE w_bonuses set available_step = ?, step_progress = ? where id = ?", [available_step, step_progress, bonus.id]);
                     }
                 }
-                
+
             }
-        }        
+        }
     }
 
     async updateBalance(player)
     {
         var key = this.PLAYER_BALANCE_KEY + player.userId;
-        var value = client.get(key);        
+        var value = client.get(key);
         if(value != undefined)
         {
             client.set(key, player.balance / 100);
