@@ -51,12 +51,12 @@ var server;
 catchedFishes = {};
 bulletCounterManager = new BulletCounterManager();
 Common.gameList.forEach(gameType => {
-    bulletCounterManager.addBulletCounter(gameType);
+    bulletCounterManager.addBulletCounter(gameType);    
     catchedFishes[gameType] = {};
 });
 
 if(serverConfig.ssl)
-{
+{	
     var privateKey = fs.readFileSync('C:/inetpub/wwwroot/PTWebSocket/ssl/key.key', 'utf8');
     var certificate = fs.readFileSync('C:/inetpub/wwwroot/PTWebSocket/ssl/crt.crt', 'utf8');
 
@@ -173,7 +173,7 @@ class GameRoomManager{
             if(gameName == MFNAME)
             {
                 room = new GameRoomMF();
-                this.monstersFrenzyRooms.push(room);
+                this.monstersFrenzyRooms.push(room);                
             }
             else if(gameName == ALADNAME)
             {
@@ -232,9 +232,9 @@ class GameRoomManager{
                 this.fishBuffaloThunderRooms.push(room);
                 room.roomType = player.roomType;
             }
-            room.shop_id = player.shop_id;
-            room.addClient(player);
-            player.room = room;
+            room.shop_id = player.shop_id;  
+            room.addClient(player);    
+            player.room = room;        
         }
     }
 
@@ -268,19 +268,19 @@ class GameRoomManager{
             targetRooms = this.fishCrabAvengersRooms;
         else if(player.gameName == BFNAME)
             targetRooms = this.fishBuffaloThunderRooms;
-
+        
 
         room.removeClient(player);
 
         if(room.clients.length == 0)
-        {
+        {            
             setTimeout(() => {
                 if(room.clients.length == 0)
                 {
                     for(var i = 0; i < targetRooms.length; i++)
                     {
                         if(targetRooms[i] == room)
-                        {
+                        {                            
                             clearInterval(room.intervalID);
                             targetRooms.splice(i, 1);
                             room = null;
@@ -314,37 +314,37 @@ function loadFishInfo()
             x: element[3],
             y: element[4],
             o: element[5]
-        })
+        })       
     );
-    position = JSON.parse('{"sys":"fish","cmd":"f1","data":{"11":[{"1":2032,"3":68,"2":0,"5":140,"4":21,"7":0,"6":0,"9":242,"8":14,"16":null},{"1":2046,"3":51,"2":1,"5":354,"4":5,"7":0,"6":0,"9":242,"8":6,"16":null},{"1":2052,"3":47,"2":10,"5":21,"4":4,"7":0,"6":0,"9":242,"8":1,"16":null},{"1":2053,"3":36,"2":11,"5":333,"4":55,"7":0,"6":0,"9":242,"8":1,"16":null},{"1":2054,"3":69,"2":14,"5":130,"4":6,"7":0,"6":0,"9":242,"8":1,"16":null},{"1":2055,"3":50,"2":15,"5":158,"4":2,"7":0,"6":0,"9":242,"8":1,"16":null}],"10":"11","15":[],"14":2002,"timestamp":1632799714}}');
+    position = JSON.parse('{"sys":"fish","cmd":"f1","data":{"11":[{"1":2032,"3":68,"2":0,"5":140,"4":21,"7":0,"6":0,"9":242,"8":14,"16":null},{"1":2046,"3":51,"2":1,"5":354,"4":5,"7":0,"6":0,"9":242,"8":6,"16":null},{"1":2052,"3":47,"2":10,"5":21,"4":4,"7":0,"6":0,"9":242,"8":1,"16":null},{"1":2053,"3":36,"2":11,"5":333,"4":55,"7":0,"6":0,"9":242,"8":1,"16":null},{"1":2054,"3":69,"2":14,"5":130,"4":6,"7":0,"6":0,"9":242,"8":1,"16":null},{"1":2055,"3":50,"2":15,"5":158,"4":2,"7":0,"6":0,"9":242,"8":1,"16":null}],"10":"11","15":[],"14":2002,"timestamp":1632799714}}');    
     samplePoints = samplePoints.concat(position.data[11].map((element) => ({
             x: element[3],
             y: element[4],
             o: element[5]
-        })
+        })       
     ));
-    position = JSON.parse('{"sys":"fish","cmd":"f1","data":{"11":[{"1":3445,"3":5,"2":9,"5":346,"4":81,"7":0,"6":0,"9":678,"8":1,"16":null},{"1":3444,"3":58,"2":11,"5":45,"4":24,"7":0,"6":0,"9":678,"8":1,"16":null},{"1":3447,"3":3,"2":13,"5":63,"4":93,"7":0,"6":0,"9":678,"8":1,"16":null},{"1":99999,"3":45,"2":116,"5":130,"4":42,"7":0,"6":16,"9":672,"8":1,"16":null},{"1":3446,"3":83,"2":9,"5":191,"4":2,"7":0,"6":0,"9":678,"8":1,"16":null},{"1":3441,"3":32,"2":7,"5":218,"4":62,"7":0,"6":0,"9":678,"8":1,"16":null},{"1":3440,"3":62,"2":7,"5":260,"4":60,"7":0,"6":0,"9":676,"8":1,"16":null},{"1":3438,"3":32,"2":7,"5":359,"4":72,"7":0,"6":0,"9":674,"8":1,"16":null},{"1":3439,"3":96,"2":7,"5":235,"4":40,"7":0,"6":0,"9":675,"8":1,"16":null},{"1":3431,"3":42,"2":2,"5":18,"4":26,"7":0,"6":0,"9":673,"8":6,"16":null},{"1":3437,"3":36,"2":2,"5":18,"4":24,"7":0,"6":1,"9":673,"8":1,"16":null},{"1":3443,"3":48,"2":11,"5":235,"4":20,"7":0,"6":0,"9":678,"8":1,"16":null},{"1":3442,"3":51,"2":7,"5":59,"4":96,"7":0,"6":0,"9":678,"8":1,"16":null},{"1":3429,"3":43,"2":15,"5":249,"4":31,"7":0,"6":0,"9":666,"8":1,"16":null},{"1":3423,"3":58,"2":1,"5":49,"4":22,"7":0,"6":0,"9":666,"8":6,"16":null}],"timestamp":1630640973,"15":[],"14":2004}}');
+    position = JSON.parse('{"sys":"fish","cmd":"f1","data":{"11":[{"1":3445,"3":5,"2":9,"5":346,"4":81,"7":0,"6":0,"9":678,"8":1,"16":null},{"1":3444,"3":58,"2":11,"5":45,"4":24,"7":0,"6":0,"9":678,"8":1,"16":null},{"1":3447,"3":3,"2":13,"5":63,"4":93,"7":0,"6":0,"9":678,"8":1,"16":null},{"1":99999,"3":45,"2":116,"5":130,"4":42,"7":0,"6":16,"9":672,"8":1,"16":null},{"1":3446,"3":83,"2":9,"5":191,"4":2,"7":0,"6":0,"9":678,"8":1,"16":null},{"1":3441,"3":32,"2":7,"5":218,"4":62,"7":0,"6":0,"9":678,"8":1,"16":null},{"1":3440,"3":62,"2":7,"5":260,"4":60,"7":0,"6":0,"9":676,"8":1,"16":null},{"1":3438,"3":32,"2":7,"5":359,"4":72,"7":0,"6":0,"9":674,"8":1,"16":null},{"1":3439,"3":96,"2":7,"5":235,"4":40,"7":0,"6":0,"9":675,"8":1,"16":null},{"1":3431,"3":42,"2":2,"5":18,"4":26,"7":0,"6":0,"9":673,"8":6,"16":null},{"1":3437,"3":36,"2":2,"5":18,"4":24,"7":0,"6":1,"9":673,"8":1,"16":null},{"1":3443,"3":48,"2":11,"5":235,"4":20,"7":0,"6":0,"9":678,"8":1,"16":null},{"1":3442,"3":51,"2":7,"5":59,"4":96,"7":0,"6":0,"9":678,"8":1,"16":null},{"1":3429,"3":43,"2":15,"5":249,"4":31,"7":0,"6":0,"9":666,"8":1,"16":null},{"1":3423,"3":58,"2":1,"5":49,"4":22,"7":0,"6":0,"9":666,"8":6,"16":null}],"timestamp":1630640973,"15":[],"14":2004}}');    
     samplePoints = samplePoints.concat(position.data[11].map((element) => ({
             x: element[3],
             y: element[4],
             o: element[5]
-        })
+        })       
     ));
-    position = JSON.parse('{"sys":"fish","cmd":"f1","data":{"11":[{"1":3448,"3":49,"2":35,"5":192,"4":31,"7":0,"6":0,"9":679,"8":1,"16":null},{"1":3449,"3":42,"2":47,"5":157,"4":19,"7":0,"6":0,"9":679,"8":1,"16":null},{"1":3450,"3":53,"2":47,"5":103,"4":11,"7":0,"6":0,"9":679,"8":1,"16":null},{"1":3451,"3":84,"2":47,"5":148,"4":100,"7":0,"6":0,"9":679,"8":1,"16":null},{"1":3452,"3":21,"2":47,"5":66,"4":45,"7":0,"6":0,"9":679,"8":1,"16":null},{"1":3453,"3":75,"2":47,"5":173,"4":64,"7":0,"6":0,"9":679,"8":1,"16":null},{"1":3454,"3":75,"2":47,"5":117,"4":13,"7":0,"6":0,"9":679,"8":1,"16":null},{"1":3455,"3":68,"2":48,"5":172,"4":4,"7":0,"6":0,"9":679,"8":1,"16":null},{"1":3456,"3":57,"2":48,"5":123,"4":36,"7":0,"6":0,"9":679,"8":1,"16":null},{"1":3457,"3":44,"2":48,"5":331,"4":82,"7":0,"6":0,"9":679,"8":1,"16":null},{"1":3458,"3":22,"2":48,"5":304,"4":95,"7":0,"6":0,"9":679,"8":1,"16":null},{"1":3459,"3":12,"2":48,"5":337,"4":2,"7":0,"6":0,"9":679,"8":1,"16":null},{"1":3460,"3":41,"2":48,"5":290,"4":85,"7":0,"6":0,"9":679,"8":1,"16":null},{"1":3461,"3":57,"2":1,"5":7,"4":66,"7":0,"6":0,"9":679,"8":6,"16":null},{"1":3467,"3":76,"2":11,"5":301,"4":72,"7":0,"6":0,"9":679,"8":1,"16":null},{"1":3468,"3":85,"2":11,"5":27,"4":16,"7":0,"6":0,"9":679,"8":1,"16":null},{"1":3469,"3":37,"2":11,"5":189,"4":70,"7":0,"6":0,"9":679,"8":1,"16":null},{"1":3470,"3":46,"2":9,"5":289,"4":16,"7":0,"6":0,"9":679,"8":1,"16":null},{"1":3471,"3":46,"2":9,"5":65,"4":64,"7":0,"6":0,"9":679,"8":1,"16":null},{"1":3472,"3":17,"2":9,"5":77,"4":34,"7":0,"6":0,"9":679,"8":1,"16":null},{"1":3473,"3":52,"2":14,"5":342,"4":81,"7":0,"6":0,"9":679,"8":1,"16":null},{"1":3474,"3":69,"2":15,"5":235,"4":43,"7":0,"6":0,"9":679,"8":1,"16":null},{"1":3475,"3":97,"2":18,"5":322,"4":60,"7":0,"6":0,"9":679,"8":1,"16":null}],"10":"11","15":[],"14":2004,"timestamp":1630640973}}');
+    position = JSON.parse('{"sys":"fish","cmd":"f1","data":{"11":[{"1":3448,"3":49,"2":35,"5":192,"4":31,"7":0,"6":0,"9":679,"8":1,"16":null},{"1":3449,"3":42,"2":47,"5":157,"4":19,"7":0,"6":0,"9":679,"8":1,"16":null},{"1":3450,"3":53,"2":47,"5":103,"4":11,"7":0,"6":0,"9":679,"8":1,"16":null},{"1":3451,"3":84,"2":47,"5":148,"4":100,"7":0,"6":0,"9":679,"8":1,"16":null},{"1":3452,"3":21,"2":47,"5":66,"4":45,"7":0,"6":0,"9":679,"8":1,"16":null},{"1":3453,"3":75,"2":47,"5":173,"4":64,"7":0,"6":0,"9":679,"8":1,"16":null},{"1":3454,"3":75,"2":47,"5":117,"4":13,"7":0,"6":0,"9":679,"8":1,"16":null},{"1":3455,"3":68,"2":48,"5":172,"4":4,"7":0,"6":0,"9":679,"8":1,"16":null},{"1":3456,"3":57,"2":48,"5":123,"4":36,"7":0,"6":0,"9":679,"8":1,"16":null},{"1":3457,"3":44,"2":48,"5":331,"4":82,"7":0,"6":0,"9":679,"8":1,"16":null},{"1":3458,"3":22,"2":48,"5":304,"4":95,"7":0,"6":0,"9":679,"8":1,"16":null},{"1":3459,"3":12,"2":48,"5":337,"4":2,"7":0,"6":0,"9":679,"8":1,"16":null},{"1":3460,"3":41,"2":48,"5":290,"4":85,"7":0,"6":0,"9":679,"8":1,"16":null},{"1":3461,"3":57,"2":1,"5":7,"4":66,"7":0,"6":0,"9":679,"8":6,"16":null},{"1":3467,"3":76,"2":11,"5":301,"4":72,"7":0,"6":0,"9":679,"8":1,"16":null},{"1":3468,"3":85,"2":11,"5":27,"4":16,"7":0,"6":0,"9":679,"8":1,"16":null},{"1":3469,"3":37,"2":11,"5":189,"4":70,"7":0,"6":0,"9":679,"8":1,"16":null},{"1":3470,"3":46,"2":9,"5":289,"4":16,"7":0,"6":0,"9":679,"8":1,"16":null},{"1":3471,"3":46,"2":9,"5":65,"4":64,"7":0,"6":0,"9":679,"8":1,"16":null},{"1":3472,"3":17,"2":9,"5":77,"4":34,"7":0,"6":0,"9":679,"8":1,"16":null},{"1":3473,"3":52,"2":14,"5":342,"4":81,"7":0,"6":0,"9":679,"8":1,"16":null},{"1":3474,"3":69,"2":15,"5":235,"4":43,"7":0,"6":0,"9":679,"8":1,"16":null},{"1":3475,"3":97,"2":18,"5":322,"4":60,"7":0,"6":0,"9":679,"8":1,"16":null}],"10":"11","15":[],"14":2004,"timestamp":1630640973}}');    
     samplePoints = samplePoints.concat(position.data[11].map((element) => ({
             x: element[3],
             y: element[4],
             o: element[5]
-        })
+        })       
     ));
-    position = JSON.parse('{"sys":"fish","cmd":"f1","data":{"11":[{"1":3448,"3":49,"2":35,"5":192,"4":31,"7":0,"6":0,"9":679,"8":1,"16":null},{"1":3449,"3":42,"2":47,"5":157,"4":19,"7":0,"6":0,"9":679,"8":1,"16":null},{"1":3450,"3":53,"2":47,"5":103,"4":11,"7":0,"6":0,"9":679,"8":1,"16":null},{"1":3451,"3":84,"2":47,"5":148,"4":100,"7":0,"6":0,"9":679,"8":1,"16":null},{"1":3452,"3":21,"2":47,"5":66,"4":45,"7":0,"6":0,"9":679,"8":1,"16":null},{"1":3453,"3":75,"2":47,"5":173,"4":64,"7":0,"6":0,"9":679,"8":1,"16":null},{"1":3454,"3":75,"2":47,"5":117,"4":13,"7":0,"6":0,"9":679,"8":1,"16":null},{"1":3455,"3":68,"2":48,"5":172,"4":4,"7":0,"6":0,"9":679,"8":1,"16":null},{"1":3456,"3":57,"2":48,"5":123,"4":36,"7":0,"6":0,"9":679,"8":1,"16":null},{"1":3457,"3":44,"2":48,"5":331,"4":82,"7":0,"6":0,"9":679,"8":1,"16":null},{"1":3458,"3":22,"2":48,"5":304,"4":95,"7":0,"6":0,"9":679,"8":1,"16":null},{"1":3459,"3":12,"2":48,"5":337,"4":2,"7":0,"6":0,"9":679,"8":1,"16":null},{"1":3460,"3":41,"2":48,"5":290,"4":85,"7":0,"6":0,"9":679,"8":1,"16":null},{"1":3461,"3":57,"2":1,"5":7,"4":66,"7":0,"6":0,"9":679,"8":6,"16":null},{"1":3467,"3":76,"2":11,"5":301,"4":72,"7":0,"6":0,"9":679,"8":1,"16":null},{"1":3468,"3":85,"2":11,"5":27,"4":16,"7":0,"6":0,"9":679,"8":1,"16":null},{"1":3469,"3":37,"2":11,"5":189,"4":70,"7":0,"6":0,"9":679,"8":1,"16":null},{"1":3470,"3":46,"2":9,"5":289,"4":16,"7":0,"6":0,"9":679,"8":1,"16":null},{"1":3471,"3":46,"2":9,"5":65,"4":64,"7":0,"6":0,"9":679,"8":1,"16":null},{"1":3472,"3":17,"2":9,"5":77,"4":34,"7":0,"6":0,"9":679,"8":1,"16":null},{"1":3473,"3":52,"2":14,"5":342,"4":81,"7":0,"6":0,"9":679,"8":1,"16":null},{"1":3474,"3":69,"2":15,"5":235,"4":43,"7":0,"6":0,"9":679,"8":1,"16":null},{"1":3475,"3":97,"2":18,"5":322,"4":60,"7":0,"6":0,"9":679,"8":1,"16":null}],"10":"11","15":[],"14":2004,"timestamp":1630640973}}');
+    position = JSON.parse('{"sys":"fish","cmd":"f1","data":{"11":[{"1":3448,"3":49,"2":35,"5":192,"4":31,"7":0,"6":0,"9":679,"8":1,"16":null},{"1":3449,"3":42,"2":47,"5":157,"4":19,"7":0,"6":0,"9":679,"8":1,"16":null},{"1":3450,"3":53,"2":47,"5":103,"4":11,"7":0,"6":0,"9":679,"8":1,"16":null},{"1":3451,"3":84,"2":47,"5":148,"4":100,"7":0,"6":0,"9":679,"8":1,"16":null},{"1":3452,"3":21,"2":47,"5":66,"4":45,"7":0,"6":0,"9":679,"8":1,"16":null},{"1":3453,"3":75,"2":47,"5":173,"4":64,"7":0,"6":0,"9":679,"8":1,"16":null},{"1":3454,"3":75,"2":47,"5":117,"4":13,"7":0,"6":0,"9":679,"8":1,"16":null},{"1":3455,"3":68,"2":48,"5":172,"4":4,"7":0,"6":0,"9":679,"8":1,"16":null},{"1":3456,"3":57,"2":48,"5":123,"4":36,"7":0,"6":0,"9":679,"8":1,"16":null},{"1":3457,"3":44,"2":48,"5":331,"4":82,"7":0,"6":0,"9":679,"8":1,"16":null},{"1":3458,"3":22,"2":48,"5":304,"4":95,"7":0,"6":0,"9":679,"8":1,"16":null},{"1":3459,"3":12,"2":48,"5":337,"4":2,"7":0,"6":0,"9":679,"8":1,"16":null},{"1":3460,"3":41,"2":48,"5":290,"4":85,"7":0,"6":0,"9":679,"8":1,"16":null},{"1":3461,"3":57,"2":1,"5":7,"4":66,"7":0,"6":0,"9":679,"8":6,"16":null},{"1":3467,"3":76,"2":11,"5":301,"4":72,"7":0,"6":0,"9":679,"8":1,"16":null},{"1":3468,"3":85,"2":11,"5":27,"4":16,"7":0,"6":0,"9":679,"8":1,"16":null},{"1":3469,"3":37,"2":11,"5":189,"4":70,"7":0,"6":0,"9":679,"8":1,"16":null},{"1":3470,"3":46,"2":9,"5":289,"4":16,"7":0,"6":0,"9":679,"8":1,"16":null},{"1":3471,"3":46,"2":9,"5":65,"4":64,"7":0,"6":0,"9":679,"8":1,"16":null},{"1":3472,"3":17,"2":9,"5":77,"4":34,"7":0,"6":0,"9":679,"8":1,"16":null},{"1":3473,"3":52,"2":14,"5":342,"4":81,"7":0,"6":0,"9":679,"8":1,"16":null},{"1":3474,"3":69,"2":15,"5":235,"4":43,"7":0,"6":0,"9":679,"8":1,"16":null},{"1":3475,"3":97,"2":18,"5":322,"4":60,"7":0,"6":0,"9":679,"8":1,"16":null}],"10":"11","15":[],"14":2004,"timestamp":1630640973}}');    
     samplePoints = samplePoints.concat(position.data[11].map((element) => ({
             x: element[3],
             y: element[4],
             o: element[5]
-        })
+        })       
     ));
-
+    
     gFishMaxSize = [
         {
             fishTypeId: 0,
@@ -461,7 +461,7 @@ function loadFishInfo()
                 case 11:
                     element.prizeRatio = 5;
                     break;
-                case 12:
+                case 12:                    
                     element.prizeRatio = 4;
                     break;
                 case 13:
@@ -512,9 +512,9 @@ function loadFishInfo()
              * 23: drill crab feature1
              * 34: bomb crab feature1
              * 77: wheel crab feature1
-             * 79: hammer crab feature1
+             * 79: hammer crab feature1             
              */
-
+            
             if(element.id == 22)
                 element.prizeRatio = 7;
             else if(element.id == 23)
@@ -531,7 +531,7 @@ function loadFishInfo()
     });
     // load fish info format for golden fortune
     global.gRoutes = JSON.parse(fs.readFileSync(__dirname + '/arcade_data/routes.json', 'utf8'));
-
+    
 
     global.groupPosIndex.push({offsetx:0,offsety: 0});
     global.groupPosIndex.push({offsetx:0,offsety:-40});
@@ -567,7 +567,7 @@ function loadFishInfo()
     else if (95 <= rand)
     {
         gExpectedOdds = getRandomInt(800,1000);
-    }else
+    }else 
     {
         gExpectedOdds = getRandomInt(200,500);
     }
@@ -584,7 +584,7 @@ function initRedis()
 function startGameServer()
 {
     initRedis();
-    const roomManager = new GameRoomManager();
+    const roomManager = new GameRoomManager();    
     var oddGenerator = new OddGenerator();
     wss_game.on('connection', (ws, req) => {
         ws.on('close', async (error)=>{
@@ -614,7 +614,7 @@ function startGameServer()
                         errinfo: 'ok',
                         type: 'broadplayer'
                     };
-                    player.sendToOtherUsers(response);
+                    player.sendToOtherUsers(response); 
                 }
                 //
                 console.log("disconnecting player: " + ws.player.userId + " error: " + error);
@@ -637,7 +637,7 @@ function startGameServer()
                 }
                 // console.log("game message: " + message);
                 var response = null;
-                var player;
+                var player;   
                 //
                 if (gameData.type != undefined)
                 {
@@ -649,7 +649,7 @@ function startGameServer()
                             }
                             response = {
                                 message: {
-                                    time: new Date().getTime()
+                                    time: new Date().getTime() 
                                 },
                                 succ: true,
                                 errinfo: 'ok',
@@ -670,7 +670,7 @@ function startGameServer()
                                     defaultValue = 1000;
                                     break;
                             }
-
+                            
                             response = {
                                 message:{
                                     betList:[10,20,30,40,50,60,70,80,90,100,200,300,400,500,600,700,800,900,1000,2000,3000,4000,5000,6000,7000,8000,9000,10000,20000,30000,40000,50000,60000,70000,80000,90000,100000,200000,500000,1000000,5000000,10000000,20000000,100000000,1000000000],
@@ -751,7 +751,7 @@ function startGameServer()
                                 var balance = userInfo[0]['balance'] * 100;
                                 var rtp = userInfo[0]['percent'];
                                 player = new Player(userInfo[0]['id'], balance, false);
-                                player.gameType = 'gf';
+                                player.gameType = 'gf';                   
                                 await redisBridge.getBetWin(player);
                                 player.shop_id = 0;//to use universal rtp, make shop id as 0,  /*userInfo[0]['shop_id'];*/
                                 player.real_shop_id = userInfo[0]['shop_id'];
@@ -768,7 +768,7 @@ function startGameServer()
                                 player.rtp = rtp;
                                 player.weapon = 1;
                                 player.id = userInfo[0]['id']
-                                ws.player = player;
+                                ws.player = player;   
                                 response.message.uid = player.id;
                             }else {
                                 ws.close();
@@ -782,7 +782,7 @@ function startGameServer()
                             } else if (gameData.message.gameid == 178)
                             {
                                 player.gameName = BFNAME;
-                            }
+                            }                            
                             break;
                         case 'changerate':
                             ws.player.bet_value = gameData.message.rewardrate * 10 / ws.player.coinrate;
@@ -798,7 +798,7 @@ function startGameServer()
                             ws.player.room.sendToAllUsers(response);
                             response = {
                                 "message": {
-                                  "type": 3,  //1: online, 2: offline, 3: update player
+                                  "type": 3,  //1: online, 2: offline, 3: update player 
                                   "player": {
                                     "uid": ws.player.userId ,
                                     "ws": 0,
@@ -889,7 +889,7 @@ function startGameServer()
                                     "gold": client.balance * client.coinrate/10,
                                     "alg_diff": 0,
                                     "utype": 0
-
+                                    
                                 });
                             });
                             var spritesJson = [
@@ -1017,7 +1017,7 @@ function startGameServer()
                         case 'bombhit':
                             ws.player.sendToOtherUsers(gameData);
                             var player = ws.player;
-                            var fishIds = gameData.message.fishids;
+                            var fishIds = gameData.message.fishids; 
                             var fishes = [];
                             if (player.multiBombSkillSet.bombCnt > 0)
                             {
@@ -1039,8 +1039,8 @@ function startGameServer()
 
                                                         var curX = route.line[i].x +  (diff * (route.line[i + 1].x - route.line[i].x))/(route.line[i + 1].t - route.line[i].t);
                                                         var curY = route.line[i].y +  (diff * (route.line[i + 1].y - route.line[i].y))/(route.line[i + 1].t - route.line[i].t);
-
-                                                        if (curX > 0 &&  curY > 0  && curX < 1000 && curY < 600 )
+    
+                                                        if (curX > 0 &&  curY > 0  && curX < 1000 && curY < 600 ) 
                                                         {
                                                             fishIds.push(element.id);
                                                             break;
@@ -1052,7 +1052,7 @@ function startGameServer()
                                             {
                                                 var curX = route.line[0].x +  (diff * (route.line[1].x - route.line[0].x))/(route.line[1].t - route.line[0].t);
                                                 var curY = route.line[0].y +  (diff * (route.line[1].y - route.line[0].y))/(route.line[1].t - route.line[0].t);
-                                                if (curX > 0 &&  curY > 0  && curX < 1000 && curY < 600)
+                                                if (curX > 0 &&  curY > 0  && curX < 1000 && curY < 600) 
                                                 {
                                                     fishIds.push(element.id);
                                                 }
@@ -1090,7 +1090,7 @@ function startGameServer()
                                             }else{
                                                 tempOdds -= fishInfo.odds * player.multiBombSkillSet.num;
                                             }
-                                        }
+                                        }                                        
                                     }
                                     fishIds = tempFishIds;
                                 }
@@ -1098,7 +1098,7 @@ function startGameServer()
                                 {
                                     var tempOdds = 0;
                                     var tempFishIds = [];
-                                    var limitOdds =  player.multiBombSkillSet.oddPerBomb;
+                                    var limitOdds =  player.multiBombSkillSet.oddPerBomb;                               
                                     if(player.multiBombSkillSet.type == 40)
                                     {
                                         if (player.multiBombSkillSet.oddPerBombForSmall == 0 && player.multiBombSkillSet.oddsPerBombForBig == 0)
@@ -1113,12 +1113,12 @@ function startGameServer()
                                             }
                                         }
                                     }
-
+                                    
                                     for(var i = 0; i < fishIds.length;i++)
                                     {
                                         var fishInfo = player.room.fishInfos.find(x=> x.id == fishIds[i]);
-
-                                        if (fishInfo == undefined || fishInfo.fishId > 13 && player.multiBombSkillSet.skillName != 'chain_skill')
+                                        
+                                        if (fishInfo == undefined || fishInfo.fishId > 13 && player.multiBombSkillSet.skillName != 'chain_skill') 
                                         {
                                             continue;
                                         }
@@ -1134,7 +1134,7 @@ function startGameServer()
                                 return;
                             }
                             console.log("fish ids length3:" + fishIds.length);
-
+                            
                             var win = 0;
                             if (player.multiBombSkillSet.expectedRate - player.multiBombSkillSet.totalWin/player.multiBombSkillSet.bet_value < 10 || player.multiBombSkillSet.bombCnt <= 0 || fishIds <= 0){
                                 if (player.multiBombSkillSet.skillName == 'chain_skill')
@@ -1156,7 +1156,7 @@ function startGameServer()
                                         ext:fishInfo.ext,
                                         fish_id:0
                                     });
-                                    player.room.fishOut(fishInfo.id);
+                                    player.room.fishOut(fishInfo.id);   
                                 }
                             }
                             if (player.multiBombSkillSet.type == 22 || player.multiBombSkillSet.type == 23 || player.multiBombSkillSet.type == 26)
@@ -1164,7 +1164,7 @@ function startGameServer()
                                 win = win * player.multiBombSkillSet.num;
                             }
                             player.multiBombSkillSet.totalWin += win;
-                            var bomb_cnt = player.multiBombSkillSet.bombCnt;
+                            var bomb_cnt = player.multiBombSkillSet.bombCnt;                    
                             var num = player.multiBombSkillSet.num
                             if (player.multiBombSkillSet.skillName == 'chain_skill')
                             {
@@ -1175,7 +1175,7 @@ function startGameServer()
                                     bomb_cnt = 0;
                                 }
                             }
-
+        
                             var bombHitsResponse = {
                                 message: {
                                     pos: player.seatId + 1,
@@ -1251,7 +1251,7 @@ function startGameServer()
                                         },3*1000);
                                     }
                                 }
-
+                                
                                 player.balance += player.multiBombSkillSet.totalWin;
                                 if (player.multiBombSkillSet.skillName == 'chain_skill')
                                 {
@@ -1337,7 +1337,7 @@ function startGameServer()
                                 player.sendToOtherUsers(incBulletResponse);
                             }
                             ws.player.sendToOtherUsers(gameData);
-
+                            
                             //
                             if (player.balance >= player.bet_value && (player.multiBombSkillSet == null || (player.multiBombSkillSet != null && player.multiBombSkillSet.skillName != '29_skill')) && (player.multiBombSkillSet == null || ( player.multiBombSkillSet != null && player.multiBombSkillSet.skillName != '31_skill')))
                             {
@@ -1391,7 +1391,7 @@ function startGameServer()
                                             if (fishInfo == undefined || fishInfo.fishId >= 13)
                                             {
                                                 continue;
-                                            }
+                                            }   
                                             win += fishInfo.odds * player.multiBombSkillSet.bet_value;
                                             fishes.push({
                                                 uid: hitedFishes[i],
@@ -1445,7 +1445,7 @@ function startGameServer()
                                         ws.player.room.sendToAllUsers(bombHitsResponse);
                                         return;
                                     }
-                                    else
+                                    else 
                                     {
                                         player.hitFishCnt = 1;
                                         player.room.hit(hitedFish, player, 1);
@@ -1526,7 +1526,7 @@ function startGameServer()
                                                 {
                                                     player.bossFishProcessGF(hitedFish);
                                                 }else
-                                                {
+                                                {   
                                                     player.bossNormalProcess(hitedFish,gameData);
                                                 }
                                             }
@@ -1555,11 +1555,11 @@ function startGameServer()
                             setTimeout(function(){player.sendBalance();},9);
                     }
                 }
-                else
+                else 
                 {
                     if(gameData.cmd != 'pin' && gameData.cmd != 'jp' && gameData.cmd != 'alive' && gameData.cmd != 'auth')
                     {
-                        player = ws.player;
+                        player = ws.player;                    
                     }
                     var isResponseSent = false;
                     switch(gameData.cmd) {
@@ -1571,7 +1571,7 @@ function startGameServer()
                                 ret: gameData.cmd,
                                 sn: gameData.sn,
                                 sys: gameData.sys
-                            }
+                            }                    
                             break;
                         case 'alive':
                         case 'jp':
@@ -1601,8 +1601,8 @@ function startGameServer()
                                 var balance = userInfo[0]['balance'] * 100;
                                 var rtp = userInfo[0]['percent'];
                                 rtp = redisBridge.percent; //universal rtp
-                                var player = new Player(userInfo[0]['id'], balance, false);
-                                player.nickname = ark_id;
+                                var player = new Player(userInfo[0]['id'], balance, false);                                
+                                player.nickname = ark_id;                  
                                 player.gameType = 'gd';
                                 player.shop_id = 0;//to use universal rtp, make shop id as 0,  /*userInfo[0]['shop_id'];*/
                                 player.real_shop_id = userInfo[0]['shop_id'];
@@ -1620,7 +1620,7 @@ function startGameServer()
                                 player.id = userInfo[0]['id']
                                 player.summon = userInfo[0]['summon'];
                                 player.freeze = userInfo[0]['freeze'];
-                                ws.player = player;
+                                ws.player = player;                         
                             }
                             response = {
                                 data : {
@@ -1633,12 +1633,12 @@ function startGameServer()
                             break;
                         case 'PlayerJoin':
                             if(req.url.includes(MFNAME))
-                            {
+                            {   
                                 player.gameName = MFNAME;
                             }
                             else if(req.url.includes(ALADNAME))
                             {
-                                player.gameName = ALADNAME;
+                                player.gameName = ALADNAME;   
                             }
                             else if(req.url.includes(ZBNAME))
                             {
@@ -1673,7 +1673,7 @@ function startGameServer()
                                 player.gameName = KCNAME;
                             }
                             roomManager.addClient(player);
-
+    
                             response = {
                                 data: {
                                     data: {
@@ -1717,14 +1717,14 @@ function startGameServer()
                                                 ArraySeat: [0,0,0,0]
                                             },
                                         ],
-                                        ratio: 1,
+                                        ratio: 1,                                    
                                     }
                                 },
                                 ret: "PlayerJoin",
                                 sn: gameData.sn,
                                 sys: "kiosk"
-                            }
-                            if(player.gameName == TDNAME || player.gameName == MTYNAME || player.gameName == WCNAME || player.gameName == CSNAME || player.gameName == KCNAME)
+                            }                           
+                            if(player.gameName == TDNAME || player.gameName == MTYNAME || player.gameName == WCNAME || player.gameName == CSNAME || player.gameName == KCNAME)    
                                 response.data.data.cannonEnable = {Scale: true,MultipleScale: true};
                             break;
                         case 'JoinTable':
@@ -1735,7 +1735,7 @@ function startGameServer()
                                 }
                             }
                             sendWSMessage(ws, response);
-
+    
                             response = {
                                 cmd: 'join_table',
                                 data: {
@@ -1788,17 +1788,17 @@ function startGameServer()
                             }
                             break;
                         case 'init_game':
-                            var bgId = player.room.getBigSceneId();
+                            var bgId = player.room.getBigSceneId();                           
                             response = {
                                 data: {
                                     bg: bgId,
-                                    event: player.room.getSceneId(),
+                                    event: player.room.getSceneId(), 
                                     timestamp: parseInt(new Date().getTime()/1000)
                                 },
                                 cmd: 'init_game',
                                 sys: 'game'
                             }
-                            break;
+                            break;                
                         case 'init_player':
                             response = {
                                 cmd: 'init_player',
@@ -1839,7 +1839,7 @@ function startGameServer()
                                     timestamp: parseInt(new Date().getTime()/1000)
                                 },
                                 cmd: 'get_item_info',
-                                sys: 'item'
+                                sys: 'item'                            
                             }
                             break;
                         case 'update_bet':
@@ -1927,7 +1927,7 @@ function startGameServer()
                                 sys: 'fish_player'
                             }
                             break;
-                        case 'f4':
+                        case 'f4':                        
                             // responseF4 = player.room.getF4Info();
                             // responseSyn = {
                             //     data: {
@@ -1955,7 +1955,7 @@ function startGameServer()
                             break;
                         case 'sk_multi_lock_blast':
                         case 'sk_scale_lock_blast':
-                            player.sendToOtherUsers(gameData);
+                            player.sendToOtherUsers(gameData);                
                             var sn = gameData.sn;
                             player.bet_value = parseInt(gameData.data[9]);
                             if (gameData.cmd == "sk_multi_lock_blast")
@@ -1966,7 +1966,7 @@ function startGameServer()
                             {
                                 player.multi_fire = 2;
                             }
-
+    
                             var bet = player.bet_value * player.multi_fire;
                             if(player.balance < bet)
                             {
@@ -1978,7 +1978,7 @@ function startGameServer()
                             var skillCatched = -1;
                             var fishIds = [];
                             if (gameData.cmd == "sk_multi_lock_blast")
-                            {
+                            {   
                                 fishIds = gameData.data[7];
                                 player.hitFishCnt = fishIds.length;
                                 //increase hits
@@ -2001,19 +2001,19 @@ function startGameServer()
                                 {
                                     player.room.hit(fish, player, 2);
                                 }
-
+                                
                                 //increase hits
                                 skillCatched =  await player.normalFishMultiProcess([gameData.data[6]], sn, gameData.cmd, gameData.id, player.bet_value);
                             }
 
-                            //check skill fish
+                            //check skill fish                        
                             if(skillCatched < 0)
                             {
-                                // if(skillCatched == -1)
+                                // if(skillCatched == -1)                            
                                 player.balance -= bet;
                                 player.noWins(gameData,fishIds);
                                 await player.updateBalance();
-                                await player.updateBank(bet);
+                                await player.updateBank(bet);                            
                                 isResponseSent = true;
                                 break;
                             }
@@ -2023,23 +2023,23 @@ function startGameServer()
                                 // player.noWins(gameData,fishIds);
                                 // gameData.cmd = 'sk24';
                                 gameData.data[9] = player.bet_value;
-                                gameData.data[6] = skillCatched;
-                            }
-
-                        case 'w2':
-                        case 'sk24':
-                            // console.log("incoming w2: " + JSON.stringify(gameData));
-                            if(gameData.cmd == "w2" || gameData.cmd == "sk24" )
+                                gameData.data[6] = skillCatched;                            
+                            }                            
+                        
+                        case 'w2':                        
+                        case 'sk24':                    
+                            // console.log("incoming w2: " + JSON.stringify(gameData));                      
+                            if(gameData.cmd == "w2" || gameData.cmd == "sk24" ) 
                                 player.multi_fire = 1;
-                            else if(gameData.cmd == "sk_scale_lock_blast")
+                            else if(gameData.cmd == "sk_scale_lock_blast")  
                                 player.multi_fire = 2;
                             else if (gameData.cmd == "sk_multi_lock_blast")
                                 player.multi_fire = 5;
-
+    
                             var targetFishId = -1;
                             var sn = gameData.sn;
                             player.bet_value = parseInt(gameData.data[9]);
-
+                             
                             var bet = player.bet_value * player.multi_fire
                             player.bet_amount = bet;
                             if(player.balance < bet)
@@ -2047,11 +2047,11 @@ function startGameServer()
                                 player.noWin(gameData, targetFishId);
                                 return;
                             }
-
-                            player.balance -= bet;
-
+    
+                            player.balance -= bet;                        
+                                                                               
                             if(gameData.cmd == 'w2')
-                            {
+                            {                   
                                 var gameDataW1 = JSON.parse(JSON.stringify(gameData));
                                 gameDataW1.cmd = "w1";
                                 player.sendToOtherUsers(gameDataW1);
@@ -2061,40 +2061,40 @@ function startGameServer()
                             }
                             else
                             {
-                                targetFishId = gameData.data[6];
+                                targetFishId = gameData.data[6];                        
                             }
-
+    
                             await player.updateBalance();
                             await player.updateBank(bet);
-
+                            
                             var targetFishInfo = player.room.fishInfos.find(x => x.id == targetFishId);
                             if(targetFishId == -1 || targetFishInfo == undefined)
                             {
                                 player.noWin(gameData, targetFishId);
                                 return;
-                            }
+                            }                            
 
                             //increase bullet hit
-                            if(gameData.cmd == "w2" || gameData.cmd == "sk24" )
+                            if(gameData.cmd == "w2" || gameData.cmd == "sk24" ) 
                             {
                                 player.hitFishCnt = 1;
                                 player.room.hit(targetFishInfo, player, 1)
-                            }
-
+                            }                            
+    
                             //check firestorm
                             var fireStormRandom = getRandomInt(0, 10000);
-
+    
                             var winningWave = redisBridge.isWinningWave(player);
                             var bulletEnought = player.room.isEnoughBulletHit(targetFishInfo, player.getBetWinCondition(), player);
-
+                        
                             var killCondition = bulletEnought && winningWave;
                             if(targetFishInfo.fishType <= 16)
                             {
                                 killCondition = bulletEnought; //small fishes and some crabs must be dead with only bullet hit condition
                             }
-
+    
                             if(normalFishFormat.find(x => x.id == targetFishInfo.fishType) != undefined)
-                            {
+                            {                           
                                 if(gameData.cmd == 'w2' && gameData.sys == 'weapon')
                                 {
                                     isResponseSent = await player.normalFishProcess(targetFishInfo, false, gameData, null, killCondition);
@@ -2106,7 +2106,7 @@ function startGameServer()
                             }
                             else if(skillFishFormat.find(x => x.id == targetFishInfo.fishType) != undefined && player.room.scriptTime > 20)
                             {
-                                var expectedOdds = oddGenerator.getOdd(targetFishInfo, player);
+                                var expectedOdds = oddGenerator.getOdd(targetFishInfo, player);                            
                                 if(killCondition && (new Date().getTime() - player.lastCrabDate.getTime()) / 1000 > 20)
                                 {
                                 oddGenerator.setNextOddIndicator(targetFishInfo, player);
@@ -2123,7 +2123,7 @@ function startGameServer()
                                     player.lastGroupFishDate = new Date();
                                     isResponseSent = true;
                                     player.room.fishOut(targetFishInfo.id);
-                                    player.vortexFishProcess(targetFishInfo);
+                                    player.vortexFishProcess(targetFishInfo);                                
                                 }
                             }
                             else if(lightingChainFormat.find(x => x.id == targetFishInfo.fishType) != undefined)
@@ -2133,7 +2133,7 @@ function startGameServer()
                                     player.lastGroupFishDate = new Date();
                                     isResponseSent = true;
                                     player.room.fishOut(targetFishInfo.id);
-                                    player.lightingChainFishProcess(targetFishInfo);
+                                    player.lightingChainFishProcess(targetFishInfo);                                
                                 }
                             }
                             else if(player.room.bossFormat.find(x => x.fishType == targetFishInfo.fishType) != undefined)
@@ -2147,11 +2147,11 @@ function startGameServer()
                                     expectedOdds = oddGenerator.getOdd(targetFishInfo, player);
                                     if(expectedOdds > targetFishInfo.odds)
                                     {
-                                        expectedOdds = -1;
+                                        expectedOdds = -1;                                    
                                     }
                                     else
                                         expectedOdds = targetFishInfo.odds;
-                                }
+                                }                            
                                 else
                                 {
                                     expectedOdds = oddGenerator.getOdd(targetFishInfo, player);
@@ -2186,7 +2186,7 @@ function startGameServer()
                                 {
                                     expectedOdds = -1;
                                     var treasureScore = player.room.treasureScore;
-
+                                    
                                 if(killCondition && false)
                                 {
                                         player.balance += treasureScore;
@@ -2203,22 +2203,22 @@ function startGameServer()
                                                 win_type:'capture'
                                             }
                                         }
-                                        player.room.treasureScore = player.room.treasureInitScore;
+                                        player.room.treasureScore = player.room.treasureInitScore;                                        
                                         player.room.treasureLevel = 0;
                                         player.room.fishOut(targetFishInfo.id);
                                         player.room.isCrab = false;
                                         setTimeout(function(){player.room.isCrab = true;},10*1000);
                                         player.room.resetHit(targetFishInfo, player, treasureScore);
                                         player.room.sendToAllUsers(response);
-                                        isResponseSent = true;
+                                        isResponseSent = true;                                        
                                         response = null;
                                     }
                                 }
-
+                                
                                 var timeCondition = true;
                                 timeCondition = player.room.scriptExtendedCount < 2 || player.room.scriptTime >= 60;
-                                if(killCondition
-                                    && (new Date().getTime() - player.lastSkillDate.getTime()) / 1000 > 60
+                                if(killCondition                                
+                                    && (new Date().getTime() - player.lastSkillDate.getTime()) / 1000 > 60 
                                     && expectedOdds > 0 && timeCondition)
                                 {
                                     if(player.room.scriptTime < 60)
@@ -2226,7 +2226,7 @@ function startGameServer()
                                         player.room.scriptTime += 60;
                                         player.room.scriptExtendedCount++;
                                     }
-
+                                        
                                     player.lastSkillDate = new Date();
                                     player.mul = getRandomInt(4, 6);
                                     player.multiBombSkillSet = {
@@ -2239,8 +2239,8 @@ function startGameServer()
                                     if(player.room.bossFormat.find(x => x.fishType == targetFishInfo.fishType) != undefined)
                                     {
                                         isResponseSent = true;
-                                        player.bossFishProcess(targetFishInfo, gameData);
-                                    if(!targetFishInfo.isLevelFish)
+                                        player.bossFishProcess(targetFishInfo, gameData);                                    
+                                    if(!targetFishInfo.isLevelFish)              
                                         player.room.fishOut(targetFishInfo.id);
                                     oddGenerator.setNextOddIndicator(targetFishInfo, player)
                                     }
@@ -2255,7 +2255,7 @@ function startGameServer()
                                             if(targetFishInfo.fishType == 116)
                                             {
                                                 isResponseSent = true;
-                                                //god wealth of MF
+                                                //god wealth of MF                                            
                                                 player.room.accumulatedOdd++;
                                                 if(targetFishInfo.odds >= 1000)
                                                     player.room.betPerOddIncrease = 2;
@@ -2269,7 +2269,7 @@ function startGameServer()
                                                     targetFishInfo.odds++;
                                                     player.room.godWealthOdd = targetFishInfo.odds;
                                                 }
-
+                                                
                                                 targetFishInfo.maxOdds = targetFishInfo.odds;
                                                 if(targetFishInfo.odds >= 2000)
                                                 {
@@ -2300,12 +2300,12 @@ function startGameServer()
                                                     fish7Reply.data.level = 6;
                                                 else if(currentOdds > 2000)
                                                 {
-                                                    currentOdds = 2000;
+                                                    currentOdds = 2000;                                    
                                                     fish7Reply.data.level = 6;
                                                 }
                                                 fish7Reply.data.timestamp = new Date().getTime();
-                                                player.room.sendToAllUsers(fish7Reply);
-                                            }
+                                                player.room.sendToAllUsers(fish7Reply);                                
+                                            }  
                                             break;
                                         case "ZB":
                                         case "ALD":
@@ -2327,14 +2327,14 @@ function startGameServer()
                                                     cmd: "VampireOdds",
                                                     sys: "skill",
                                                     data:{
-                                                        Vampire_odds: targetFishInfo.odds,
+                                                        Vampire_odds: targetFishInfo.odds,                                        
                                                     }
                                                 }
-                                                player.room.sendToAllUsers(vampireReply);
+                                                player.room.sendToAllUsers(vampireReply);                                            
                                             }
                                         case "MTY":
-                                            if (targetFishInfo.fishType == 84) {
-                                                isResponseSent = true;
+                                            if (targetFishInfo.fishType == 84) {          
+                                                isResponseSent = true;                                  
                                                 player.room.hitOnAccmulatedBoss++;
                                                 player.room.betPerOddIncrease = 3 + Math.ceil((targetFishInfo.odds - 120) / 30);
                                                 if(player.room.hitOnAccmulatedBoss >= player.room.betPerOddIncrease)
@@ -2379,7 +2379,7 @@ function startGameServer()
                                                     treasureInfo['data']['win'] = player.room.treasureLevelScore;
                                                     player.balance += player.room.treasureLevelScore;
                                                     await player.updateBalance();
-                                                    await player.updateBankDirect(0, player.room.treasureLevelScore);
+                                                    await player.updateBankDirect(0, player.room.treasureLevelScore);                                                
                                                 }
                                                 player.room.treasureLevel = curLevel;
                                                 player.room.treasureScore += parseInt(player.bet_value * player.multi_fire * 0.2);
@@ -2389,8 +2389,8 @@ function startGameServer()
                                             }
                                             break;
                                         case 'CS':
-                                            if (targetFishInfo.fishType == 93) {
-                                                isResponseSent = true;
+                                            if (targetFishInfo.fishType == 93) {          
+                                                isResponseSent = true;                                  
                                                 player.room.hitOnAccmulatedBoss++;
                                                 player.room.betPerOddIncrease = 2 + Math.ceil((targetFishInfo.odds - 90) / 30);
                                                 if(player.room.hitOnAccmulatedBoss >= player.room.betPerOddIncrease)
@@ -2415,11 +2415,11 @@ function startGameServer()
                                     }
                                 }
                             }
-
+    
                             if(killCondition && fireStormRandom >= 9996 && !player.isFireStorm && !player.room.isFireStorm && !isResponseSent && (new Date().getTime() - player.lastSkillDate.getTime()) / 1000 > 60 )
                             {
                                 isResponseSent = true;
-                                player.lastSkillDate.setTime(new Date().getTime() + 60 * 1000);
+                                player.lastSkillDate.setTime(new Date().getTime() + 60 * 1000);                            
                                 player.isFireStorm = true;
                                 player.room.isFireStorm = true;
                                 player.fireStormTotalWin = 0;
@@ -2429,21 +2429,21 @@ function startGameServer()
                                     cmd: 'sk15',
                                     sys: 'skill',
                                     data: {
-                                        id: targetFishInfo.id
-                                    }
+                                        id: targetFishInfo.id                                    
+                                    }                                
                                 }
                                 fireStormSkill.data[9] = player.bet_value;
                                 fireStormSkill.data[2] = player.seatId;
                                 fireStormSkill.data[15] = 30;
-
+    
                                 sendWSMessage(ws, fireStormSkill);
                                 player.sendToOtherUsers(fireStormSkill);
                                 player.fireStormMoreTime = 30;
-                                player.delayMsg(0, {output: 'sk18', id: 0});
+                                player.delayMsg(0, {output: 'sk18', id: 0});                            
                             }
-
+                            
                                 await player.noWin(gameData, targetFishId);
-
+                            
                             // await player.sendUpdateCredit();
                             break;
                         case 'sk16': //fire storm reference
@@ -2459,20 +2459,20 @@ function startGameServer()
                             }
                             player.sendToOtherUsers(firestorm_shoot_reply);
                             break;
-                        case 'sk17':
+                        case 'sk17':                        
                             // var gameData16 = JSON.parse(JSON.stringify(gameData));
                             // gameData16.cmd = "sk16";
-                            // player.sendToOtherUsers(gameData16);
+                            // player.sendToOtherUsers(gameData16);                        
                             // player.sendToOtherUsers(gameData);
                             var targetFish = player.room.fishInfos.find(x => x.id == gameData.data[6]);
                             var prizeRatio = getRandomInt(0, 100);
                             var prizeRatioPer = 50;
-                            if(player.fireStormTotalWin * player.mul >= player.bet_value * 300)
+                            if(player.fireStormTotalWin * player.mul >= player.bet_value * 300)                        
                                 prizeRatioPer = 70;
                             if(getRandomInt(0, 100) < prizeRatioPer)
                                 prizeRatio += 20;
-
-                            if(targetFish != undefined && player.isFireStorm && prizeRatio < targetFish.prizeRatio && targetFish.fishTypeGroup == 'normal' && targetFish.fishType < 100 && player.fireStormTotalWin * player.mul < player.bet_value * 500)
+    
+                            if(targetFish != undefined && player.isFireStorm && prizeRatio < targetFish.prizeRatio && targetFish.fishTypeGroup == 'normal' && targetFish.fishType < 100 && player.fireStormTotalWin * player.mul < player.bet_value * 500)    
                             {
                                 var fireStormHitReply = {
                                     cmd: 'sk17',
@@ -2482,23 +2482,22 @@ function startGameServer()
                                     }
                                 };
                                 var moreTime = 2;
-                                var moreTime = 2;
                                 var moreMul = 0;
                                 if(targetFish.odds > 10)
                                     moreMul = 1;
-
+    
                                 fireStormHitReply.data[13][13001] = moreTime;
                                 if(player.mul < 30)
                                     player.mul += moreMul;
                                 else
                                     moreMul = 0;
-                                fireStormHitReply.data[13][13002] = moreMul;
+                                fireStormHitReply.data[13][13002] = moreMul;                            
                                 player.fireStormMoreTime += moreTime;
                                 fireStormHitReply.data[2] = player.seatId;
                                 fireStormHitReply.data[3] = targetFish.odds * player.bet_value;
-
+    
                                 var fishDeadDict = {};
-                                fishDeadDict[targetFish.id] = {coin: targetFish.odds * player.bet_value};
+                                fishDeadDict[targetFish.id] = {coin: targetFish.odds * player.bet_value}; 
                                 fireStormHitReply.data[8] = fishDeadDict;
                                 player.fireStormTotalWin += targetFish.odds * player.bet_value;
                                 sendWSMessage(ws, fireStormHitReply);
@@ -2521,7 +2520,7 @@ function startGameServer()
                             var total_win = 0;
                             gameData.data.fish.forEach(fish_id => {
                                 var targetFish = player.room.fishInfos.find(x => x.id == fish_id);
-                                if(targetFish != undefined && player.skillFishContext != null
+                                if(targetFish != undefined && player.skillFishContext != null 
                                     && (targetFish.fishTypeGroup == 'normal' || targetFish.fishType == 80 || targetFish.fishType == 25) && player.skillFishContext.expectedOdds > targetFish.odds
                                     && (targetFish.odds <= 20 || (targetFish.fishType == 80 && targetFish.odds <= 200) || (targetFish.fishType == 25 && targetFish.odds <= 200) ))
                                 {
@@ -2562,7 +2561,7 @@ function startGameServer()
                                     if (response.data.fish.length <= 10) {
                                         response.data.fish.push(tempFish.id);
                                     }
-                                });
+                                });                                
                             }
                             player.room.sendToAllUsers(response);
                             response = null;
@@ -2576,7 +2575,7 @@ function startGameServer()
                                     status: 0,
                                     fish_data: []
                                 }
-                            };
+                            };                          
                             var fishType = getRandomInt(13, 18); //fishTypes[getRandomInt(0, fishTypes.length)];
                             var bossFish = {
                                 id: player.room.generateFishId(),
@@ -2589,9 +2588,9 @@ function startGameServer()
                                 position: 0,
                                 extra_data: {}
                             };
-
+                            
                             var fish = normalFishFormat.find(x => x.id == fishType);
-                            player.summon -= 1;
+                            player.summon -= 1;                            
                             response.data.fish_data.push(bossFish);
                             player.room.fishInfos.push({
                                     id: bossFish.id,
@@ -2621,14 +2620,14 @@ function startGameServer()
                             };
                             var tempFish = player.room.fishInfos.find(x => x.id == gameData.data.fish);
                             var fish_dead_dict = {};
-                            if(tempFish != undefined && player.skillFishContext != null
+                            if(tempFish != undefined && player.skillFishContext != null 
                                 && (tempFish.fishTypeGroup == 'normal' || tempFish.fishType == 80 || tempFish.fishType == 25) && player.skillFishContext.expectedOdds > player.skillFishContext.totalOdds / 3
                                 && (tempFish.odds <= 20 || (tempFish.fishType == 80 && tempFish.odds <= 200) || (tempFish.fishType == 25 && tempFish.odds <= 200) ))
                             {
                                 player.balance += tempFish.odds * player.skillFishContext.bet_value;
                                 drillHitReply.data.credits = player.balance;
                                 fish_dead_dict[tempFish.id] = {coin: tempFish.odds * player.skillFishContext.bet_value, odds: tempFish.odds};
-
+                                
                                 player.room.fishOut(tempFish.id);
                                 player.skillFishContext.total_win += tempFish.odds * player.skillFishContext.bet_value;
                                 player.skillFishContext.expectedOdds -= tempFish.odds;
@@ -2700,7 +2699,7 @@ function startGameServer()
                                 bombRangeReply.data.army_info.army_name = "";
                                 bombRangeReply.data.army_info.army_id = 0;
                                 var stepOdd = 0;
-
+    
                                 try
                                 {
                                     gameData.data.fish.forEach(fishId => {
@@ -2721,7 +2720,7 @@ function startGameServer()
                                 {
                                     if(e != 'Break') throw e;
                                 }
-
+    
                                 player.skillFishContext.total_win += step_win;
                                 bombRangeReply.data.total_win = player.skillFishContext.total_win;
                                 player.balance += step_win;
@@ -2745,7 +2744,7 @@ function startGameServer()
                                     fish: []
                                 }
                             };
-                            var step_win = 0;
+                            var step_win = 0;                        
                             if(player.multiBombSkillSet != null && player.multiBombSkillSet.skillName == 'sk_km_bomb')
                             {
                                 player.multiBombSkillSet.explodeCount++;
@@ -2756,10 +2755,10 @@ function startGameServer()
                                 }
                                 else
                                 {
-                                    response.data.continue = false;
-                                    player.multiBombSkillSet.bombCnt = 0;
+                                    response.data.continue = false;       
+                                    player.multiBombSkillSet.bombCnt = 0;                         
                                 }
-
+    
                                 try
                                 {
                                     var stepOdd = 0;
@@ -2782,13 +2781,13 @@ function startGameServer()
                                 {
                                     if( e!= 'Break') throw e;
                                 }
-
+                                
                                 player.balance += step_win;
                                 await player.updateBankDirect(0, step_win);
                                 await player.updateBalance();
                                 player.multiBombSkillSet.total_win += step_win;
                                 response.data.total_win = player.multiBombSkillSet.total_win;
-                                response.data.win = step_win;
+                                response.data.win = step_win;                            
                                 response.data.credits = player.balance;
                                 response.data.bomb_times_cnt = player.multiBombSkillSet.explodeCount;
                                 if(player.multiBombSkillSet.bombCnt == 0)
@@ -2821,7 +2820,7 @@ function startGameServer()
                                     player.room.fishOut(fishTemp.id);
                                 }
                             });
-
+    
                             if(player.multiBombSkillSet.bombCnt > 0)
                             {
                                 response.data.continue = true;
@@ -2839,7 +2838,7 @@ function startGameServer()
                             player.multiBombSkillSet.total_win += win;
                             response.data.total_win = player.multiBombSkillSet.total_win;
                             response.data.win = win;
-
+                            
                             response.data.credits = player.balance;
                             player.room.sendToAllUsers(response);
                             response = null;
@@ -2858,7 +2857,7 @@ function startGameServer()
                                     fish: []
                                 }
                             }
-
+    
                             if(player.multiBombSkillSet.small_bomb_times_cnt > 0)
                             {
                                 player.multiBombSkillSet.small_bomb_times_cnt--;
@@ -2867,7 +2866,7 @@ function startGameServer()
                             {
                                 player.multiBombSkillSet.big_bomb_times_cnt--;
                             }
-
+    
                             response.data.coordinateX = gameData.data.coordinateX;
                             response.data.coordinateY = gameData.data.coordinateY;
                             response.data.bet = player.bet_value;
@@ -2896,7 +2895,7 @@ function startGameServer()
                                         {
                                             if(odd_per_bomb >= player.multiBombSkillSet.big_bomb_limit)
                                                 throw 'Break';
-                                        }
+                                        } 
                                     }
                                 });
                             }catch(e)
@@ -2916,7 +2915,7 @@ function startGameServer()
                             {
                                 response.data.continue = false;
                                 setTimeout(function(){player.room.activeSkill = '';},13*1000);
-                                player.lastSkillDate.setTime(new Date().getTime() - 61 * 1000);
+                                player.lastSkillDate.setTime(new Date().getTime() - 61 * 1000);                            
                             }
                             player.balance += total_win;
                             response.data.credits = player.balance;
@@ -2942,7 +2941,7 @@ function startGameServer()
                                 gameData.data.fish.forEach(fishId => {
                                     var fish_id = parseInt(fishId);
                                     var targetFish = player.room.fishInfos.find(x => x.id == fish_id);
-                                    if (targetFish != undefined && targetFish.fishTypeGroup == 'normal' && targetFish.odds <= 15) {
+                                    if (targetFish != undefined && targetFish.fishTypeGroup == 'normal' && targetFish.odds <= 15) {                                    
                                         total_win += targetFish.odds * player.multiBombSkillSet.bet_value;
                                         response.data.fish.push(fish_id);
                                         response.data.odds.push(targetFish.odds);
@@ -2980,7 +2979,7 @@ function startGameServer()
                                 sys: 'skill',
                                 cmd: 'sk_lucky_shamrock_bomb_range',
                                 data:{
-
+    
                                 }
                             }
                             if(player.multiBombSkillSet.small_bomb_times_cnt > 0)
@@ -2991,14 +2990,14 @@ function startGameServer()
                             {
                                 player.multiBombSkillSet.big_bomb_times_cnt--;
                             }
-
+    
                             var win = 0;
                             var fish_array = [];
                             var odds_array = [];
                             var odd_per_bomb = 0;
                             try
                             {
-                                gameData.data.fish.forEach(fishId => {
+                                gameData.data.fish.forEach(fishId => {                            
                                     var temp = player.room.fishInfos.find(x => x.id == fishId);
                                     if(temp != undefined && temp.fishTypeGroup == 'normal' && player.multiBombSkillSet.expectedOdds > temp.odds && temp.odds < 20)
                                     {
@@ -3048,7 +3047,7 @@ function startGameServer()
                                 rockSkeletonReply.data.continue = false;
                                 setTimeout(function(){player.room.activeSkill = '';},15*1000);
                                 player.lastSkillDate.setTime(new Date().getTime() - 61 * 1000);
-
+                                
                             }
                             player.room.sendToAllUsers(rockSkeletonReply);
                             await player.updateBankDirect(0,win);
@@ -3059,7 +3058,7 @@ function startGameServer()
                                 sys: 'skill',
                                 cmd: 'sk_RockSkeleton_bomb_range',
                                 data:{
-
+    
                                 }
                             }
                             if(player.multiBombSkillSet.small_bomb_times_cnt > 0)
@@ -3070,7 +3069,7 @@ function startGameServer()
                             {
                                 player.multiBombSkillSet.big_bomb_times_cnt--;
                             }
-
+    
                             var fishCount = 0;
                             var win = 0;
                             var fish_array = [];
@@ -3078,13 +3077,13 @@ function startGameServer()
                             var odd_per_bomb = 0;
                             try
                             {
-                                var oddLimit = 15;
-                                gameData.data.fish.forEach(fishId => {
+                                var oddLimit = 15;                            
+                                gameData.data.fish.forEach(fishId => {                                                       
                                     var temp = player.room.fishInfos.find(x => x.id == fishId);
                                     if(temp != undefined && temp.fishTypeGroup == 'normal' && player.multiBombSkillSet.expectedOdds > temp.odds && temp.odds <= oddLimit)
                                     {
                                         win += temp.odds * player.multiBombSkillSet.bet_value;
-                                        fish_array.push(temp.id);
+                                        fish_array.push(temp.id);                                    
                                         odds_array.push(temp.odds);
                                         player.room.fishOut(temp.id);
                                         player.multiBombSkillSet.expectedOdds -= temp.odds;
@@ -3098,7 +3097,7 @@ function startGameServer()
                                         {
                                             if(odd_per_bomb >= player.multiBombSkillSet.big_bomb_limit)
                                                 throw 'Break';
-                                        }
+                                        }                                    
                                     }
                                 });
                             }catch(e)
@@ -3126,7 +3125,7 @@ function startGameServer()
                             }
                             if(player.multiBombSkillSet.small_bomb_times_cnt == 0 && player.multiBombSkillSet.big_bomb_times_cnt == 0)
                             {
-                                rockSkeletonReply.data.continue = false;
+                                rockSkeletonReply.data.continue = false;                            
                             }
                             player.room.sendToAllUsers(rockSkeletonReply);
                             await player.updateBankDirect(0, win);
@@ -3137,7 +3136,7 @@ function startGameServer()
                                 sys: 'skill',
                                 cmd: 'sk_KingKong_bomb_range',
                                 data:{
-
+    
                                 }
                             }
                             if(player.multiBombSkillSet.small_bomb_times_cnt > 0)
@@ -3148,14 +3147,14 @@ function startGameServer()
                             {
                                 player.multiBombSkillSet.big_bomb_times_cnt--;
                             }
-
+    
                             var win = 0;
                             var fish_array = [];
                             var odds_array = [];
                             var odd_per_bomb = 0;
                             try
                             {
-                                gameData.data.fish.forEach(fishId => {
+                                gameData.data.fish.forEach(fishId => {                                                       
                                     var temp = player.room.fishInfos.find(x => x.id == fishId);
                                     if(temp != undefined && temp.fishTypeGroup == 'normal' && player.multiBombSkillSet.expectedOdds > temp.odds && temp.odds < 20)
                                     {
@@ -3174,7 +3173,7 @@ function startGameServer()
                                         {
                                             if(odd_per_bomb >= player.multiBombSkillSet.big_bomb_limit)
                                                 throw 'Break';
-                                        }
+                                        }   
                                     }
                                 });
                             }catch(e)
@@ -3202,7 +3201,7 @@ function startGameServer()
                             }
                             if(player.multiBombSkillSet.small_bomb_times_cnt == 0 && player.multiBombSkillSet.big_bomb_times_cnt == 0)
                             {
-                                rockSkeletonReply.data.continue = false;
+                                rockSkeletonReply.data.continue = false;                            
                             }
                             player.room.sendToAllUsers(rockSkeletonReply);
                             await player.updateBankDirect(0, win);
@@ -3255,7 +3254,7 @@ function startGameServer()
                                     {
                                         if(odd_per_bomb >= player.multiBombSkillSet.big_bomb_limit)
                                             throw 'Break';
-                                    }
+                                    } 
                                 }
                             });
                         }catch(e)
@@ -3275,7 +3274,7 @@ function startGameServer()
                         {
                             response.data.continue = false;
                             setTimeout(function(){player.room.activeSkill = '';},10*1000);
-                            player.lastSkillDate.setTime(new Date().getTime() - 61 * 1000);
+                            player.lastSkillDate.setTime(new Date().getTime() - 61 * 1000);                            
                         }
                         player.balance += total_win;
                         response.data.credits = player.balance;
@@ -3283,13 +3282,13 @@ function startGameServer()
                         await player.updateBalance();
                         player.room.sendToAllUsers(response);
                         response = null;
-                        break;
+                        break;                        
                         case 'sk_TurtleBoss_bomb_range':
                             var turtleReply = {
                                 sys: 'skill',
                                 cmd: 'sk_TurtleBoss_bomb_range',
                                 data:{
-
+    
                                 }
                             }
                             if(player.multiBombSkillSet.small_bomb_times_cnt > 0)
@@ -3300,14 +3299,14 @@ function startGameServer()
                             {
                                 player.multiBombSkillSet.big_bomb_times_cnt--;
                             }
-
+    
                             var win = 0;
                             var fish_array = [];
                             var odds_array = [];
                             var odd_per_bomb = 0;
                             try
                             {
-                                gameData.data.fish.forEach(fishId => {
+                                gameData.data.fish.forEach(fishId => {                            
                                     var temp = player.room.fishInfos.find(x => x.id == fishId);
                                     if(temp != undefined && temp.fishTypeGroup == 'normal' && player.multiBombSkillSet.expectedOdds > temp.odds && temp.odds < 20)
                                     {
@@ -3357,14 +3356,14 @@ function startGameServer()
                                 turtleReply.data.continue = false;
                                 setTimeout(function(){player.room.activeSkill = '';},13*1000);
                                 player.lastSkillDate.setTime(new Date().getTime() - 61 * 1000);
-
+                                
                             }
                             player.room.sendToAllUsers(turtleReply);
                             await player.updateBankDirect(0,win);
                             await player.updateBalance();
                         break;
                         case 'sk_LuckyBuddha_finish':
-                            player.lastSkillDate.setTime(new Date().getTime() - 61 * 1000);
+                            player.lastSkillDate.setTime(new Date().getTime() - 61 * 1000);                            
                             player.room.activeSkill = '';
                             break;
                         case 'sk_LionDance_finish':
@@ -3383,7 +3382,7 @@ function startGameServer()
                             var luckyCatReply = {
                                 sys: 'skill',
                                 cmd: 'sk_LuckyCat_finish',
-                                sn: gameData.sn,
+                                sn: gameData.sn,                            
                             }
                             player.lastSkillDate.setTime(new Date().getTime() - 61 * 1000);
                             player.room.sendToAllUsers(luckyCatReply);
@@ -3400,7 +3399,7 @@ function startGameServer()
                                 sys: 'skill',
                                 cmd: 'sk_RedDragon_bomb_range',
                                 data:{
-
+        
                                 }
                             }
                             if(player.multiBombSkillSet.small_bomb_times_cnt > 0)
@@ -3411,14 +3410,14 @@ function startGameServer()
                             {
                                 player.multiBombSkillSet.big_bomb_times_cnt--;
                             }
-
+                            
                             var win = 0;
                             var fish_array = [];
                             var odds_array = [];
                             var odd_per_bomb = 0;
                             try
                             {
-                                gameData.data.fish.forEach(fishId => {
+                                gameData.data.fish.forEach(fishId => {                            
                                     var temp = player.room.fishInfos.find(x => x.id == fishId);
                                 if(temp != undefined && temp.fishTypeGroup == 'normal' && player.multiBombSkillSet.expectedOdds > temp.odds && (temp.odds < 30 || player.multiBombSkillSet.bomb_exploded >= player.multiBombSkillSet.small_bomb_times_target))
                                     {
@@ -3455,8 +3454,8 @@ function startGameServer()
                                 id: player.multiBombSkillSet.id,
                                 total_win: player.multiBombSkillSet.total_win,
                                 odds: odds_array,
-                                big_bomb_times_target: player.multiBombSkillSet.big_bomb_times_target,
-                                big_bomb_times_cnt: player.multiBombSkillSet.big_bomb_times_target - player.multiBombSkillSet.big_bomb_times_cnt,
+                                big_bomb_times_target: player.multiBombSkillSet.big_bomb_times_target,                            
+                                big_bomb_times_cnt: player.multiBombSkillSet.big_bomb_times_target - player.multiBombSkillSet.big_bomb_times_cnt,                            
                                 small_bomb_times_cnt: player.multiBombSkillSet.small_bomb_times_target - player.multiBombSkillSet.small_bomb_times_cnt,
                                 small_bomb_times_target: player.multiBombSkillSet.small_bomb_times_target,
                                 continue: true,
@@ -3465,7 +3464,7 @@ function startGameServer()
                             }
                             if(player.multiBombSkillSet.small_bomb_times_cnt == 0 && player.multiBombSkillSet.big_bomb_times_cnt == 0)
                             {
-                                rockSkeletonReply.data.continue = false;
+                                rockSkeletonReply.data.continue = false;                            
                                 player.lastSkillDate.setTime(new Date().getTime() - 61 * 1000);
                             }
                             player.room.sendToAllUsers(rockSkeletonReply);
@@ -3476,14 +3475,14 @@ function startGameServer()
                             break;
                         case 'f0':
                             response = gameData;
-                            player.room.fishOut(gameData.data[1]);
+                            player.room.fishOut(gameData.data[1]);                        
                             break;
                         case 'fish_army_add':
-                            player.room.addArmyFish(gameData.data[1]);
-                            break;
+                            player.room.addArmyFish(gameData.data[1]);                        
+                            break;                     
                     }
                 }
-
+                
                 sendWSMessage(ws, response);
             }
             catch(exception)
@@ -3507,7 +3506,7 @@ function startAuthServer()
         });
         ws.on('message', async (message) =>
         {
-            message = message.toString().replace(':::', '');
+            message = message.toString().replace(':::', '');     
              console.log("auth message: " + message);
             var param = JSON.parse(message);
             var gameData = param.gameData;
@@ -3533,7 +3532,7 @@ function startAuthServer()
                         ret: gameData.cmd,
                         sn: gameData.sn,
                         sys: gameData.sys
-                    }
+                    }                    
                     break;
                 case 'alive':
                 case 'jp':
@@ -3555,7 +3554,7 @@ function startAuthServer()
                         ret: gameData.cmd
                     }
                     break;
-
+                    
                 case 'ingame_jp':
                     response = {
                         data: {

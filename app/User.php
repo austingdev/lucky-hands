@@ -1,4 +1,4 @@
-<?php
+<?php 
 namespace VanguardLTE
 {
 
@@ -7,84 +7,82 @@ namespace VanguardLTE
 
     class User extends \Illuminate\Foundation\Auth\User implements \Tymon\JWTAuth\Contracts\JWTSubject
     {
-        use \Laracasts\Presenter\PresentableTrait,
-            \Illuminate\Notifications\Notifiable,
+        use \Laracasts\Presenter\PresentableTrait, 
+            \Illuminate\Notifications\Notifiable, 
             \jeremykenedy\LaravelRoles\Traits\HasRoleAndPermission;
         protected $presenter = 'VanguardLTE\Presenters\UserPresenter';
         protected $table = 'users';
         protected $dates = [
-            'last_login',
+            'last_login', 
             'birthday'
         ];
         protected $fillable = [
-            'password',
-            'email',
-            'username',
+            'password', 
+            'email', 
+            'username', 
             'currency',
-            'avatar',
+            'avatar', 
             'first_name',
             'timezone',
-            'balance',
+            'balance', 
             'spin_bank',
-            'balance_cashback',
+            'balance_cashback', 
             'shop_limit',
-            'last_login',
-            'confirmation_token',
-            'status',
-            'is_demo_agent',
-            'rating',
-            'agreed',
-            'free_demo',
-            'count_tournaments',
-            'count_happyhours',
-            'count_refunds',
-            'count_progress',
-            'count_daily_entries',
-            'count_invite',
-            'tournaments',
-            'happyhours',
-            'refunds',
-            'progress',
-            'daily_entries',
-            'invite',
+            'last_login', 
+            'confirmation_token', 
+            'status', 
+            'is_demo_agent',             
+            'rating', 
+            'agreed', 
+            'free_demo', 
+            'count_tournaments', 
+            'count_happyhours', 
+            'count_refunds', 
+            'count_progress', 
+            'count_daily_entries', 
+            'count_invite', 
+            'tournaments', 
+            'happyhours', 
+            'refunds', 
+            'progress', 
+            'daily_entries', 
+            'invite', 
             'welcomebonus',
-            'count_welcomebonus',
-            'smsbonus',
-            'count_smsbonus',
-            'wheelfortune',
-            'count_wheelfortune',
-            'total_in',
-            'total_out',
-            'language',
-            'phone',
+            'count_welcomebonus', 
+            'smsbonus', 
+            'count_smsbonus', 
+            'wheelfortune', 
+            'count_wheelfortune', 
+            'total_in', 
+            'total_out', 
+            'language', 
+            'phone', 
             'phone_ref',
-            'phone_verified',
-            'sms_token',
-            'inviter_id',
-            'remember_token',
-            'role_id',
-            'count_balance',
-            'parent_id',
+            'phone_verified', 
+            'sms_token', 
+            'inviter_id', 
+            'remember_token', 
+            'role_id', 
+            'count_balance', 
+            'parent_id', 
             'parents',
-            'shop_id',
-            'session',
-            'is_blocked',
-            'auth_token',
-            'last_online',
-            'created_at',
-            'sms_token_date',
-            'last_daily_entry',
-            'last_bid',
-            'last_progress',
+            'shop_id', 
+            'session', 
+            'is_blocked', 
+            'auth_token', 
+            'last_online', 
+            'created_at', 
+            'sms_token_date', 
+            'last_daily_entry', 
+            'last_bid', 
+            'last_progress', 
             'last_wheelfortune',
             'reward_base',
             'reward_bonus',
-            'percent',
-            'customer_id',
-            'cashier_token'
+            'percent'
         ];
         protected $hidden = [
-            'password',
+            'password', 
             'remember_token'
         ];
         public static function boot()
@@ -102,35 +100,35 @@ namespace VanguardLTE
             });
             self::updated(function($model)
             {
-                if( $model->refunds <= 0 )
+                if( $model->refunds <= 0 ) 
                 {
                     User::where('id', $model->id)->update(['refunds' => 0]);
                 }
-                if( $model->count_balance < 0 )
+                if( $model->count_balance < 0 ) 
                 {
                     User::where('id', $model->id)->update(['count_balance' => 0]);
                 }
-                if( $model->balance <= 0 && $model->refunds <= 0 )
+                if( $model->balance <= 0 && $model->refunds <= 0 ) 
                 {
                     User::where('id', $model->id)->update([
-                        'count_balance' => 0,
-                        'count_tournaments' => 0,
-                        'count_happyhours' => 0,
-                        'count_refunds' => 0,
-                        'count_progress' => 0,
-                        'count_daily_entries' => 0,
-                        'count_invite' => 0,
-                        'count_welcomebonus' => 0,
-                        'count_smsbonus' => 0,
-                        'count_wheelfortune' => 0,
-                        'tournaments' => 0,
-                        'happyhours' => 0,
-                        'refunds' => 0,
-                        'progress' => 0,
-                        'daily_entries' => 0,
-                        'invite' => 0,
-                        'welcomebonus' => 0,
-                        'smsbonus' => 0,
+                        'count_balance' => 0, 
+                        'count_tournaments' => 0, 
+                        'count_happyhours' => 0, 
+                        'count_refunds' => 0, 
+                        'count_progress' => 0, 
+                        'count_daily_entries' => 0, 
+                        'count_invite' => 0, 
+                        'count_welcomebonus' => 0, 
+                        'count_smsbonus' => 0, 
+                        'count_wheelfortune' => 0, 
+                        'tournaments' => 0, 
+                        'happyhours' => 0, 
+                        'refunds' => 0, 
+                        'progress' => 0, 
+                        'daily_entries' => 0, 
+                        'invite' => 0, 
+                        'welcomebonus' => 0, 
+                        'smsbonus' => 0, 
                         'wheelfortune' => 0
                     ]);
                 }
@@ -164,7 +162,7 @@ namespace VanguardLTE
                 Message::where('user_id', $model->id)->delete();
                 SMSMailingMessage::where('user_id', $model->id)->delete();
                 Security::where([
-                    'type' => 'user',
+                    'type' => 'user', 
                     'item_id' => $model->id
                 ])->delete();
                 JPG::where('user_id', $model->id)->update(['user_id' => null]);
@@ -194,24 +192,24 @@ namespace VanguardLTE
         public function availableUsers()
         {
             $users = User::where(['id' => $this->id])->get();
-            if( $this->hasRole(['admin']) )
+            if( $this->hasRole(['admin']) ) 
             {
                 $users = User::get();
             }
-            // if( $this->hasRole(['agent']) )
+            // if( $this->hasRole(['agent']) ) 
             // {
             //     $_obf_0D5C2A095B283E2B38321C1325321C07250A3B07043201 = User::where([
-            //         'role_id' => 4,
+            //         'role_id' => 4, 
             //         'parent_id' => $this->id
             //     ])->get();
             //     $other = User::where('role_id', '<=', 3)->whereIn('shop_id', $this->availableShops())->get();
             //     $users = $users->merge($_obf_0D5C2A095B283E2B38321C1325321C07250A3B07043201);
             //     $users = $users->merge($other);
             // }
-            if( $this->hasRole(['agent']) )
+            if( $this->hasRole(['agent']) ) 
             {
                 // $child_agents = User::where([
-                //             'role_id' => 5,
+                //             'role_id' => 5, 
                 //             'parents' => $this->id
                 //         ])->get();
                 $child_agents = User::where('role_id', '>=', 3)->where('parents', 'like', '%['.$this->id.']%')->get();
@@ -219,18 +217,18 @@ namespace VanguardLTE
                 // $other = User::where('role_id', '<=', 3)->whereIn('shop_id', $this->shops_array(true))->get();
                 // $users = $users->merge($other);
             }
-            if( $this->hasRole(['manager']) )
+            if( $this->hasRole(['manager']) ) 
             {
                 $other = User::where('role_id', '<=', 2)->where('shop_id', $this->shop_id)->get();
                 $users = $users->merge($other);
             }
-            if( $this->hasRole(['cashier']) )
+            if( $this->hasRole(['cashier']) ) 
             {
                 $other = User::where('role_id', 1)->where('shop_id', $this->shop_id)->get();
                 $users = $users->merge($other);
             }
             $users = $users->pluck('id');
-            if( !count($users) )
+            if( !count($users) ) 
             {
                 $users = [0];
             }
@@ -242,11 +240,11 @@ namespace VanguardLTE
         }
         public function hierarchyUsers($shop_id = false, $clear = false)
         {
-            if( !$shop_id )
+            if( !$shop_id ) 
             {
                 $shop_id = $this->shop_id;
             }
-            if( $clear )
+            if( $clear ) 
             {
                 \Illuminate\Support\Facades\Cache::forget('hierarchyUsers:' . $this->id . ':' . $shop_id);
             }
@@ -254,13 +252,13 @@ namespace VanguardLTE
             {
                 $level = $this->level();
                 $users = User::where('id', $this->id)->get();
-                for( $i = $level; $i >= 1; $i-- )
+                for( $i = $level; $i >= 1; $i-- ) 
                 {
-                    foreach( $users as $user )
+                    foreach( $users as $user ) 
                     {
-                        if( $user->level() == $i )
+                        if( $user->level() == $i ) 
                         {
-                            if( $shop_id > 0 )
+                            if( $shop_id > 0 ) 
                             {
                                 $users = $users->merge(User::where('parent_id', $user->id)->whereHas('rel_shops', function($query) use ($shop_id)
                                 {
@@ -279,11 +277,11 @@ namespace VanguardLTE
         }
         public function isAvailable($user)
         {
-            if( !$user )
+            if( !$user ) 
             {
                 return false;
             }
-            if( in_array($user->id, $this->availableUsers()) )
+            if( in_array($user->id, $this->availableUsers()) ) 
             {
                 return true;
             }
@@ -292,11 +290,11 @@ namespace VanguardLTE
         public function emptyShops()
         {
             $count = 0;
-            if( $shops = $this->rel_shops )
+            if( $shops = $this->rel_shops ) 
             {
-                foreach( $shops as $shop )
+                foreach( $shops as $shop ) 
                 {
-                    if( $shop->shop && count($shop->shop->getUsersByRole('user')) == 0 )
+                    if( $shop->shop && count($shop->shop->getUsersByRole('user')) == 0 ) 
                     {
                         $count++;
                     }
@@ -307,7 +305,7 @@ namespace VanguardLTE
         public function availableUsersByRole($roleName)
         {
             $users = $this->availableUsers();
-            if( !count($users) )
+            if( !count($users) ) 
             {
                 return [];
             }
@@ -318,19 +316,19 @@ namespace VanguardLTE
         {
             $shops = [$this->shop_id];
             if( $this->hasRole([
-                'admin',
-                'agent',
+                'admin', 
+                'agent', 
                 'distributor'
-            ]) )
+            ]) ) 
             {
-                if( !$this->shop_id )
+                if( !$this->shop_id ) 
                 {
                     $shops = array_merge([0], $this->shops_array(true));
                 }
-                else if( $showZero )
+                else if( $showZero ) 
                 {
                     $shops = [
-                        0,
+                        0, 
                         $this->shop_id
                     ];
                 }
@@ -345,7 +343,7 @@ namespace VanguardLTE
         {
             $role = \jeremykenedy\LaravelRoles\Models\Role::where('id', $this->role_id - 1)->first();
             $_obf_0D06103B293F142A1D3023302D022E332B0408101E3E01 = $this->availableUsersByRole($role->slug);
-            if( count($_obf_0D06103B293F142A1D3023302D022E332B0408101E3E01) )
+            if( count($_obf_0D06103B293F142A1D3023302D022E332B0408101E3E01) ) 
             {
                 return User::whereIn('id', $_obf_0D06103B293F142A1D3023302D022E332B0408101E3E01)->get();
             }
@@ -355,7 +353,7 @@ namespace VanguardLTE
         {
              $role = \jeremykenedy\LaravelRoles\Models\Role::where('id', $this->role_id - 2)->first();
             $_obf_0D06103B293F142A1D3023302D022E332B0408101E3E01 = $this->availableUsersByRole($role->slug);
-            if( count($_obf_0D06103B293F142A1D3023302D022E332B0408101E3E01) )
+            if( count($_obf_0D06103B293F142A1D3023302D022E332B0408101E3E01) ) 
             {
                 return User::whereIn('id', $_obf_0D06103B293F142A1D3023302D022E332B0408101E3E01)->get();
             }
@@ -364,28 +362,28 @@ namespace VanguardLTE
         public function getRowspan()
         {
             $rowspan = 0;
-            if( $this->hasRole('agent') )
+            if( $this->hasRole('agent') ) 
             {
                 $_obf_0D5C2A095B283E2B38321C1325321C07250A3B07043201 = User::where('parent_id', $this->id)->get();
-                if( $_obf_0D5C2A095B283E2B38321C1325321C07250A3B07043201 )
+                if( $_obf_0D5C2A095B283E2B38321C1325321C07250A3B07043201 ) 
                 {
-                    foreach( $_obf_0D5C2A095B283E2B38321C1325321C07250A3B07043201 as $distributor )
+                    foreach( $_obf_0D5C2A095B283E2B38321C1325321C07250A3B07043201 as $distributor ) 
                     {
                         $rowspan += $distributor->getRowspan();
                     }
                 }
             }
-            if( $this->hasRole('distributor') && ($shops = $this->rel_shops) )
+            if( $this->hasRole('distributor') && ($shops = $this->rel_shops) ) 
             {
-                foreach( $shops as $shop )
+                foreach( $shops as $shop ) 
                 {
-                    if( $shop = $shop->shop )
+                    if( $shop = $shop->shop ) 
                     {
                         $cashiers = User::where([
-                            'shop_id' => $shop->id,
+                            'shop_id' => $shop->id, 
                             'role_id' => 2
                         ])->count();
-                        if( $cashiers > 0 )
+                        if( $cashiers > 0 ) 
                         {
                             $rowspan += $cashiers;
                         }
@@ -396,7 +394,7 @@ namespace VanguardLTE
                     }
                 }
             }
-            if( $this->hasRole('manager') )
+            if( $this->hasRole('manager') ) 
             {
                 $rowspan = User::where('parent_id', $this->id)->count();
             }
@@ -412,7 +410,7 @@ namespace VanguardLTE
         }
         public function badge()
         {
-            if( strlen($this->rating) == 1 )
+            if( strlen($this->rating) == 1 ) 
             {
                 return '0' . $this->rating;
             }
@@ -423,7 +421,7 @@ namespace VanguardLTE
         }
         public function formatted_phone()
         {
-            if( preg_match('/^\+(\d{1})(\d{3})(\d{3})(\d{2})(\d{2})$/', $this->phone, $matches) )
+            if( preg_match('/^\+(\d{1})(\d{3})(\d{3})(\d{2})(\d{2})$/', $this->phone, $matches) ) 
             {
                 $result = '+' . $matches[1] . '(' . $matches[2] . ') ' . $matches[3] . '-' . $matches[4] . '-' . $matches[5];
                 return $result;
@@ -456,13 +454,13 @@ namespace VanguardLTE
             return Reward::where(function($query) use ($user)
             {
                 $query->where([
-                    'user_id' => $user->id,
+                    'user_id' => $user->id, 
                     'user_received' => 0
                 ]);
             })->orWhere(function($query) use ($user)
             {
                 $query->where([
-                    'referral_id' => $user->id,
+                    'referral_id' => $user->id, 
                     'referral_received' => 0
                 ]);
             })->get();
@@ -471,7 +469,7 @@ namespace VanguardLTE
         {
             $_obf_0D030D21060933253B12060506241A3E131625061A5C22 = time();
             $_obf_0D0F3916063216313B1638021017290B103C3016403611 = strtotime($this->last_online);
-            if( round(abs($_obf_0D030D21060933253B12060506241A3E131625061A5C22 - $_obf_0D0F3916063216313B1638021017290B103C3016403611) / 60, 2) <= 5 )
+            if( round(abs($_obf_0D030D21060933253B12060506241A3E131625061A5C22 - $_obf_0D0F3916063216313B1638021017290B103C3016403611) / 60, 2) <= 5 ) 
             {
                 return true;
             }
@@ -482,36 +480,36 @@ namespace VanguardLTE
         }
         public function isBlocked()
         {
-            if( $this->role_id == 6 )
+            if( $this->role_id == 6 ) 
             {
                 return false;
             }
-            if( settings('siteisclosed') )
+            if( settings('siteisclosed') ) 
             {
                 return true;
             }
-            if( !$this->shop )
+            if( !$this->shop ) 
             {
             }
-            if( $this->is_blocked == 1 )
+            if( $this->is_blocked == 1 ) 
             {
                 return true;
             }
-            if( $this->referral && $this->referral->is_blocked )
+            if( $this->referral && $this->referral->is_blocked ) 
             {
                 return true;
             }
             if( $this->hasRole([
-                1,
-                2,
+                1, 
+                2, 
                 3
-            ]) )
+            ]) ) 
             {
-                if( !$this->shop )
+                if( !$this->shop ) 
                 {
                     return true;
                 }
-                if( $this->shop->blocked() )
+                if( $this->shop->blocked() ) 
                 {
                     return true;
                 }
@@ -521,18 +519,18 @@ namespace VanguardLTE
 
         public function isDeleted()
         {
-            if( $this->is_blocked == 2 )
+            if( $this->is_blocked == 2 ) 
             {
                 return true;
             }
             return false;
         }
-
+        
         public function shops($onlyId = false)
         {
-            if( $this->hasRole('admin') )
+            if( $this->hasRole('admin') ) 
             {
-                if( $onlyId )
+                if( $onlyId ) 
                 {
                     return Shop::pluck('id');
                 }
@@ -542,9 +540,9 @@ namespace VanguardLTE
                 }
             }
             $shops = ShopUser::where(['user_id' => $this->id])->pluck('shop_id');
-            if( count($shops) )
+            if( count($shops) ) 
             {
-                if( $onlyId )
+                if( $onlyId ) 
                 {
                     return Shop::whereIn('id', $shops)->pluck('id');
                 }
@@ -561,7 +559,7 @@ namespace VanguardLTE
         public function shops_array($onlyId = false)
         {
             $data = $this->shops($onlyId);
-            if( !is_array($data) )
+            if( !is_array($data) ) 
             {
                 return $data->toArray();
             }
@@ -570,50 +568,50 @@ namespace VanguardLTE
         public function available_roles($withMe = false)
         {
             $roles = [
-                '1' => [],
-                '2' => [1],
-                '3' => [2],
-                '4' => [3],
-                '5' => [4],
+                '1' => [], 
+                '2' => [1], 
+                '3' => [2], 
+                '4' => [3], 
+                '5' => [4], 
                 '6' => [5]
             ];
-            if( $withMe )
+            if( $withMe ) 
             {
                 $roles = [
-                    '1' => [],
+                    '1' => [], 
                     '2' => [
-                        1,
+                        1, 
                         2
-                    ],
+                    ], 
                     '3' => [
-                        1,
-                        2,
+                        1, 
+                        2, 
                         3
-                    ],
+                    ], 
                     '4' => [
-                        1,
-                        2,
-                        3,
+                        1, 
+                        2, 
+                        3, 
                         4
-                    ],
+                    ], 
                     '5' => [
-                        1,
-                        2,
-                        3,
-                        4,
+                        1, 
+                        2, 
+                        3, 
+                        4, 
                         5
-                    ],
+                    ], 
                     '6' => [
-                        1,
-                        2,
-                        3,
-                        4,
-                        5,
+                        1, 
+                        2, 
+                        3, 
+                        4, 
+                        5, 
                         6
                     ]
                 ];
             }
-            if( count($roles[$this->level()]) )
+            if( count($roles[$this->level()]) ) 
             {
                 return \jeremykenedy\LaravelRoles\Models\Role::whereIn('id', $roles[$this->level()])->pluck('name', 'id');
             }
@@ -635,123 +633,123 @@ namespace VanguardLTE
         public function addBalance($type, $summ, $description = '', $payeer = false, $refund = true, $system = 'handpay', $update_level = true, $model = false)
         {
             if( !in_array($type, [
-                'add',
+                'add', 
                 'out'
-            ]) )
+            ]) ) 
             {
                 $type = 'add';
             }
-            if( $type == 'out' && $system == 'handpay' && ($this->count_tournaments > 0 || $this->count_happyhours > 0 || $this->count_refunds > 0 || $this->count_progress > 0 || $this->count_daily_entries > 0 || $this->count_invite > 0 || $this->count_welcomebonus > 0 || $this->count_smsbonus > 0 || $this->count_wheelfortune > 0 || $this->status == Support\Enum\UserStatus::BANNED) )
+            if( $type == 'out' && $system == 'handpay' && ($this->count_tournaments > 0 || $this->count_happyhours > 0 || $this->count_refunds > 0 || $this->count_progress > 0 || $this->count_daily_entries > 0 || $this->count_invite > 0 || $this->count_welcomebonus > 0 || $this->count_smsbonus > 0 || $this->count_wheelfortune > 0 || $this->status == Support\Enum\UserStatus::BANNED) ) 
             {
                 return json_encode([
-                    'status' => 'error',
+                    'status' => 'error', 
                     'message' => trans('app.money_withdrawal_is_denied', ['name' => $this->username])
                 ]);
             }
             $shop = $this->shop;
             $summ = floatval($summ);
             $bonus_tag = [
-                'handpay' => 'HP',
-                'invite' => 'IF',
-                'progress' => 'PB',
-                'tournament' => 'TB',
-                'daily_entry' => 'DE',
-                'refund' => 'Refund',
-                'interkassa' => 'IK',
-                'coinbase' => 'CB',
-                'btcpayserver' => 'BP',
-                'pincode' => 'PN',
-                'welcome_bonus' => 'WB',
-                'sms_bonus' => 'SB',
+                'handpay' => 'HP', 
+                'invite' => 'IF', 
+                'progress' => 'PB', 
+                'tournament' => 'TB', 
+                'daily_entry' => 'DE', 
+                'refund' => 'Refund', 
+                'interkassa' => 'IK', 
+                'coinbase' => 'CB', 
+                'btcpayserver' => 'BP', 
+                'pincode' => 'PN', 
+                'welcome_bonus' => 'WB', 
+                'sms_bonus' => 'SB', 
                 'wheelfortune' => 'WH'
             ];
             $bonus = [
-                'invite' => 'invite',
-                'progress' => 'progress',
-                'tournament' => 'tournaments',
-                'daily_entry' => 'daily_entries',
-                'happyhour' => 'happyhours',
-                'refund' => 'refunds',
-                'welcome_bonus' => 'welcomebonus',
-                'sms_bonus' => 'smsbonus',
+                'invite' => 'invite', 
+                'progress' => 'progress', 
+                'tournament' => 'tournaments', 
+                'daily_entry' => 'daily_entries', 
+                'happyhour' => 'happyhours', 
+                'refund' => 'refunds', 
+                'welcome_bonus' => 'welcomebonus', 
+                'sms_bonus' => 'smsbonus', 
                 'wheelfortune' => 'wheelfortune'
             ];
-            if( !$payeer )
+            if( !$payeer ) 
             {
                 $payeer = User::find($this->parent_id);
             }
-            if( $this->hasRole('manager') || $this->hasRole('cashier') )
+            if( $this->hasRole('manager') || $this->hasRole('cashier') ) 
             {
                 return json_encode([
-                    'status' => 'error',
+                    'status' => 'error', 
                     'message' => trans('app.wrong_user')
                 ]);
             }
-
-            if( $this->hasRole('user') && $payeer->shop_id != $this->shop_id )
+            
+            if( $this->hasRole('user') && $payeer->shop_id != $this->shop_id ) 
             {
                 return json_encode([
-                    'status' => 'error',
+                    'status' => 'error', 
                     'message' => trans('app.wrong_user')
                 ]);
             }
-            if( $payeer->hasRole('admin') && !$this->hasRole('agent') )
+            if( $payeer->hasRole('admin') && !$this->hasRole('agent') ) 
             {
                 return json_encode([
-                    'status' => 'error',
+                    'status' => 'error', 
                     'message' => trans('app.wrong_user')
                 ]);
             }
-
-            if( $payeer->hasRole('distributor') && !$this->hasRole('manager') )
+            
+            if( $payeer->hasRole('distributor') && !$this->hasRole('manager') ) 
             {
                 return json_encode([
-                    'status' => 'error',
+                    'status' => 'error', 
                     'message' => trans('app.wrong_user')
                 ]);
             }
-            if( $payeer->hasRole('cashier') && !$this->hasRole('user') )
+            if( $payeer->hasRole('cashier') && !$this->hasRole('user') ) 
             {
                 return json_encode([
-                    'status' => 'error',
+                    'status' => 'error', 
                     'message' => trans('app.wrong_user')
                 ]);
             }
-            if( !$summ || $summ == 0 || $summ < 0 )
+            if( !$summ || $summ == 0 || $summ < 0 ) 
             {
                 return json_encode([
-                    'status' => 'error',
+                    'status' => 'error', 
                     'message' => trans('app.wrong_sum')
                 ]);
             }
-            if( ($payeer->hasRole('manager') || $payeer->hasRole('cashier')) && $this->hasRole('user') )
+            if( ($payeer->hasRole('manager') || $payeer->hasRole('cashier')) && $this->hasRole('user') ) 
             {
-                if( !isset($bonus[$system]) )
+                if( !isset($bonus[$system]) ) 
                 {
-                    if( !$shop )
+                    if( !$shop ) 
                     {
                         return json_encode([
-                            'status' => 'error',
+                            'status' => 'error', 
                             'message' => trans('app.wrong_shop')
                         ]);
                     }
-                    if( $type == 'add' && $shop->balance < $summ )
+                    if( $type == 'add' && $shop->balance < $summ ) 
                     {
                         return json_encode([
-                            'status' => 'error',
+                            'status' => 'error', 
                             'message' => trans('app.not_enough_money_in_the_shop', [
-                                'name' => $shop->name,
+                                'name' => $shop->name, 
                                 'balance' => $shop->balance
                             ])
                         ]);
                     }
                 }
-                if( $type == 'out' && $this->balance < abs($summ) )
+                if( $type == 'out' && $this->balance < abs($summ) ) 
                 {
                     return json_encode([
-                        'status' => 'error',
+                        'status' => 'error', 
                         'message' => trans('app.not_enough_money_in_the_user_balance', [
-                            'name' => $this->username,
+                            'name' => $this->username, 
                             'balance' => $this->balance
                         ])
                     ]);
@@ -759,33 +757,33 @@ namespace VanguardLTE
             }
             if( $payeer->hasRole('agent') && ($this->hasRole('manager') || $this->hasRole('agent')))
             {
-                if( $type == 'add' && $payeer->balance < $summ )
+                if( $type == 'add' && $payeer->balance < $summ ) 
                 {
                     return json_encode([
-                        'status' => 'error',
+                        'status' => 'error', 
                         'message' => trans('app.not_enough_money_in_the_user_balance', [
-                            'name' => $payeer->username,
+                            'name' => $payeer->username, 
                             'balance' => $payeer->balance
                         ])
                     ]);
                 }
-                if( $type == 'out' && $this->balance < abs($summ) )
+                if( $type == 'out' && $this->balance < abs($summ) ) 
                 {
                     return json_encode([
-                        'status' => 'error',
+                        'status' => 'error', 
                         'message' => trans('app.not_enough_money_in_the_user_balance', [
-                            'name' => $this->username,
+                            'name' => $this->username, 
                             'balance' => $this->balance
                         ])
                     ]);
                 }
             }
-
+            
             $happyhour = false;
-            if( $this->shop && $this->shop->happyhours_active )
+            if( $this->shop && $this->shop->happyhours_active ) 
             {
                 $happyhour = HappyHour::where([
-                    'shop_id' => $payeer->shop_id,
+                    'shop_id' => $payeer->shop_id, 
                     'time' => date('G')
                 ])->first();
             }
@@ -797,55 +795,55 @@ namespace VanguardLTE
             if( $payeer->hasRole('agent') && ($this->hasRole('manager') || $this->hasRole('agent')))
             {
                 $last_payeer_balance = $payeer->balance;
-                $result_payeer_balance = $payeer->balance - $summ;
+                $result_payeer_balance = $payeer->balance - $summ;                
             }
-            if( ($payeer->hasRole('cashier') || $payeer->hasRole('manager')) && $this->hasRole('user'))
+            if( ($payeer->hasRole('cashier') || $payeer->hasRole('manager')) && $this->hasRole('user')) 
             {
                 $last_payeer_balance = $shop->balance;
-                $result_payeer_balance = $shop->balance - $summ;
+                $result_payeer_balance = $shop->balance - $summ;                
             }
 
-            if( $payeer->hasRole('cashier') && $this->hasRole('user') && $type == 'add' && $happyhour && $system == 'handpay' )
+            if( $payeer->hasRole('cashier') && $this->hasRole('user') && $type == 'add' && $happyhour && $system == 'handpay' ) 
             {
-
+                
             }
             else
             {
                 $title = $bonus_tag[$system];
-                if( $system == 'welcome_bonus' && $model )
+                if( $system == 'welcome_bonus' && $model ) 
                 {
                     $title .= (' ' . mb_strtoupper($model->pay));
                 }
-                if( $system == 'sms_bonus' && $model )
+                if( $system == 'sms_bonus' && $model ) 
                 {
                     $title .= (' ' . mb_strtoupper($model->days));
                 }
-                if( $system == 'refund' && $model )
+                if( $system == 'refund' && $model ) 
                 {
                     $title .= (' ' . mb_strtoupper($model->percent) . '%');
                 }
                 $receipt_id = $this->id;
                 $payeer_id = $payeer->id;
-
+               
                 Statistic::create([
-                    'user_id' => $receipt_id,
-                    'payeer_id' => $payeer_id,
+                    'user_id' => $receipt_id, 
+                    'payeer_id' => $payeer_id, 
                     'system' => ($this->hasRole([
-                        'user',
+                        'user', 
                         'agent'
-                    ]) ? $system : 'user'),
+                    ]) ? $system : 'user'), 
                     'title' => ($this->hasRole([
-                        'user',
+                        'user', 
                         'agent'
-                    ]) ? $title : ''),
-                    'type' => $type,
+                    ]) ? $title : ''), 
+                    'type' => $type, 
                     'sum' => abs($summ),
                     'description' => $description,
                     'last_balance' => $this->balance,
                     'result_balance' => $this->balance + $balance,
                     'last_payeer_balance' => $last_payeer_balance,
                     'result_payeer_balance' => $result_payeer_balance,
-                    'item_id' => ($model ? $model->id : null),
+                    'item_id' => ($model ? $model->id : null), 
                     'shop_id' => ($this->hasRole('user') ? $this->shop_id : 0)
                 ]);
 
@@ -865,7 +863,7 @@ namespace VanguardLTE
                     }
 
                     //when money is deposit or reedem at the player, update depost and withdraw field in all of the player's parents(shop, agents)
-
+                    
                     $parents = explode("][", $this->parents);
                     for($i = 0; $i < count($parents); $i++)
                     {
@@ -877,22 +875,22 @@ namespace VanguardLTE
                             \VanguardLTE\FundLog::create([
                                 'user_id' => $parent_id,
                                 'amount' => abs($balance),
-                                'type' => $type == 'add' ? 0 : 1
+                                'type' => $type == 'add' ? 0 : 1 
                             ]);
                         }
                     }
                 }
+                
 
-
-                if( !$this->hasRole(['admin']) )
+                if( !$this->hasRole(['admin']) ) 
                 {
                     $this->increment('balance', $balance);
                 }
-                if( isset($bonus[$system]) )
+                if( isset($bonus[$system]) ) 
                 {
-                    if( $model )
+                    if( $model ) 
                     {
-                        if( $system == 'refund' )
+                        if( $system == 'refund' ) 
                         {
                             $this->update(['refunds' => 0]);
                         }
@@ -907,7 +905,7 @@ namespace VanguardLTE
                 else
                 {
                     $this->increment('count_balance', abs($summ));
-                    if( $type == 'out' )
+                    if( $type == 'out' ) 
                     {
                         $this->increment('total_out', abs($summ));
                     }
@@ -916,21 +914,21 @@ namespace VanguardLTE
                         $this->increment('total_in', abs($summ));
                     }
                 }
-                if( $this->hasRole('user') && $update_level )
+                if( $this->hasRole('user') && $update_level ) 
                 {
                     $this->update_level('balance', $summ);
                 }
             }
-            if( $this->hasRole('user') && !isset($bonus[$system]) )
+            if( $this->hasRole('user') && !isset($bonus[$system]) ) 
             {
-                if( $type == 'out' )
+                if( $type == 'out' ) 
                 {
                     $this->update(['refunds' => 0]);
                 }
-                else if( $refund )
+                else if( $refund ) 
                 {
                     $_obf_0D380C3E0F1B5B043C37263E3F3C37150F5B2C29043F01 = Lib\Functions::refunds($summ, $this->shop_id, $this->rating);
-                    if( is_numeric($refund) )
+                    if( is_numeric($refund) ) 
                     {
                         $_obf_0D380C3E0F1B5B043C37263E3F3C37150F5B2C29043F01 = ($summ * $refund) / 100;
                     }
@@ -941,16 +939,16 @@ namespace VanguardLTE
             {
                 $payeer->update(['balance' => $payeer->balance - $summ]);
             }
-            if( ($payeer->hasRole('cashier') || $payeer->hasRole('manager')) && $this->hasRole('user'))
+            if( ($payeer->hasRole('cashier') || $payeer->hasRole('manager')) && $this->hasRole('user')) 
             {
-                $shop->update(['balance' => $shop->balance - $summ]);
+                $shop->update(['balance' => $shop->balance - $summ]); 
             }
-            if( $this->hasRole('user') )
+            if( $this->hasRole('user') ) 
             {
                 Lib\WBLib::action($this->id);
             }
             return json_encode([
-                'status' => 'success',
+                'status' => 'success', 
                 'message' => trans('app.balance_updated')
             ]);
         }
@@ -959,19 +957,19 @@ namespace VanguardLTE
         public function addLimit($type, $summ, $payeer = false,  $system = 'handpay', $update_level = true, $model = false)
         {
             if( !in_array($type, [
-                'add',
+                'add', 
                 'out'
-            ]) )
+            ]) ) 
             {
                 $type = 'add';
             }
-
+        
             $shop = $this->shop;
             $summ = floatval($summ);
-
-            if( !$payeer )
+        
+            if( !$payeer ) 
             {
-                if( \Illuminate\Support\Facades\Auth::check() )
+                if( \Illuminate\Support\Facades\Auth::check() ) 
                 {
                     $payeer = User::where('id', auth()->user()->id)->first();
                 }
@@ -980,107 +978,107 @@ namespace VanguardLTE
                     $payeer = User::find($this->parent_id);
                 }
             }
-            if( $this->hasRole('manager') || $this->hasRole('cashier') )
+            if( $this->hasRole('manager') || $this->hasRole('cashier') ) 
             {
                 return json_encode([
-                    'status' => 'error',
+                    'status' => 'error', 
                     'message' => trans('app.wrong_user')
                 ]);
             }
-            if( ($this->hasRole('agent') || $this->hasRole('distributor')) && $payeer->id != $this->parent_id )
+            if( ($this->hasRole('agent') || $this->hasRole('distributor')) && $payeer->id != $this->parent_id ) 
             {
                 return json_encode([
-                    'status' => 'error',
+                    'status' => 'error', 
                     'message' => trans('app.wrong_user')
                 ]);
             }
-            if( $this->hasRole('user') && $payeer->shop_id != $this->shop_id )
+            if( $this->hasRole('user') && $payeer->shop_id != $this->shop_id ) 
             {
                 return json_encode([
-                    'status' => 'error',
+                    'status' => 'error', 
                     'message' => trans('app.wrong_user')
                 ]);
             }
-            if( $payeer->hasRole('admin') && !$this->hasRole('agent') )
+            if( $payeer->hasRole('admin') && !$this->hasRole('agent') ) 
             {
                 return json_encode([
-                    'status' => 'error',
+                    'status' => 'error', 
                     'message' => trans('app.wrong_user')
                 ]);
             }
-            if( $payeer->hasRole('agent') && !$this->hasRole('distributor') )
+            if( $payeer->hasRole('agent') && !$this->hasRole('distributor') ) 
             {
                 return json_encode([
-                    'status' => 'error',
+                    'status' => 'error', 
                     'message' => trans('app.wrong_user')
                 ]);
             }
-            if( $payeer->hasRole('distributor') && !$this->hasRole('manager') )
+            if( $payeer->hasRole('distributor') && !$this->hasRole('manager') ) 
             {
                 return json_encode([
-                    'status' => 'error',
+                    'status' => 'error', 
                     'message' => trans('app.wrong_user')
                 ]);
             }
-            if( $payeer->hasRole('cashier') && !$this->hasRole('user') )
+            if( $payeer->hasRole('cashier') && !$this->hasRole('user') ) 
             {
                 return json_encode([
-                    'status' => 'error',
+                    'status' => 'error', 
                     'message' => trans('app.wrong_user')
                 ]);
             }
-            if( !$summ || $summ == 0 || $summ < 0 )
+            if( !$summ || $summ == 0 || $summ < 0 ) 
             {
                 return json_encode([
-                    'status' => 'error',
+                    'status' => 'error', 
                     'message' => trans('app.wrong_sum')
                 ]);
             }
-            if( $payeer->hasRole('cashier') && $this->hasRole('user') )
+            if( $payeer->hasRole('cashier') && $this->hasRole('user') ) 
             {
-
-                if( $type == 'out' && $this->shop_limit < abs($summ) )
+              
+                if( $type == 'out' && $this->shop_limit < abs($summ) ) 
                 {
                     return json_encode([
-                        'status' => 'error',
+                        'status' => 'error', 
                         'message' => trans('app.not_enough_limit', [
                             'limit' => $this->shop_limit
                         ])
                     ]);
                 }
             }
-            if( $payeer->hasRole('agent') && $this->hasRole('distributor') || $payeer->hasRole('distributor') && $this->hasRole('manager') )
+            if( $payeer->hasRole('agent') && $this->hasRole('distributor') || $payeer->hasRole('distributor') && $this->hasRole('manager') ) 
             {
-                if( $type == 'add' && $payeer->shop_limit < $summ )
+                if( $type == 'add' && $payeer->shop_limit < $summ ) 
                 {
                     return json_encode([
-                        'status' => 'error',
+                        'status' => 'error', 
                         'message' => trans('app.not_enough_limit', [
                             'limit' => $payeer->shop_limit
                         ])
                     ]);
                 }
-                if( $type == 'out' && $this->shop_limit < abs($summ) )
+                if( $type == 'out' && $this->shop_limit < abs($summ) ) 
                 {
                     return json_encode([
-                        'status' => 'error',
+                        'status' => 'error', 
                         'message' => trans('app.not_enough_limit', [
                             'limit' => $this->shop_limit
                         ])
                     ]);
                 }
             }
-
-
+        
+        
             $summ = ($type == 'out' ? -1 * $summ : $summ);
             $balance = intval($summ);
-
-
-            if( $payeer->hasRole('agent') && $this->hasRole('distributor') || $payeer->hasRole('distributor') && $this->hasRole('manager') )
+          
+        
+            if( $payeer->hasRole('agent') && $this->hasRole('distributor') || $payeer->hasRole('distributor') && $this->hasRole('manager') ) 
             {
                 $payeer->update(['shop_limit' => $payeer->shop_limit - $summ]);
             }
-            if( $this->hasRole('user') )
+            if( $this->hasRole('user') ) 
             {
                 Lib\WBLib::action($this->id);
             }
@@ -1090,21 +1088,21 @@ namespace VanguardLTE
                 $this->increment('shop_limit', $balance);
             }
             return json_encode([
-                'status' => 'success',
+                'status' => 'success', 
                 'message' => 'Limit updated'
             ]);
         }
 
 
-
+        
         public function updateCountBalance($sum, $count_balance)
         {
             $_obf_0D331B22252306215B3F223237402E2B5B2C38210A0732 = $_obf_0D055C1F132D2A3F3B221F1C1A041C3534052303391F11 = $sum = abs(floatval($sum));
-            if( $sum > 0 )
+            if( $sum > 0 ) 
             {
-                if( $count_balance > 0 )
+                if( $count_balance > 0 ) 
                 {
-                    if( $count_balance < $_obf_0D331B22252306215B3F223237402E2B5B2C38210A0732 )
+                    if( $count_balance < $_obf_0D331B22252306215B3F223237402E2B5B2C38210A0732 ) 
                     {
                         $_obf_0D055C1F132D2A3F3B221F1C1A041C3534052303391F11 = $_obf_0D331B22252306215B3F223237402E2B5B2C38210A0732 - $count_balance;
                         $this->decrement('count_balance', $count_balance);
@@ -1114,30 +1112,30 @@ namespace VanguardLTE
                         $this->decrement('count_balance', $_obf_0D331B22252306215B3F223237402E2B5B2C38210A0732);
                     }
                 }
-                if( $count_balance == 0 || $count_balance < $_obf_0D331B22252306215B3F223237402E2B5B2C38210A0732 )
+                if( $count_balance == 0 || $count_balance < $_obf_0D331B22252306215B3F223237402E2B5B2C38210A0732 ) 
                 {
                     foreach( [
-                        'count_tournaments',
-                        'count_happyhours',
-                        'count_refunds',
-                        'count_progress',
-                        'count_daily_entries',
-                        'count_invite',
-                        'count_welcomebonus',
-                        'count_smsbonus',
+                        'count_tournaments', 
+                        'count_happyhours', 
+                        'count_refunds', 
+                        'count_progress', 
+                        'count_daily_entries', 
+                        'count_invite', 
+                        'count_welcomebonus', 
+                        'count_smsbonus', 
                         'count_wheelfortune'
-                    ] as $field )
+                    ] as $field ) 
                     {
                         $value = floatval($this->$field);
-                        if( $value > 0 )
+                        if( $value > 0 ) 
                         {
-                            if( $_obf_0D055C1F132D2A3F3B221F1C1A041C3534052303391F11 == 0 )
+                            if( $_obf_0D055C1F132D2A3F3B221F1C1A041C3534052303391F11 == 0 ) 
                             {
                                 break;
                             }
                             else
                             {
-                                if( $value < $_obf_0D055C1F132D2A3F3B221F1C1A041C3534052303391F11 )
+                                if( $value < $_obf_0D055C1F132D2A3F3B221F1C1A041C3534052303391F11 ) 
                                 {
                                     $_obf_0D055C1F132D2A3F3B221F1C1A041C3534052303391F11 = $_obf_0D055C1F132D2A3F3B221F1C1A041C3534052303391F11 - $value;
                                     $this->decrement($field, $value);
@@ -1156,60 +1154,60 @@ namespace VanguardLTE
         }
         public function update_level($type, $sum)
         {
-
+           
         }
         public function distributor()
         {
             $distributor = User::find($this->id);
-            if( !$distributor->hasRole('distributor') )
+            if( !$distributor->hasRole('distributor') ) 
             {
                 return [];
             }
             $return = [
-                'href' => route('backend.user.edit', ['user' => $distributor->id], false),
-                'text' => ($distributor->username ?: trans('app.n_a')),
-                'balance' => $distributor->balance,
-                'rowspan' => $distributor->getRowspan(),
+                'href' => route('backend.user.edit', ['user' => $distributor->id], false), 
+                'text' => ($distributor->username ?: trans('app.n_a')), 
+                'balance' => $distributor->balance, 
+                'rowspan' => $distributor->getRowspan(), 
                 'shops' => []
             ];
-            if( count($distributor->shops()) && ($shops = $distributor->rel_shops) )
+            if( count($distributor->shops()) && ($shops = $distributor->rel_shops) ) 
             {
-                foreach( $shops as $shop )
+                foreach( $shops as $shop ) 
                 {
-                    if( $shop = $shop->shop )
+                    if( $shop = $shop->shop ) 
                     {
                         $return['shops'][$shop->id] = [
-                            'href' => route('backend.shop.edit', ['shop' => $shop->id], false),
-                            'text' => $shop->name,
-                            'balance' => $shop->balance,
-                            'rowspan' => $shop->getRowspan(),
+                            'href' => route('backend.shop.edit', ['shop' => $shop->id], false), 
+                            'text' => $shop->name, 
+                            'balance' => $shop->balance, 
+                            'rowspan' => $shop->getRowspan(), 
                             'managers' => []
                         ];
-                        if( ($managers = $shop->getUsersByRole('manager')) && count($managers) )
+                        if( ($managers = $shop->getUsersByRole('manager')) && count($managers) ) 
                         {
-                            foreach( $managers as $manager )
+                            foreach( $managers as $manager ) 
                             {
                                 $return['shops'][$shop->id]['managers'][$manager->id] = [
-                                    'href' => route('backend.user.edit', ['user' => $manager->id], false),
-                                    'text' => ($manager->username ?: trans('app.n_a')),
-                                    'rowspan' => $manager->getRowspan(),
+                                    'href' => route('backend.user.edit', ['user' => $manager->id], false), 
+                                    'text' => ($manager->username ?: trans('app.n_a')), 
+                                    'rowspan' => $manager->getRowspan(), 
                                     'cashiers' => []
                                 ];
-                                if( $cashiers = $manager->getInnerUsers() )
+                                if( $cashiers = $manager->getInnerUsers() ) 
                                 {
-                                    foreach( $cashiers as $cashier )
+                                    foreach( $cashiers as $cashier ) 
                                     {
                                         $return['shops'][$shop->id]['managers'][$manager->id]['cashiers'][$cashier->id] = [
-                                            'href' => route('backend.user.edit', ['user' => $cashier->id], false),
-                                            'text' => ($cashier->username ?: trans('app.n_a')),
+                                            'href' => route('backend.user.edit', ['user' => $cashier->id], false), 
+                                            'text' => ($cashier->username ?: trans('app.n_a')), 
                                             'balance' => User::where([
-                                                'role_id' => 1,
+                                                'role_id' => 1, 
                                                 'shop_id' => $cashier->shop_id
-                                            ])->sum('balance'),
+                                            ])->sum('balance'), 
                                             'href2' => route('backend.profile.setshop', [
-                                                'shop_id' => $shop->id,
+                                                'shop_id' => $shop->id, 
                                                 'to' => route('backend.user.list', ['role' => 1], false)
-                                            ], false),
+                                            ], false), 
                                             'text2' => '>> ' . __('app.users')
                                         ];
                                     }
@@ -1231,7 +1229,7 @@ namespace VanguardLTE
         {
             // $user = auth()->user();
             // $serverTimezone = (new DateTime())->getTimezone();
-            // $userTimezone = \VanguardLTE\TimeZone::find($user->timezone);
+            // $userTimezone = \VanguardLTE\TimeZone::find($user->timezone);            
             // $userDatetime = Carbon::parse($value, $serverTimezone)->timezone($userTimezone->value);
             // return $userDatetime->format('m-d-Y H:i:s');
             return Carbon::parse($value)->format('m-d-Y H:i:s');

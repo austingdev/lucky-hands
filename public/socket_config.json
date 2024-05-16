@@ -1,13 +1,13 @@
 {
 
     "port":"22053/slots",
-
-    "host":"localhost",
+    
+    "host":"www.fishglory.xyz",
     "prefix":"http://",
-
-    "host_ws":"localhost",
+    
+    "host_ws":"www.fishglory.xyz",
     "prefix_ws":"ws://",
-
+    
     "ssl":false
-
+    
 }
