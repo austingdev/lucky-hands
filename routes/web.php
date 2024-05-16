@@ -13,6 +13,7 @@ Route::domain('www.'.config('app.domain'))->namespace('Frontend')->middleware(['
         'as' => 'frontend.auth.relaxgaming-login',
         'uses' => 'Auth\AuthController@getRelaxgamingLogin'
     ]);
+    Route::post('verifyRGToken', 'Auth\AuthController@postVerifyRGToken');
 
     Route::get('launcher/{game}/{token}','Auth\AuthController@apiLogin' );
 

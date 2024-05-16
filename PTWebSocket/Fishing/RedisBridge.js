@@ -21,7 +21,7 @@ class RedisBridge{
 		{
 			password: process.env.REDIS_PASSWORD
 		});
-        // client.connect();
+        client.connect();
         client.on('error', error=>{
             console.error(error);
         });

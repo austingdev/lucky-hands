@@ -79,7 +79,9 @@ namespace VanguardLTE
             'last_wheelfortune',
             'reward_base',
             'reward_bonus',
-            'percent'
+            'percent',
+            'customer_id',
+            'cashier_token'
         ];
         protected $hidden = [
             'password', 
