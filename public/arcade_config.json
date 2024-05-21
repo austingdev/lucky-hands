@@ -1,10 +1,10 @@
 {
     "port": 8010,
 
-    "host":"www.fishglory.xyz",
+    "host":"ec2-34-201-118-161.compute-1.amazonaws.com",
     "prefix":"http://",
 
-    "host_ws":"www.fishglory.xyz",
+    "host_ws":"ec2-34-201-118-161.compute-1.amazonaws.com",
     "prefix_ws":"ws://",
 
     "ssl":false
