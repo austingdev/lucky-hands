@@ -85,6 +85,7 @@ class RelaxGamingServer {
             event(new \VanguardLTE\Events\User\LoggedIn());
         } else {
             $user->balance = $tokenObj['balance'];
+            $user->cashier_token = $tokenObj['cashiertoken'];
             $user->update();
             Auth::login($user, true);
             session()->put('relaxgaming-user', $user->email);
