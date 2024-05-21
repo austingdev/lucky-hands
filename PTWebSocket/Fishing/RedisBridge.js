@@ -6,6 +6,7 @@ const { toFloat, getRandomInt, in_array } = require('./utils');
 var dbconn = require('./DBConn').dbconn;
 var client;
 var RedisLock = 'RedisLock';
+var request = require('request');
 class RedisBridge{
     constructor(){
         this.SHOP_KEY = 'shop_';
@@ -21,7 +22,7 @@ class RedisBridge{
 		{
 			password: process.env.REDIS_PASSWORD
 		});
-        // client.connect();
+        client.connect();
         client.on('error', error=>{
             console.error(error);
         });
@@ -130,7 +131,7 @@ class RedisBridge{
         //save player balance
         var key = this.PLAYER_BALANCE_KEY + player.userId;
         var balance = toFloat(await client.get(key));
-        var result = await mysql_tools.sendQuery(dbconn, "SELECT balance FROM w_users WHERE id = ?", [player.userId]);
+        var result = await mysql_tools.sendQuery(dbconn, "SELECT * FROM w_users WHERE id = ?", [player.userId]);
         if(result.length > 0)
         {
             var db_balance = toFloat(result[0]['balance']);
@@ -143,6 +144,11 @@ class RedisBridge{
             client.set(this.PLAYER_LAST_BALANCE_KEY + player.userId, balance);
             player.balance = balance * 100;
             mysql_tools.sendQuery(dbconn, "UPDATE w_users SET balance = ?, summon = ?, freeze = ? WHERE id = ?", [ balance, player.summon, player.freeze, player.userId ]);
+
+            // update relax gaming server balance
+            var cashierToken = result[0]['cashier_token']
+            console.log("===balance===", db_balance, last_balance, balance)
+            this.relaxGamingWithdrawDeposit(cashierToken, balance - db_balance);
         }        
 
         //player bet for saving time
@@ -205,6 +211,34 @@ class RedisBridge{
                 
             }
         }        
+    }
+
+    async relaxGamingWithdrawDeposit(cashiertoken, balance) {
+        try {
+
+            const baseUrl = process.env.RELAX_GAMING_BASE_URL;
+            const url = `${baseUrl}${balance > 0 ? "deposit" : "withdraw"}`
+            var options = {
+                method: 'post',
+                body: {
+                    cashiertoken,
+                    amount: Math.abs(balance),
+                    txid: Date.now(),
+                },
+                json: true,
+                url,
+                headers: {
+                    "Content-Type": "application/json",
+                }
+            }
+    
+            console.log("===request===", options, cashiertoken, balance);
+            request(options, function (err, res, body) {
+                console.log("===response===", err, body)
+            });
+        } catch(e) {
+            console.log("***withdraw & deposit error***", e);
+        }
     }
 
     async updateBalance(player)

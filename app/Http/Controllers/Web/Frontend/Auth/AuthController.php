@@ -2,6 +2,7 @@
 namespace VanguardLTE\Http\Controllers\Web\Frontend\Auth
 {
     use VanguardLTE\Shop;
+    use VanguardLTE\Lib\RelaxGamingServer;
 
     include_once(base_path() . '/app/ShopCore.php');
     include_once(base_path() . '/app/ShopGame.php');
@@ -53,6 +54,42 @@ namespace VanguardLTE\Http\Controllers\Web\Frontend\Auth
             }
             return view('frontend.' . $frontend . '.auth.login', compact('directories'));
         }
+        public function getRelaxgamingLogin()
+        {
+            $frontend = $this->getBasicTheme();
+            $directories = [];
+            foreach( glob(resource_path() . '/lang/*', GLOB_ONLYDIR) as $fileinfo ) 
+            {
+                $dirname = basename($fileinfo);
+                $directories[$dirname] = $dirname;
+            }
+            return view('frontend.' . $frontend . '.auth.relaxgaming-login', compact('directories'));
+        }
+
+
+        public function postVerifyRGToken(\Illuminate\Http\Request $request, \VanguardLTE\Repositories\Session\SessionRepository $sessionRepository)
+        {
+            $request->validate([
+                'gameId' => 'required', 
+                'token' => 'required'
+            ]);
+
+            $throttles = settings('throttle_enabled');
+            if( $throttles && $this->hasTooManyLoginAttempts($request) ) 
+            {
+                return $this->sendLockoutResponse($request);
+            }
+
+            $relaxgamingServer = new RelaxGamingServer();
+            $token = $relaxgamingServer->verifyToken($request->token);
+            $balance = $relaxgamingServer->getBalance();
+            
+            return response()->json([
+                'token' => $token,
+                'balance' => $balance,
+            ], 200);
+        }
+
         public function postLogin(\VanguardLTE\Http\Requests\Auth\LoginRequest $request, \VanguardLTE\Repositories\Session\SessionRepository $sessionRepository)
         {
             $throttles = settings('throttle_enabled');

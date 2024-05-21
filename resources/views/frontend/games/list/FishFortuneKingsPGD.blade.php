@@ -2,6 +2,7 @@
 @section('content')
     <iframe id="mainframe" style="overflow:hidden;height:100%;width:100%;position:absolute;top:0px;left:0px;right:0px;bottom:0px" ></iframe>
     @include ('frontend.games.partials.popups')
+    @include ('frontend.games.partials.popups', ['splash_url' => 'fortune-king'])
 @endsection
 @section('scripts')
     <script type="text/javascript">

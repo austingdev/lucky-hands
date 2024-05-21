@@ -5,6 +5,22 @@
         <p id="progressPercent">0.00%</p>
     </div>
 </div>
+<style>
+    #loading_popup
+    {
+        width: 100%;
+        height: 100%;
+        overflow:hidden;    
+        position:absolute;
+        top:0px;
+        left:0px;
+        right:0px;
+        bottom:0px;
+        background: url('<?= (isset($splash_url)) ? asset('frontend/Default/img/')."/splash-screen--".$splash_url.".jpg" : asset('frontend/Default/img/')."/loading_back.jpg" ?>') no-repeat;
+        background-size: cover;    
+        background-position: center;
+    }
+</style>
 <script>
     $(function() {
         var div = $('#gameLoadingBack');
@@ -12,7 +28,7 @@
         div.css('height', width * 61 / 673);
     });
 
-    window.addEventListener('resize', function(){        
+    window.addEventListener('resize', function(){     
         var div = $('#gameLoadingBack');
         var width = div.width();    
         div.css('height', width * 61 / 673);

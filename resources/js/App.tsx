@@ -74,6 +74,11 @@ class App extends React.Component {
 					this.isSetup = true;
 				}
 			}
+			else if (type === 'relaxgaming-login')
+			{
+				EE.emit('SHOW_RELAXGAMING_LOGIN');
+				document.getElementById('AppGame')?.style.setProperty("display", "none");
+			}
 			else
 			{
 				EE.emit('SHOW_LOGIN');

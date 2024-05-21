@@ -3507,7 +3507,6 @@ function startAuthServer()
         ws.on('message', async (message) =>
         {
             message = message.toString().replace(':::', '');     
-             console.log("auth message: " + message);
             var param = JSON.parse(message);
             var gameData = param.gameData;
             var response = null;

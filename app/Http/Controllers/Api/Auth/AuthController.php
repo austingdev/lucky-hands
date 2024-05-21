@@ -4,6 +4,7 @@ namespace VanguardLTE\Http\Controllers\Api\Auth
 {
 
     use Tymon\JWTAuth\Facades\JWTAuth;
+    use VanguardLTE\Lib\RelaxGamingServer;
 
     include_once(base_path() . '/app/ShopCore.php');
     include_once(base_path() . '/app/ShopGame.php');
