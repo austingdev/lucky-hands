@@ -15,7 +15,8 @@ namespace VanguardLTE\Http\Controllers\Web\Frontend\Auth
             $this->middleware('guest', [
                 'except' => [
                     'getLogout', 
-                    'apiLogin'
+                    'apiLogin',
+                    'getRelaxgamingLogin',
                 ]
             ]);
             $this->middleware('auth', [
@@ -34,7 +35,7 @@ namespace VanguardLTE\Http\Controllers\Web\Frontend\Auth
             $frontend = settings('frontend');
             if( \Auth::check() ) 
             {
-                $shop = \Shop::find(\Auth::user()->shop_id);
+                $shop = Shop::find(\Auth::user()->shop_id);
                 if( $shop ) 
                 {
                     $frontend = $shop->frontend;
