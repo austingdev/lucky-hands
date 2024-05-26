@@ -2,10 +2,10 @@
 
     "port":"22053/slots",
     
-    "host":"ec2-34-201-118-161.compute-1.amazonaws.com",
+    "host":"ec2-54-145-210-74.compute-1.amazonaws.com",
     "prefix":"http://",
     
-    "host_ws":"ec2-34-201-118-161.compute-1.amazonaws.com",
+    "host_ws":"ec2-54-145-210-74.compute-1.amazonaws.com",
     "prefix_ws":"ws://",
     
     "ssl":false

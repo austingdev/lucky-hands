@@ -4,7 +4,16 @@ namespace VanguardLTE\Http\Middleware
     class Checker
     {
         public function handle($request, \Closure $next)
-        {
+	{
+		#echo "<pre>";
+		#$cloudFrontDomain = isset($_SERVER['HTTP_X_CLOUDFRONT_DOMAIN']) ? $_SERVER['HTTP_X_CLOUDFRONT_DOMAIN'] : '';
+		#echo $request->url();
+		#echo "<br/>";
+		#echo $request->header('X-CloudFront-Domain');
+		#echo $cloudFrontDomain;
+		#echo "</pre>";
+		
+		
             if( !auth()->check() ) 
             {
                 return $next($request);

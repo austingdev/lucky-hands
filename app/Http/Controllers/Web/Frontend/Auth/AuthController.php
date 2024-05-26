@@ -15,7 +15,7 @@ namespace VanguardLTE\Http\Controllers\Web\Frontend\Auth
             $this->middleware('guest', [
                 'except' => [
                     'getLogout', 
-                    'apiLogin'
+                    'apiLogin',
                 ]
             ]);
             $this->middleware('auth', [
@@ -43,7 +43,7 @@ namespace VanguardLTE\Http\Controllers\Web\Frontend\Auth
             return $frontend;
         }
         public function getLogin()
-        {
+	{
             // return redirect()->route('frontend.game.list')->with('modal', 'modal-login');
             $frontend = $this->getBasicTheme();
             $directories = [];
