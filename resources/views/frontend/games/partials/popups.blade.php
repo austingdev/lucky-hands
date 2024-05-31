@@ -1,11 +1,18 @@
 <div class="popup" id="loading_popup">    
-    <p id="gameLoadingGuide">This game could take up to 60 seconds to load. <br> Thank you for your patience.</p>
-    <div id="gameLoadingBack">
-        <div id="gameLoadingProgress"></div>
-        <p id="progressPercent">0.00%</p>
-    </div>
+    <div id="loading_popup_image">   
+ 	<div id="gameLoadingBack">
+		<div id="gameLoadingProgress"></div>        
+		<p id="progressPercent">0.00%</p>
+    	</div>
+   	<p id="gameLoadingGuide">This game could take up to 60 seconds to load. <br> Thank you for your patience.</p>
+   </div>
 </div>
 <style>
+    #loading_popup_image {
+	background: url('<?= (isset($splash_url)) ? asset('frontend/Default/img/')."/splash-screen--".$splash_url.".jpg" : asset('frontend/Default/img/')."/loading_back.jpg" ?>') no-repeat;
+        background-size: contain;
+        background-position: center;
+    }
     #loading_popup
     {
         width: 100%;
@@ -16,9 +23,7 @@
         left:0px;
         right:0px;
         bottom:0px;
-        background: url('<?= (isset($splash_url)) ? asset('frontend/Default/img/')."/splash-screen--".$splash_url.".jpg" : asset('frontend/Default/img/')."/loading_back.jpg" ?>') no-repeat;
-        background-size: cover;    
-        background-position: center;
+	background: black;
     }
 </style>
 <script>
