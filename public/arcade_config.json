@@ -1,10 +1,10 @@
 {
     "port": 8010,
 
-    "host":"ec2-54-145-210-74.compute-1.amazonaws.com",
+    "host":"fishforfun.net",
     "prefix":"http://",
 
-    "host_ws":"ec2-54-145-210-74.compute-1.amazonaws.com",
+    "host_ws":"fishforfun.net",
     "prefix_ws":"ws://",
 
     "ssl":false

@@ -2,8 +2,7 @@
 
 use Illuminate\Support\Facades\Route;								 
 // Route::namespace('Frontend')->middleware(['siteisclosed', 'checker'])->group(function () {
-// Route::domain('dtmay60dlp20i.cloudfront.net/')->
-Route::namespace('Frontend')->middleware(['siteisclosed','checker'])->group(function () {
+Route::domain('games'.config('app.domain'))->namespace('Frontend')->middleware(['siteisclosed','checker'])->group(function () {
 
 
     Route::get('login', [
