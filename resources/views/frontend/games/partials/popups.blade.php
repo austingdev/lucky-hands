@@ -4,15 +4,16 @@
 		<div id="gameLoadingProgress"></div>        
 		<p id="progressPercent">0.00%</p>
     	</div>
-   	<p id="gameLoadingGuide">This game could take up to 60 seconds to load. <br> Thank you for your patience.</p>
    </div>
 </div>
 <style>
     #loading_popup_image {
 	background: url('<?= (isset($splash_url)) ? asset('frontend/Default/img/')."/splash-screen--".$splash_url.".jpg" : asset('frontend/Default/img/')."/loading_back.jpg" ?>') no-repeat;
-        background-size: contain;
+        background-size: cover;
         background-position: center;
-    }
+	width: 100%;
+	height: 100vh;    
+}
     #loading_popup
     {
         width: 100%;
@@ -25,6 +26,10 @@
         bottom:0px;
 	background: black;
     }
+   #gameLoadingGuide {
+	bottom: 25px;
+	top: auto;
+}
 </style>
 <script>
     $(function() {

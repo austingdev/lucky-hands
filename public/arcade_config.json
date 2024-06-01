@@ -1,10 +1,10 @@
 {
     "port": 8010,
 
-    "host":"fishforfun.net",
+    "host":"games.fishforfun.net",
     "prefix":"http://",
 
-    "host_ws":"fishforfun.net",
+    "host_ws":"games.fishforfun.net",
     "prefix_ws":"ws://",
 
     "ssl":false
