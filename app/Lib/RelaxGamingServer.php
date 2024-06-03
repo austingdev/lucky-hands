@@ -25,7 +25,7 @@ class RelaxGamingServer {
     }
 
     public function verifyToken($token){
-        
+
         $client = $this->getClient();
 
         try{
@@ -39,15 +39,33 @@ class RelaxGamingServer {
             return ['error' => true, 'text' => __('app.something_went_wrong')];
         }
 
-
+        $userObj = $this->fetchUsername($token);
         $tokenObj = json_decode($result->getBody()->getContents(), true);
-        
+        $tokenObj['username'] = $userObj['cutomerusername'];
+
         $this->handleUserConversion($tokenObj);
 
+
         session()->put('relaxgaming-token', $tokenObj);
-        
+
         return $tokenObj;
 
+    }
+
+    public function fetchUsername($token) {
+        $client = $this->getClient();
+
+        try{
+            $result = $client->request('POST', 'getUser',
+                ['body' => json_encode([
+                    "token" => $token
+                ])]
+            );
+        } catch (RequestException $exception){
+            Info($exception->getMessage());
+            return ['error' => true, 'text' => __('app.something_went_wrong')];
+        }
+        return json_decode($result->getBody()->getContents(), true);
     }
 
     public function handleUserConversion($tokenObj) {
@@ -58,7 +76,7 @@ class RelaxGamingServer {
             // Then we need to insert a new user
             $role = \jeremykenedy\LaravelRoles\Models\Role::find(1);
             $newUser = new \VanguardLTE\User([
-                'username' => 'temp',
+                'username' => $tokenObj['username'],
                 'email' => $tokenObj['cashiertoken'] . '@test.com',
                 'role_id' => $role->id,
                 'status' => 'Active',
@@ -73,7 +91,7 @@ class RelaxGamingServer {
             $newUser->save();
             $newUser->attachRole($role);
             if ($tokenObj['balance'] > 0) {
-                $newUser->addBalance('add', $tokenObj['balance']);
+                $newUser->balance = (string)((int)$tokenObj['balance']) / 100;
             }
             // Assign the user to the demo shop
             \VanguardLTE\ShopUser::create([
@@ -84,8 +102,9 @@ class RelaxGamingServer {
             Auth::login($newUser, true);
             event(new \VanguardLTE\Events\User\LoggedIn());
         } else {
-            $user->balance = $tokenObj['balance'];
+            $user->balance = (string)((int)$tokenObj['balance']) / 100;
             $user->cashier_token = $tokenObj['cashiertoken'];
+            $user->username = $tokenObj['username'];
             $user->update();
             Auth::login($user, true);
             session()->put('relaxgaming-user', $user->email);
@@ -94,7 +113,7 @@ class RelaxGamingServer {
     }
 
     public function getBalance(){
-        
+
         $client = $this->getClient();
 
         $cashiertoken = session()->get('relaxgaming-token')['cashiertoken'];
@@ -112,7 +131,7 @@ class RelaxGamingServer {
 
 
         $balanceObj = json_decode($result->getBody()->getContents(), true);
-        
+
         return $balanceObj;
 
     }

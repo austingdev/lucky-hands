@@ -67,7 +67,7 @@ export const RelaxGamingLogin = () => {
 		relaxGamingVerifyToken(data, (res) => {
 			console.log("===Relax Gaming Verify Token Response===", res)
 			window.location.href = '/game/' + gameId + '?api_exit=/';
-		});		
+		});
 	}
 
 	return (

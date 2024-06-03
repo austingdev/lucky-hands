@@ -1,52 +1,52 @@
-<div class="popup" id="loading_popup">    
-    <div id="loading_popup_image">   
- 	<div id="gameLoadingBack">
-		<div id="gameLoadingProgress"></div>        
-		<p id="progressPercent">0.00%</p>
-    	</div>
+<div class="popup" id="loading_popup">
+    <div id="loading_popup_image">
+        <div id="gameLoadingBack">
+            <div id="gameLoadingProgress"></div>
+            <p id="progressPercent">0.00%</p>
+        </div>
    </div>
 </div>
 <style>
     #loading_popup_image {
-	background: url('<?= (isset($splash_url)) ? asset('frontend/Default/img/')."/splash-screen--".$splash_url.".jpg" : asset('frontend/Default/img/')."/loading_back.jpg" ?>') no-repeat;
+	    background: url('<?= (isset($splash_url)) ? asset('frontend/Default/img/')."/splash-screen--".$splash_url.".jpg" : asset('frontend/Default/img/')."/loading_back.jpg" ?>') no-repeat;
         background-size: cover;
         background-position: center;
-	width: 100%;
-	height: 100vh;    
-}
+	    width: 100%;
+	    height: 100vh;
+    }
     #loading_popup
     {
         width: 100%;
         height: 100%;
-        overflow:hidden;    
+        overflow:hidden;
         position:absolute;
         top:0px;
         left:0px;
         right:0px;
         bottom:0px;
-	background: black;
+	    background: black;
     }
-   #gameLoadingGuide {
-	bottom: 25px;
-	top: auto;
-}
+    #gameLoadingGuide {
+	    bottom: 25px;
+	    top: auto;
+    }
 </style>
 <script>
     $(function() {
         var div = $('#gameLoadingBack');
-        var width = div.width();    
+        var width = div.width();
         div.css('height', width * 61 / 673);
     });
 
-    window.addEventListener('resize', function(){     
+    window.addEventListener('resize', function(){
         var div = $('#gameLoadingBack');
-        var width = div.width();    
+        var width = div.width();
         div.css('height', width * 61 / 673);
     }, false);
 
-    addEventListener('message', function(e){        
+    addEventListener('message', function(e){
         try{
-            var data = JSON.parse(e.data);            
+            var data = JSON.parse(e.data);
             if(data.event == 'loadProgress')
             {
                 if(data.value >= 0.99999)
@@ -58,7 +58,7 @@
                     $('#loading_popup').css('display', 'block');
                     setGameLoadingProgress(data.value * 100);
                 }
-            }            
+            }
         }
         catch(e){}
     })
@@ -67,7 +67,7 @@
     {
         if(progress > 100)
             progress = 100;
-        var progress_div = $('#gameLoadingProgress');        
+        var progress_div = $('#gameLoadingProgress');
         progress_div.css('width', progress + '%');
         $('#progressPercent').html(parseFloat(progress).toFixed(2) + '%');
     }
