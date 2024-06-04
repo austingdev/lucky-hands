@@ -3,7 +3,7 @@
     "port":"22053/slots",
     
     "host":"games.fishforfun.net",
-    "prefix":"http://",
+    "prefix":"https://",
     
     "host_ws":"games.fishforfun.net",
     "prefix_ws":"ws://",
