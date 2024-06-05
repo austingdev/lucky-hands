@@ -10,7 +10,7 @@ XmlHttpRequest.onreadystatechange = function ()
     if (XmlHttpRequest.readyState == 4 && XmlHttpRequest.status == "200")
     {
         var serverConfig = JSON.parse(XmlHttpRequest.responseText);
-        serverString='wss://'++serverConfig.host_ws+':' + serverConfig.port;
+        serverString=serverConfig.prefix_ws+serverConfig.host_ws+':' + serverConfig.port;
         serverStringNext = serverConfig.prefix_ws+serverConfig.host_ws+':'+ serverConfig.port + "/MonsterFrenzy";
     }
 }
