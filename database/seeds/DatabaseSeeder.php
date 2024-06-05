@@ -12,6 +12,6 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // $this->call(CircusGameSeeder::class);
+        $this->call(CircusGameSeeder::class);
     }
 }
