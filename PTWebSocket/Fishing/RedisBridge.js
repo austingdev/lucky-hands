@@ -217,7 +217,7 @@ class RedisBridge{
     async relaxGamingWithdrawDeposit(cashiertoken, balance, env) {
         try {
             var baseUrl = process.env.RELAX_GAMING_BASE_URL_DEV;
-            if (env === 'staging') {
+            if (env === 'stage') {
                 baseUrl = process.env.RELAX_GAMING_BASE_URL_STAGING;
             } else if (env === 'prod') {
                 baseUrl = process.env.RELAX_GAMING_BASE_URL_PROD;

@@ -18,7 +18,7 @@ class RelaxGamingServer {
     private function getClient()
     {
         $baseUrl = env('RELAX_GAMING_BASE_URL_DEV');
-        if ($this->env === 'staging') {
+        if ($this->env === 'stage') {
             $baseUrl = env('RELAX_GAMING_BASE_URL_STAGING');
         } else if ($this->env === 'prod') {
             $baseUrl = env('RELAX_GAMING_BASE_URL_PROD');
