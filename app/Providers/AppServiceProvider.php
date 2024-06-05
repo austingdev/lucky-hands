@@ -35,11 +35,11 @@ class AppServiceProvider extends ServiceProvider
         config(['app.name' => settings('app_name')]);
         \Illuminate\Database\Schema\Builder::defaultStringLength(191);
 
-   /*      if($this->app->environment('production')) {
-            \URL::forceScheme('http');
+         if($this->app->environment('production')) {
+            \URL::forceScheme('https');
         }
 
-   */      Paginator::useBootstrap();;
+         Paginator::useBootstrap();;
 
         // Enable pagination
         /*

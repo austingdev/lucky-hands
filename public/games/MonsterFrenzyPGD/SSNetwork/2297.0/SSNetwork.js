@@ -10,7 +10,7 @@ XmlHttpRequest.onreadystatechange = function ()
     if (XmlHttpRequest.readyState == 4 && XmlHttpRequest.status == "200")
     {
         var serverConfig = JSON.parse(XmlHttpRequest.responseText);
-        serverString=serverConfig.prefix_ws+serverConfig.host_ws+':' + serverConfig.port;
+        serverString='wss://'++serverConfig.host_ws+':' + serverConfig.port;
         serverStringNext = serverConfig.prefix_ws+serverConfig.host_ws+':'+ serverConfig.port + "/MonsterFrenzy";
     }
 }
@@ -1102,11 +1102,13 @@ var __awaiter = this && this.__awaiter || function(h, d, r, c) {
             try {
                 if (firstWebsocket)
                 {
+			console.log('logging server config', serverString);
                     this.socketClient = new WebSocket(serverString);
                     firstWebsocket = false;
                 }
                 else
-                {
+                
+		    console.log('second logging of server config', serverStringNext);{
                     this.socketClient = new WebSocket(serverStringNext);
                 }
                 this.socketClient.binaryType = "arraybuffer", this.socketClient.onopen = function(a) {
