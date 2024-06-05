@@ -62,9 +62,9 @@ div {
 
 <!-- MAIN -->
 <main class="main">
-    <video preload="metadata" autoplay playsinline loop muted class="bgvideo" id="bgvideo" style="display: block;">
+    <!-- <video preload="metadata" autoplay playsinline loop muted class="bgvideo" id="bgvideo" style="display: block;">
         <source src="/images/fish/back.mp4" type="video/mp4">
-    </video>
+    </video> -->
     @yield('content')
     <!-- Start Fullscreen and orientation code -->   
 </main>

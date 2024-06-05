@@ -8,13 +8,13 @@ import './assets/fonts/PatuaOne-Regular.ttf';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import Preloader from "./Preloader";
+// import Preloader from "./Preloader";
 import responsiveModule from "./responsiveModule";
 //import {setup} from "./Game";
 
 ReactDOM.render(
   <React.StrictMode>
-    <Preloader />
+    {/* <Preloader /> */}
     <App />
   </React.StrictMode>,
   document.getElementById('root')
