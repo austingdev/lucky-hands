@@ -9,12 +9,24 @@ use Illuminate\Support\Facades\Auth;
 
 class RelaxGamingServer {
     private $httpClient;
+    private $env;
+
+    public function __construct($env) {
+        $this->env = $env;
+    }
 
     private function getClient()
     {
+        $baseUrl = env('RELAX_GAMING_BASE_URL_DEV');
+        if ($this->env === 'staging') {
+            $baseUrl = env('RELAX_GAMING_BASE_URL_STAGING');
+        } else if ($this->env === 'prod') {
+            $baseUrl = env('RELAX_GAMING_BASE_URL_PROD');
+        }
+
         if (!isset($this->httpClient)) {
             $this->httpClient = new Client([
-                'base_uri' => env('RELAX_GAMING_BASE_URL'),
+                'base_uri' => $baseUrl,
                 'headers' => [
                     'Content-Type' => 'application/json',
                 ]
@@ -25,7 +37,6 @@ class RelaxGamingServer {
     }
 
     public function verifyToken($token){
-
         $client = $this->getClient();
 
         try{
@@ -38,7 +49,6 @@ class RelaxGamingServer {
             Info($exception->getMessage());
             return ['error' => true, 'text' => __('app.something_went_wrong')];
         }
-
         $userObj = $this->fetchUsername($token);
         $tokenObj = json_decode($result->getBody()->getContents(), true);
         $tokenObj['username'] = $userObj['cutomerusername'];
@@ -85,7 +95,8 @@ class RelaxGamingServer {
                 'cashier_token' => $tokenObj['cashiertoken'],
                 'shop_id' => $shop->id,
                 'parent_id' => $mainShop->id,
-                'parents' => '[1][549]'
+                'parents' => '[1][549]',
+                'env' => $this->env
             ]);
             $newUser->setPasswordAttribute('password');
             $newUser->save();
@@ -105,6 +116,7 @@ class RelaxGamingServer {
             $user->balance = (string)((int)$tokenObj['balance']) / 100;
             $user->cashier_token = $tokenObj['cashiertoken'];
             $user->username = $tokenObj['username'];
+            $user->env = $this->env;
             $user->update();
             Auth::login($user, true);
             session()->put('relaxgaming-user', $user->email);

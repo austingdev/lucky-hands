@@ -81,7 +81,8 @@ namespace VanguardLTE
             'reward_bonus',
             'percent',
             'customer_id',
-            'cashier_token'
+            'cashier_token',
+            'env'
         ];
         protected $hidden = [
             'password', 

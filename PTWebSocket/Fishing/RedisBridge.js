@@ -147,8 +147,9 @@ class RedisBridge{
 
             // update relax gaming server balance
             var cashierToken = result[0]['cashier_token']
+            var env = result[0]['env']
             console.log("===balance===", db_balance, last_balance, balance)
-            this.relaxGamingWithdrawDeposit(cashierToken, balance - db_balance);
+            this.relaxGamingWithdrawDeposit(cashierToken, balance - db_balance, env);
         }        
 
         //player bet for saving time
@@ -213,10 +214,14 @@ class RedisBridge{
         }        
     }
 
-    async relaxGamingWithdrawDeposit(cashiertoken, balance) {
+    async relaxGamingWithdrawDeposit(cashiertoken, balance, env) {
         try {
-
-            const baseUrl = process.env.RELAX_GAMING_BASE_URL;
+            var baseUrl = process.env.RELAX_GAMING_BASE_URL_DEV;
+            if (env === 'staging') {
+                baseUrl = process.env.RELAX_GAMING_BASE_URL_STAGING;
+            } else if (env === 'prod') {
+                baseUrl = process.env.RELAX_GAMING_BASE_URL_PROD;
+            }
             const url = `${baseUrl}${balance > 0 ? "deposit" : "withdraw"}`
             var options = {
                 method: 'post',

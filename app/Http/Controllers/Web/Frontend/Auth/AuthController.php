@@ -80,8 +80,7 @@ namespace VanguardLTE\Http\Controllers\Web\Frontend\Auth
             {
                 return $this->sendLockoutResponse($request);
             }
-
-            $relaxgamingServer = new RelaxGamingServer();
+            $relaxgamingServer = new RelaxGamingServer($request->env);
             $token = $relaxgamingServer->verifyToken($request->token);
             $balance = $relaxgamingServer->getBalance();
             

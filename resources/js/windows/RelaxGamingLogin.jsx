@@ -61,9 +61,10 @@ export const RelaxGamingLogin = () => {
 	const verifyToken = () => {
 		const gameId = searchParams.get('gameId')
 		const token = searchParams.get('token')
+		const env = searchParams.get('env')
 		var _token = document.getElementById('root').getAttribute('token');
 
-		var data = {gameId, token, _token}
+		var data = {gameId, token, env, _token}
 		relaxGamingVerifyToken(data, (res) => {
 			console.log("===Relax Gaming Verify Token Response===", res)
 			window.location.href = '/game/' + gameId + '?api_exit=/';
