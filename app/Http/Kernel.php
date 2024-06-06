@@ -16,7 +16,7 @@ namespace VanguardLTE\Http
                 'Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse', 
                 'Illuminate\Session\Middleware\StartSession', 
                 'Illuminate\View\Middleware\ShareErrorsFromSession', 
-                'VanguardLTE\Http\Middleware\VerifyCsrfToken', 
+                // 'VanguardLTE\Http\Middleware\VerifyCsrfToken', 
                 'Illuminate\Routing\Middleware\SubstituteBindings', 
                 'VanguardLTE\Http\Middleware\SelectLanguage'
             ], 
