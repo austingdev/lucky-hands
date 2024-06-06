@@ -10,7 +10,7 @@ namespace VanguardLTE\Http\Middleware
             '/payment/btcpayserver/result', 
             '/sms/callback', 
             '/profile/contact',
-            // '/verifyRGToken'
+            '/verifyRGToken'
         ];
     }
 
