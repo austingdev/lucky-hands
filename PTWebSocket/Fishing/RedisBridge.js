@@ -148,8 +148,7 @@ class RedisBridge{
             // update relax gaming server balance
             var cashierToken = result[0]['cashier_token']
             var env = result[0]['env']
-            console.log("===balance===", db_balance, last_balance, balance, env)
-            this.relaxGamingWithdrawDeposit(cashierToken, balance - db_balance, env);
+            this.relaxGamingWithdrawDeposit(cashierToken, db_balance, env);
         }
 
         //player bet for saving time
@@ -214,7 +213,12 @@ class RedisBridge{
         }
     }
 
-    async relaxGamingWithdrawDeposit(cashiertoken, balance, env) {
+    getRelaxGamingBalance () {
+
+    }
+
+    async relaxGamingWithdrawDeposit(cashiertoken, db_balance, env) {
+        console.log("===relaxGamingWithdrawDeposit===", cashiertoken, db_balance, env)
         try {
             var baseUrl = process.env.RELAX_GAMING_BASE_URL_DEV;
             if (env === 'stage') {
@@ -222,25 +226,35 @@ class RedisBridge{
             } else if (env === 'prod') {
                 baseUrl = process.env.RELAX_GAMING_BASE_URL_PROD;
             }
-            const url = `${baseUrl}${balance > 0 ? "deposit" : "withdraw"}`
+            const urlGetBalance = `${baseUrl}getBalance`
             var options = {
                 method: 'post',
                 body: {
                     cashiertoken,
-                    amount: Math.abs(balance),
-                    txid: Date.now(),
                 },
                 json: true,
-                url,
+                url: urlGetBalance,
                 headers: {
                     "Content-Type": "application/json",
                 }
             }
 
-            console.log("===request===", options, cashiertoken, balance);
+            console.log("===get balance options===", options)
             request(options, function (err, res, body) {
-                console.log("===response===", err, body)
+                console.log("===get balance response===", err, body)
+                const deltaBalance = body.balance - db_balance * 100
+                const urlDepositWithdraw = `${baseUrl}${deltaBalance > 0 ? "withdraw" : "deposit"}`
+                options.url = urlDepositWithdraw
+                options.body.amount = Math.abs(deltaBalance)
+                options.body.txid = Date.now()
+
+                console.log("===withdraw/deposit options===", options);
+                request(options, function (err, res, body) {
+                    console.log("===withdraw/deposit response===", err, body)
+                });
             });
+
+            
         } catch(e) {
             console.log("***withdraw & deposit error***", e);
         }
