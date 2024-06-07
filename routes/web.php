@@ -1,6 +1,6 @@
 <?php
 
-use Illuminate\Support\Facades\Route;								 
+use Illuminate\Support\Facades\Route;
 // Route::namespace('Frontend')->middleware(['siteisclosed', 'checker'])->group(function () {
 Route::domain('games.'.config('app.domain'))->namespace('Frontend')->middleware(['siteisclosed','checker'])->group(function () {
 
@@ -31,7 +31,7 @@ Route::domain('games.'.config('app.domain'))->namespace('Frontend')->middleware(
         'as' => 'frontend.auth.signup.post',
         'uses' => 'Auth\AuthController@postSignup'
     ]);
-    
+
     Route::get('logout', [
         'as' => 'frontend.auth.logout',
         'uses' => 'Auth\AuthController@getLogout'
@@ -329,6 +329,17 @@ Route::domain('games.'.config('app.domain'))->namespace('Frontend')->middleware(
     ]);
     */
 
+    /**
+     *    this is what used to be inside the below categories route definition
+     * 'as' => 'frontend.game.list.category',
+     * 'uses' => 'GamesController@index'
+     */
+
+//    Route::get('categories/*', [
+//        'as' => 'frontend.auth.login',
+//        'uses' => 'Auth\AuthController@getLogin'
+//    ]);
+
     Route::get('categories/{category1}', [
         'as' => 'frontend.game.list.category',
         'uses' => 'GamesController@index'
@@ -343,26 +354,26 @@ Route::domain('games.'.config('app.domain'))->namespace('Frontend')->middleware(
         'as' => 'frontend.category.setpage',
         'uses' => 'GamesController@setpage'
     ]);
-    
+
     Route::get('game/{game}', [
         'as' => 'frontend.game.go',
         'uses' => 'GamesController@go'
-    ]);    
+    ]);
 
     Route::get('game/open/{game}', [
         'as' => 'frontend.game.go',
         'uses' => 'GamesController@directopen'
     ]);
-    
+
     Route::post('game/{game}/server', [
         'as' => 'frontend.game.server',
         'uses' => 'GamesController@server'
-    ]);    
-    
+    ]);
+
     Route::get('game/{game}/{prego}', [
         'as' => 'frontend.game.go.prego',
         'uses' => 'GamesController@go'
-    ]);	
+    ]);
 
     Route::get('/game_stat', [
         'as' => 'frontend.game_stat',
@@ -463,7 +474,7 @@ Route::domain('games.'.config('app.domain'))->namespace('Frontend')->middleware(
 
 Route::domain('admin.'.config('app.domain'))->middleware(['checker'])->group(function () {
 
-    Route::namespace('Backend')->group(function () {        
+    Route::namespace('Backend')->group(function () {
         Route::get('login', [
             'as' => 'backend.auth.login',
             'uses' => 'Auth\AuthController@getLogin'
@@ -486,7 +497,7 @@ Route::domain('admin.'.config('app.domain'))->middleware(['auth', 'checker'])->g
         /**
          * Dashboard
          */
-		 
+
     // TERMINAL
         Route::get('/terminal', 'TerminalController@index');
         Route::post('/terminal/create', 'TerminalController@craeteTerminal');
@@ -495,16 +506,16 @@ Route::domain('admin.'.config('app.domain'))->middleware(['auth', 'checker'])->g
         Route::post('/terminal/balance/add', 'TerminalController@balanceAdd');
         Route::post('/terminal/balance/out', 'TerminalController@balanceOut');
         Route::post('/terminal/ajax/pay-tickets', 'TerminalController@ajaxPayTickets');
-        
-    
+
+
         // ATM
         Route::get('/atm', 'AtmController@index');
         Route::get('/atm/create', 'AtmController@createNewAtm');
         Route::get('/atm/reset', 'AtmController@resetAtm');
         Route::get('/atm/status/{status}', 'AtmController@statusUpdate');
         Route::get('/atm/newkey/{api_id}', 'AtmController@newApiKey');
-        Route::get('/atm/delete/{id}/{api_id}', 'AtmController@deleteATM');		 
-		 
+        Route::get('/atm/delete/{id}/{api_id}', 'AtmController@deleteATM');
+
         Route::get('netpos', [
             'as' => 'netpos',
             'uses' => 'DashboardController@shopIndex',
@@ -545,7 +556,7 @@ Route::domain('admin.'.config('app.domain'))->middleware(['auth', 'checker'])->g
         //     'uses' => 'DashboardController@logs',
         //     //
         // ]);
-        
+
 
         Route::get('/search', [
             'as' => 'backend.search',
@@ -703,7 +714,7 @@ Route::domain('admin.'.config('app.domain'))->middleware(['auth', 'checker'])->g
             'as' => 'backend.user.list',
             'uses' => 'UsersController@index',
             'middleware' => 'permission:users.manage'
-        ]);        
+        ]);
 
         Route::get('search_user/', [
             'as' => 'backend.user.search',
@@ -729,7 +740,7 @@ Route::domain('admin.'.config('app.domain'))->middleware(['auth', 'checker'])->g
             'middleware' => 'permission:stats.pay',
         ]);
         */
-        
+
         Route::get('changePassword', [
             'uses' => 'UsersController@changePassword',
             'as' => 'backend.user.changepassword',
@@ -794,37 +805,37 @@ Route::domain('admin.'.config('app.domain'))->middleware(['auth', 'checker'])->g
 
         Route::get('user/history', [
             'as' => 'backend.user.player_history',
-            'uses' => 'UsersController@player_history',            
+            'uses' => 'UsersController@player_history',
         ]);
 
         Route::get('user/gamelogs', [
             'as' => 'backend.user.gamelogs',
-            'uses' => 'UsersController@gamelogs',            
+            'uses' => 'UsersController@gamelogs',
         ]);
 
         Route::get('user/transactions', [
             'as' => 'backend.user.transactions',
-            'uses' => 'UsersController@transactions',            
+            'uses' => 'UsersController@transactions',
         ]);
 
         Route::get('user/statistics', [
             'as' => 'backend.user.statistics',
-            'uses' => 'UsersController@statistics',            
+            'uses' => 'UsersController@statistics',
         ]);
 
         Route::get('jpg/jackpot_history', [
             'as' => 'backend.jpg.jackpot_history',
-            'uses' => 'JPGController@jackpot_history',            
+            'uses' => 'JPGController@jackpot_history',
         ]);
 
         Route::get('user/report', [
             'as' => 'backend.user.report',
-            'uses' => 'UsersController@report',            
+            'uses' => 'UsersController@report',
         ]);
 
         Route::get('user/daily_report', [
             'as' => 'backend.user.daily_report',
-            'uses' => 'UsersController@daily_report',            
+            'uses' => 'UsersController@daily_report',
         ]);
 
         Route::get('user/create', [
@@ -1042,7 +1053,7 @@ Route::domain('admin.'.config('app.domain'))->middleware(['auth', 'checker'])->g
             'as' => 'backend.game.switch',
             'uses' => 'GamesController@switch',
         ]);
-        
+
         /**
          * Categories routes
          */
@@ -1222,7 +1233,7 @@ Route::domain('admin.'.config('app.domain'))->middleware(['auth', 'checker'])->g
             'as' => 'backend.welcome_bonus.status',
             'uses' => 'WelcomeBonusController@status',
         ]);
-        
+
 
         /**
          * Info routes

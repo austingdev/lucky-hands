@@ -128,7 +128,11 @@ class RelaxGamingServer {
 
         $client = $this->getClient();
 
-        $cashiertoken = session()->get('relaxgaming-token')['cashiertoken'];
+        $cashierSession = session()->get('relaxgaming-token');
+        if (!isset($cashierSession)) {
+            return 0;
+        }
+        $cashiertoken = $cashierSession['cashiertoken'];
 
         try{
             $result = $client->request('POST', 'getBalance',

@@ -1,6 +1,7 @@
 import React from 'react';
 import {EE} from "./App";
-import {LoginWin} from "./windows/LoginWin";
+// import {LoginWin} from "./windows/LoginWin";
+import {LuckyHandLandingPage} from "./windows/LuckyHandLandingPage";
 import {RelaxGamingLogin} from "./windows/RelaxGamingLogin";
 import {RegWin} from "./windows/RegWin";
 import {NewPassWin} from "./windows/NewPassWin";
@@ -126,7 +127,7 @@ class TopWindows extends React.Component {
 				{(this.state.CURRENT_PAGE === PAGE_BONUS && <BonusWin onClose={this.onCloseAll}/> )}
 				{(this.state.CURRENT_PAGE === PAGE_REG && <RegWin onClose={this.onCloseAll}/> )}
 				{(this.state.CURRENT_PAGE === PAGE_FREE_PLAY && <FreePlayWin onClose={this.onCloseAll}/> )}
-				{(this.state.CURRENT_PAGE === PAGE_LOGIN && <LoginWin onClose={this.onCloseAll}/> )}
+				{(this.state.CURRENT_PAGE === PAGE_LOGIN && <LuckyHandLandingPage onClose={this.onCloseAll}/> )}
 				{(this.state.CURRENT_PAGE === SHOW_RELAXGAMING_LOGIN && <RelaxGamingLogin onClose={this.onCloseAll}/> )}
 				{(this.state.CURRENT_PAGE === SHOW_LUCKY && <LuckyWin onClose={this.onCloseAll}/> )}
 				{(this.state.CURRENT_PAGE === PAGE_CASHBACK && <CashbackWin amount={this.state.data} onClose={this.onCloseAll}/> )}

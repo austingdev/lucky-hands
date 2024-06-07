@@ -1,0 +1,35 @@
+.luckyhands-landing-page {
+    display: flex;
+    border-radius: 10px;
+    box-shadow: 0 0 30px rgba(0,0,0,.3);
+}
+.lh-gnome {
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    background-image: url('/images/back-pattern.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-bottom-left-radius: 10px;
+    border-top-left-radius: 10px;
+}
+.lh-text {
+    flex: 1.5;
+    color: #fff;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: #001F1E;
+    border-bottom-right-radius: 10px;
+    border-top-right-radius: 10px;
+}
+.lh-text h2 {
+    font-weight: bold;
+}
+.lh-grey-text {
+    color: #f5f5f56c;
+}

@@ -95,7 +95,7 @@ class App extends React.Component {
 
 	render () {
 		return (
-			<div>
+			<div style={{ backgroundColor: '#003629', display: 'flex', minHeight: '100vh', width:'100%', justifyContent: "center", alignItems: "center" }}>
 				<TopWindows/>
 				<div id="AppGame"/>
 			</div>

@@ -7,5 +7,5 @@
     "host_ws":"games.fishforfun.net",
     "prefix_ws":"wss://",
 
-    "ssl":true
+    "ssl":false
 }
