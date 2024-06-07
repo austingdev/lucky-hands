@@ -2,10 +2,10 @@
 
     "port":"22053/slots",
     
-    "host":"games.fishforfun.net",
+    "host":"fishgames.luckyhands.com",
     "prefix":"https://",
     
-    "host_ws":"games.fishforfun.net",
+    "host_ws":"fishgames.luckyhands.com",
     "prefix_ws":"wss://",
     
     "ssl":true
