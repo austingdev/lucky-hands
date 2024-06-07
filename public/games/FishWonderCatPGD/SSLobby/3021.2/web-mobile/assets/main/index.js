@@ -5773,7 +5773,7 @@ window.__require = function t(e, o, n) {
                 t.SetDefaultBanner = "[banner]_set_default_banner", t.ShowBanner = "[banner]_show_banner", t.SetEventBanner = "[banner]_set_event_banner", t.SaveBannerCmdData = "[banner]_save_banner_cmd_data", t.PushCurrentOpenEventName = "[banner]_push_current_open_event_name", t.BannerDataInit = "[banner]_banner_data_init", t.SetBannerFeature = "[banner]_set_banner_feature"
             }(r || (r = {})), o.Banner = r,
             function(t) {
-                t.BackToLobby = "[dock_function]_back_to_lobby", t.Sound = "[dock_function]_sound", t.Account = "[dock_function]_account", t.JPHistory = "[dock_function]_jp_history", t.GameHistory = "[dock_function]_game_history", t.Logout = "[dock_function]_logout", t.FullScreen = "[dock_function]_full_screen", t.News = "[dock_function]_news", t.Info = "[dock_function]_info", t.Open = "[dock_function]_open", t.Close = "[dock_function]_close", t.Custom = "[dock_function]_custom", t.Music = "[dock_function]_music"
+                t.Sound = "[dock_function]_sound", t.Account = "[dock_function]_account", t.JPHistory = "[dock_function]_jp_history", t.GameHistory = "[dock_function]_game_history", t.Logout = "[dock_function]_logout", t.FullScreen = "[dock_function]_full_screen", t.News = "[dock_function]_news", t.Info = "[dock_function]_info", t.Open = "[dock_function]_open", t.Close = "[dock_function]_close", t.Custom = "[dock_function]_custom", t.Music = "[dock_function]_music"
             }(s || (s = {})), o.DockFunction = s,
             function(t) {
                 t.SetDisableMenuButton = "[menu]_set_disable_menu_button", t.SetMenuStatus = "[menu]_set_menu_status", t.SetDockButton = "[menu]_set_dock_button", t.SetDockButtonNew = "[menu]_set_dock_button_new", t.OpenDock = "[menu]_open_dock", t.CloseDock = "[menu]_close_dock", t.SetSwitch = "[menu]_set_switch"
@@ -9956,7 +9956,7 @@ window.__require = function t(e, o, n) {
                     this.NumAnimWinning.node.active = false;
                     this.NumAnimWinning.node.parent.children[1].active = false;
                     this.BtnPurchase.node.active = false;
-               
+
                     this.isEnableAuto = !1, this.NodeTeachPanel.active = !1, this.BtnBetUp.node.on(cc.Node.EventType.TOUCH_START, this.PressAddBtn, this), this.BtnBetUp.node.on(cc.Node.EventType.TOUCH_END, this.ReleaseAddBtn, this), this.BtnBetUp.node.on(cc.Node.EventType.TOUCH_CANCEL, this.ReleaseAddBtn, this), this.BtnBetDown.node.on(cc.Node.EventType.TOUCH_START, this.PressMinusBtn, this), this.BtnBetDown.node.on(cc.Node.EventType.TOUCH_END, this.ReleaseMinusBtn, this), this.BtnBetDown.node.on(cc.Node.EventType.TOUCH_CANCEL, this.ReleaseMinusBtn, this), this.ChangeWeaponNode.on(cc.Node.EventType.TOUCH_START, this.ClickChangeWeapon, this), this.ChangeWeaponNode.on(cc.Node.EventType.TOUCH_MOVE, this.ClickChangeWeapon, this)
                 }, e.prototype.mouseMove = function(t) {
                     this.MouseMark && this.MouseMark.node.setPosition(t.getLocation().sub(m.default.Instance.halfDiagonal))
@@ -13638,10 +13638,10 @@ window.__require = function t(e, o, n) {
                         this.m_EBUser_ID.string = e;
                         this.m_EBUser_PW.string = n;
                         var _slf=this;
-                        setTimeout(function(){								
+                        setTimeout(function(){
                             _slf.OnClickLogin();
-                        },200);                        
-                    }  
+                        },200);
+                    }
                 }, e.prototype.InitMgr = function(t) {
                     console.warn("[LoginMgr] InitMgr : ori = " + t + ", \u662f\u5426\u652f\u63f4\u76f4\u7248 = " + this.m_isHaveVerticalUI), this.m_isHaveVerticalUI && this.SetScreenOrientation(t, !0)
                 }, e.prototype.InitUIField = function() {
@@ -13709,7 +13709,7 @@ window.__require = function t(e, o, n) {
                 }, e.prototype.onLoginSuccess = function() {
                     a.ConnectPanelMgr.Instance.DisableConnectPanel();
                     SS.Common.GameEnvironment.CurrentGameNow = "FishWonderCat";
-                    
+
                     var prefix = window.location.protocol + '//' + window.location.host;
                     cc.assetManager.loadBundle(prefix + '/games/FishWonderCatPGD/Bundle/FishHunter/3021.0',(err,bundle) => {
                     });

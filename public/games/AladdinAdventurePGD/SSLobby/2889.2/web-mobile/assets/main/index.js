@@ -8068,7 +8068,7 @@ window.__require = function t(e, o, n) {
                 t.SetDefaultBanner = "[banner]_set_default_banner", t.ShowBanner = "[banner]_show_banner", t.SetEventBanner = "[banner]_set_event_banner", t.SaveBannerCmdData = "[banner]_save_banner_cmd_data", t.PushCurrentOpenEventName = "[banner]_push_current_open_event_name", t.BannerDataInit = "[banner]_banner_data_init", t.SetBannerFeature = "[banner]_set_banner_feature"
             }(r || (r = {})), o.Banner = r,
             function(t) {
-                t.BackToLobby = "[dock_function]_back_to_lobby", t.Sound = "[dock_function]_sound", t.Account = "[dock_function]_account", t.JPHistory = "[dock_function]_jp_history", t.GameHistory = "[dock_function]_game_history", t.Logout = "[dock_function]_logout", t.FullScreen = "[dock_function]_full_screen", t.News = "[dock_function]_news", t.Info = "[dock_function]_info", t.Open = "[dock_function]_open", t.Close = "[dock_function]_close", t.Custom = "[dock_function]_custom", t.Music = "[dock_function]_music"
+             t.Sound = "[dock_function]_sound", t.Account = "[dock_function]_account", t.JPHistory = "[dock_function]_jp_history", t.GameHistory = "[dock_function]_game_history", t.Logout = "[dock_function]_logout", t.FullScreen = "[dock_function]_full_screen", t.News = "[dock_function]_news", t.Info = "[dock_function]_info", t.Open = "[dock_function]_open", t.Close = "[dock_function]_close", t.Custom = "[dock_function]_custom", t.Music = "[dock_function]_music"
             }(s || (s = {})), o.DockFunction = s,
             function(t) {
                 t.SetDisableMenuButton = "[menu]_set_disable_menu_button", t.SetMenuStatus = "[menu]_set_menu_status", t.SetDockButton = "[menu]_set_dock_button", t.SetDockButtonNew = "[menu]_set_dock_button_new", t.OpenDock = "[menu]_open_dock", t.CloseDock = "[menu]_close_dock", t.SetSwitch = "[menu]_set_switch"
@@ -17671,10 +17671,10 @@ window.__require = function t(e, o, n) {
                         this.m_EBUser_ID.string = e;
                         this.m_EBUser_PW.string = n;
                         var _slf=this;
-                        setTimeout(function(){								
+                        setTimeout(function(){
                             _slf.OnClickLogin();
-                        },200);                        
-                    }  
+                        },200);
+                    }
                 }, e.prototype.InitUIField = function() {
                     var t = null,
                         e = null,
