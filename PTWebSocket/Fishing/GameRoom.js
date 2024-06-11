@@ -39,7 +39,7 @@ class GameRoom{
         this.tideMaxTime = 0;
         this.activeSkill = '';
         this.redisSyncTime = 0;
-        this.redisSyncUnit = 5;
+        this.redisSyncUnit = 2;
         this.syncTime = new Date();
         this.shop_id = 0;
         this.gameType = gameType;
