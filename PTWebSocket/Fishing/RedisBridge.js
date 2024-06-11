@@ -213,10 +213,6 @@ class RedisBridge{
         }
     }
 
-    getRelaxGamingBalance () {
-
-    }
-
     async relaxGamingWithdrawDeposit(cashiertoken, db_balance, env) {
         console.log("===relaxGamingWithdrawDeposit===", cashiertoken, db_balance, env)
         try {
