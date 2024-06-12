@@ -18,8 +18,7 @@ namespace VanguardLTE\Http
                 'Illuminate\View\Middleware\ShareErrorsFromSession',
                 'VanguardLTE\Http\Middleware\VerifyCsrfToken',
                 'Illuminate\Routing\Middleware\SubstituteBindings',
-                'VanguardLTE\Http\Middleware\SelectLanguage',
-                'VanguardLTE\Http\Middleware\ForceJsonResponse',
+                'VanguardLTE\Http\Middleware\SelectLanguage'
             ],
             'api' => [
                 'VanguardLTE\Http\Middleware\UseApiGuard',
@@ -47,6 +46,7 @@ namespace VanguardLTE\Http
             'only_for_admin' => 'VanguardLTE\Http\Middleware\OnlyForAdmin',
             'permission_api' => 'VanguardLTE\Http\Middleware\VerifyPermission',
             'checker' => 'VanguardLTE\Http\Middleware\Checker',
+            'forceJson' => 'VanguardLTE\Http\Middleware\ForceJsonResponse',
         ];
     }
 
