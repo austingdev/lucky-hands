@@ -185,7 +185,8 @@ namespace VanguardLTE\Http\Controllers\Web\Frontend
             $gameDataJson = base64_encode(json_encode($gameData));
             // Auth::logout();
             // redirect()->route('frontend.auth.login');
-            return '<div style="background-color: blue">Test</div>'; // view('frontend.' . $frontend . '.games.list', compact('games', 'user', 'category1', 'cat1', 'categories', 'currentSliderNum', 'title', 'body', 'keywords', 'description', 'jpgs', 'shop', 'devices', 'tournament', 'is_game_page', 'jpgSum'));
+            // '<div style="background-color: blue">Test</div>';
+            return  view('frontend.' . $frontend . '.games.list', compact('games', 'user', 'category1', 'cat1', 'categories', 'currentSliderNum', 'title', 'body', 'keywords', 'description', 'jpgs', 'shop', 'devices', 'tournament', 'is_game_page', 'jpgSum'));
         }
 
         public function index_hub(\Illuminate\Http\Request $request, \VanguardLTE\Repositories\Session\SessionRepository $sessionRepository)
