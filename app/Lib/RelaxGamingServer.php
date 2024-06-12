@@ -113,7 +113,7 @@ class RelaxGamingServer {
             ]);
             session()->put('relaxgaming-user', $newUser->email);
             Auth::login($newUser, true);
-            event(new \VanguardLTE\Events\User\LoggedIn());
+//            event(new \VanguardLTE\Events\User\LoggedIn());
         } else {
             $user->balance = (string)((int)$tokenObj['balance']) / 100;
             $user->cashier_token = $tokenObj['cashiertoken'];
@@ -122,7 +122,7 @@ class RelaxGamingServer {
             $user->update();
             Auth::login($user, true);
             session()->put('relaxgaming-user', $user->email);
-            event(new \VanguardLTE\Events\User\LoggedIn());
+//            event(new \VanguardLTE\Events\User\LoggedIn());
         }
     }
 
