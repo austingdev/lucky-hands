@@ -921,7 +921,7 @@
 		        }
 		    },
 				@php
-					
+
 				@endphp
 		    "jackpot-elem3": {
 		        currentValue: {{$jpgs[2]->balance}},
@@ -962,7 +962,7 @@ $(document).ready(function(){
 	$('[data-category="all"]').click();
 });
 @if (request()->category1 != "all")
-window.location.href = "/categories/all";
+window.location.href = "/login";
 @endif
 </script>
 
