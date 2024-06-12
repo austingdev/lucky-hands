@@ -61,10 +61,13 @@ function queryPost(q, par, callback) {
 
     $.ajax({
         type: 'POST',
-        contentType: 'application/json',
         dataType: 'json',
         data: JSON.stringify(par),
-        url: q
+        url: q,
+        headers: {
+            Accept: 'application/json',
+            "Content-Type": "application/json"
+        }
     }).done(function( data ) {
 			if(data.error) {
 				EE.emit('SHOW_ERROR', {text: data.error});
