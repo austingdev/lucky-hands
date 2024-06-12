@@ -59,16 +59,8 @@ function query(q, par, callback) {
 function queryPost(q, par, callback) {
 	console.log( "post query::: ", q, par);
 
-    $.ajax({
-        type: 'POST',
-        dataType: 'json',
-        data: JSON.stringify(par),
-        url: q,
-        headers: {
-            Accept: 'application/json',
-            "Content-Type": "application/json"
-        }
-    }).done(function( data ) {
+	$.post(q, par)
+		.done(function( data ) {
 			if(data.error) {
 				EE.emit('SHOW_ERROR', {text: data.error});
 				return;
@@ -76,8 +68,7 @@ function queryPost(q, par, callback) {
 			// console.log( "query result! ", data);
 			callback(data);
 		})
-		.fail((error) => {
-            console.log(error);
+		.fail(() => {
 			console.log( "GET DATA ERROR! ", q );
 			EE.emit('SHOW_ERROR', {text: "Query error. Try again later"});
 		})
