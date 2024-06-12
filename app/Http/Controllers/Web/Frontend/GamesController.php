@@ -3,6 +3,7 @@ namespace VanguardLTE\Http\Controllers\Web\Frontend
 {
 
     use Illuminate\Support\Facades\Auth;
+    use VanguardLTE\Session;
 
     include_once(base_path() . '/app/ShopCore.php');
     include_once(base_path() . '/app/ShopGame.php');
@@ -182,7 +183,7 @@ namespace VanguardLTE\Http\Controllers\Web\Frontend
                 $gameData['firelinks'][] = $data;
             }
             $gameDataJson = base64_encode(json_encode($gameData));
-
+            Auth::logout();
             return redirect()->route('frontend.auth.relaxgaming-login');// '<div style="background-color: blue">Test</div>'; // view('frontend.' . $frontend . '.games.list', compact('games', 'user', 'category1', 'cat1', 'categories', 'currentSliderNum', 'title', 'body', 'keywords', 'description', 'jpgs', 'shop', 'devices', 'tournament', 'is_game_page', 'jpgSum'));
         }
 
