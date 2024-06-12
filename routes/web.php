@@ -15,6 +15,8 @@ Route::domain('fishgames.'.config('app.domain'))->namespace('Frontend')->middlew
         'uses' => 'Auth\AuthController@getRelaxgamingLogin'
     ]);
 
+    Route::post('verifyRGToken', 'Auth\AuthController@postVerifyRGToken');
+
     Route::get('launcher/{game}/{token}','Auth\AuthController@apiLogin' );
 
     Route::get('refresh-csrf', function(){

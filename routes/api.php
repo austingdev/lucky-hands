@@ -12,5 +12,3 @@ Route::post('info', 'Jackpots\JackpotsController@jackpot_status');
 Route::post('changePassword', 'Users\UsersController@changePassword');
 Route::post('reward', 'Users\UsersController@getReward');
 Route::post('signup', 'Users\UsersController@player_store');
-
-Route::post('verifyRGToken', 'Auth\AuthController@postVerifyRGToken');
