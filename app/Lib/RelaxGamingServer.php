@@ -38,7 +38,7 @@ class RelaxGamingServer {
 
     public function verifyToken($token){
         // We need to clear any existing information about a user before continuing
-        // Auth::logout();
+         Auth::logout();
         $client = $this->getClient();
 
         try{
@@ -112,17 +112,15 @@ class RelaxGamingServer {
                 'user_id' => $newUser->id
             ]);
             session()->put('relaxgaming-user', $newUser->email);
-//            Auth::login($newUser, true);
-//            event(new \VanguardLTE\Events\User\LoggedIn());
+            Auth::login($newUser, true);
         } else {
             $user->balance = (string)((int)$tokenObj['balance']) / 100;
             $user->cashier_token = $tokenObj['cashiertoken'];
             $user->username = $tokenObj['username'];
             $user->env = $this->env;
             $user->update();
-//            Auth::login($user, true);
+            Auth::login($user, true);
             session()->put('relaxgaming-user', $user->email);
-//            event(new \VanguardLTE\Events\User\LoggedIn());
         }
     }
 
