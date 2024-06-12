@@ -59,7 +59,13 @@ function query(q, par, callback) {
 function queryPost(q, par, callback) {
 	console.log( "post query::: ", q, par);
 
-	$.post(q, par)
+	$.ajax({
+        url: q,
+        data: JSON.stringify(par),
+        type: "POST",
+        dataType: "json",
+        contentType: "application/json; charset=utf-8"
+    })
 		.done(function( data ) {
 			if(data.error) {
 				EE.emit('SHOW_ERROR', {text: data.error});
@@ -77,7 +83,7 @@ function queryPost(q, par, callback) {
 export function signIn(us, pas, callback) {
 	User.username = us;
 	User.ps = pas;
-	
+
 	queryPost(Q_LOGIN, {
 		username: us,
 		password: pas
@@ -87,13 +93,13 @@ export function signIn(us, pas, callback) {
 	});
 }
 
-export function signUp(data, callback) {	
-	queryPost(Q_SIGNUP, data, (e)=>{		
+export function signUp(data, callback) {
+	queryPost(Q_SIGNUP, data, (e)=>{
 		callback(e);
 	});
 }
 
-export function relaxGamingVerifyToken(data, callback) {	
+export function relaxGamingVerifyToken(data, callback) {
 	queryPost(Q_RG_LOGIN, data, callback);
 }
 
@@ -104,18 +110,18 @@ export function post(path, params, method='post') {
 	const form = document.createElement('form');
 	form.method = method;
 	form.action = path;
-  
+
 	for (const key in params) {
 	  if (params.hasOwnProperty(key)) {
 		const hiddenField = document.createElement('input');
 		hiddenField.type = 'hidden';
 		hiddenField.name = key;
 		hiddenField.value = params[key];
-  
+
 		form.appendChild(hiddenField);
 	  }
 	}
-  
+
 	document.body.appendChild(form);
 	form.submit();
 }
