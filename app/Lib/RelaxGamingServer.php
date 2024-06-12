@@ -37,6 +37,8 @@ class RelaxGamingServer {
     }
 
     public function verifyToken($token){
+        // We need to clear any existing information about a user before continuing
+        Auth::logout();
         $client = $this->getClient();
 
         try{
