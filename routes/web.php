@@ -452,9 +452,8 @@ Route::domain('fishgames.'.config('app.domain'))->namespace('Frontend')->middlew
     ]);
 
     Route::get('/gamelist', [
-        'as' => 'gamelist',
-        // 'uses' => 'GamesController@list'
-        'uses' => 'GamesController@migration_list'
+        'as' => 'frontend.auth.login',
+        'uses' => 'Auth\AuthController@getLogin'
     ]);
 
     Route::get('reward', 'PagesController@getReward');

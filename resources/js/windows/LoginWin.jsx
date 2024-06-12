@@ -61,7 +61,7 @@ export class LoginWin extends React.Component {
 		var mem_password = '';
 		if(remember == undefined)
 		{
-			window.localStorage.setItem('is_remember', 1);			
+			window.localStorage.setItem('is_remember', 1);
 		}
 		else
 		{
@@ -147,10 +147,6 @@ export class LoginWin extends React.Component {
 		return (
 			<div className="modal-window-login">
 				<div className="modal-window-login__scale-cont">
-					<div className="modal-window-login__logo">
-						<img className="modal-window-login__logo1" src="" id={"logo-login"} alt=""/>
-						<img className="modal-window-login__logo2" src="/images/fish/login/logo_text.png" alt=""/>
-					</div>
 					<div className="modal-window-login__down">
 						<input id='username' className="modal-window-login__text-id modal-window-login__fields" type="text" onInput={this.onInput}/>
 						<input id='password' className="modal-window-login__text-pass modal-window-login__fields" type="password" onInput={this.onInput}/>

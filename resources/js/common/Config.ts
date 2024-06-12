@@ -13,7 +13,6 @@ export let listImages: string[] = [
 	"/images/fish/down_c.png",
 	"/images/fish/down_l.png",
 	"/images/fish/down_r.png",
-	"/images/fish/logo.png",
 	"/images/fish/menu0-1.png",
 	"/images/fish/menu0-2.png",
 	"/images/fish/menu1-1.png",
