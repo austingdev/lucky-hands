@@ -14,7 +14,6 @@ Route::domain('fishgames.'.config('app.domain'))->namespace('Frontend')->middlew
         'as' => 'frontend.auth.relaxgaming-login',
         'uses' => 'Auth\AuthController@getRelaxgamingLogin'
     ]);
-    Route::post('verifyRGToken', 'Auth\AuthController@postVerifyRGToken');
 
     Route::get('launcher/{game}/{token}','Auth\AuthController@apiLogin' );
 
