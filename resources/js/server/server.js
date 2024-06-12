@@ -74,7 +74,8 @@ function queryPost(q, par, callback) {
 			// console.log( "query result! ", data);
 			callback(data);
 		})
-		.fail(() => {
+		.fail((error) => {
+            console.error(error);
 			console.log( "GET DATA ERROR! ", q );
 			EE.emit('SHOW_ERROR', {text: "Query error. Try again later"});
 		})
