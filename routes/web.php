@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 // Route::namespace('Frontend')->middleware(['siteisclosed', 'checker'])->group(function () {
-Route::domain('fishgames.'.config('app.domain'))->namespace('Frontend')->middleware(['siteisclosed', 'forceJson'])->group(function () {
+Route::domain('fishgames.'.config('app.domain'))->namespace('Frontend')->middleware(['siteisclosed'])->group(function () {
 
 
     Route::get('login', [

@@ -17,6 +17,7 @@ namespace VanguardLTE\Http\Controllers\Web\Frontend\Auth
                     'getLogout',
                     'apiLogin',
                     'getRelaxgamingLogin',
+                    'postVerifyRGToken'
                 ]
             ]);
             $this->middleware('auth', [

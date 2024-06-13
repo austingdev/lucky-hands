@@ -46,7 +46,6 @@ namespace VanguardLTE\Http
             'only_for_admin' => 'VanguardLTE\Http\Middleware\OnlyForAdmin',
             'permission_api' => 'VanguardLTE\Http\Middleware\VerifyPermission',
             'checker' => 'VanguardLTE\Http\Middleware\Checker',
-            'forceJson' => 'VanguardLTE\Http\Middleware\ForceJsonResponse',
         ];
     }
 
