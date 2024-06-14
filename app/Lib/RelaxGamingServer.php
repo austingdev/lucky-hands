@@ -103,12 +103,12 @@ class RelaxGamingServer {
                 'env' => $this->env
             ]);
             $newUser->setPasswordAttribute('password');
+            $newUser->save();
             $newUser->attachRole($role);
             if ($tokenObj['balance'] > 0) {
                 $newUser->balance = (string)((int)$tokenObj['balance']) / 100;
                 $newUser->currency = $tokenObj['customercurrency'];
             }
-            $newUser->save();
             // Assign the user to the demo shop
             \VanguardLTE\ShopUser::create([
                 'shop_id' => $shop->id,
