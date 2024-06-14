@@ -14,11 +14,21 @@ export const RelaxGamingLogin = () => {
 
     useEffect(() => {
         const searchParams = new URLSearchParams(window.location.search);
+        const gameId = searchParams.get("gameId");
+
         setSearchParams({
-            gameId: searchParams.get("gameId"),
+            gameId,
             token: searchParams.get("token"),
             env: searchParams.get("env"),
         });
+
+        if (gameId) {
+            document.getElementById(
+                "loading_popup_image"
+            ).style.backgroundImage = `url('/images/splash-screen--${searchParams.get(
+                "gameId"
+            )}.jpg')`;
+        }
     }, [window.location.search]);
 
     useEffect(() => {
@@ -43,13 +53,10 @@ export const RelaxGamingLogin = () => {
     }, [searchParams]);
 
     return (
-        <div class="popup" id="loading_popup">
+        <div className="popup" id="loading_popup">
             <div
                 id="loading_popup_image"
-                style={{
-                    backgroundImage: `url('/images/splash-screen--${searchParams.gameId}.jpg')`,
-                    backgroundColor: "#cccccc",
-                }}
+                style={{ backgroundColor: "#cccccc" }}
             >
                 <div id="gameLoadingBack">
                     <div id="gameLoadingProgress"></div>
