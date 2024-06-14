@@ -25,11 +25,11 @@ export class HubDown extends PIXI.Sprite{
 		super();
 		//
 		this.cont = this.addChild(new PIXI.Sprite());
-		this.dback = this.cont.addChild(new PIXI.Sprite(PIXI.Texture.from("/images/fish/down_c.png")));
-		this.back_l = this.cont.addChild(new PIXI.Sprite(PIXI.Texture.from("/images/fish/down_l.png")));
-		this.back_ll = this.cont.addChild(new PIXI.Sprite(PIXI.Texture.from("/images/fish/down_ll.png")));
-		this.back_r = this.cont.addChild(new PIXI.Sprite(PIXI.Texture.from("/images/fish/down_r.png")));
-		this.back_rr = this.cont.addChild(new PIXI.Sprite(PIXI.Texture.from("/images/fish/down_rr.png")));
+		// this.dback = this.cont.addChild(new PIXI.Sprite(PIXI.Texture.from("/images/fish/down_c.png")));
+		// this.back_l = this.cont.addChild(new PIXI.Sprite(PIXI.Texture.from("/images/fish/down_l.png")));
+		// this.back_ll = this.cont.addChild(new PIXI.Sprite(PIXI.Texture.from("/images/fish/down_ll.png")));
+		// this.back_r = this.cont.addChild(new PIXI.Sprite(PIXI.Texture.from("/images/fish/down_r.png")));
+		// this.back_rr = this.cont.addChild(new PIXI.Sprite(PIXI.Texture.from("/images/fish/down_rr.png")));
 
 
 		this.dback.addChild(new SliderControl());
@@ -201,7 +201,7 @@ class WheelButton extends PIXI.Sprite{
 		time.x = 140 - (time.width/2);
 		time.y = 137;
 		//
-		
+
 		this.tim = setInterval(()=>{
 			var next_bonus_time = BonusWheelData.bonus_time;
 			if(next_bonus_time != '')
