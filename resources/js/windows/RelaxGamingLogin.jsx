@@ -7,32 +7,40 @@ import { post, relaxGamingVerifyToken } from "../server/server";
 export const RelaxGamingLogin = () => {
     const [searchParams, setSearchParams] = useState({});
 
+    const updateParams = () => {
+        const searchParams = new URLSearchParams(window.location.search);
+        const paramsObj = {};
+        searchParams.forEach((value, key) => {
+            paramsObj[key] = value;
+        });
+        setSearchParams(paramsObj);
+    };
+
     useEffect(() => {
         EE.addListener("RESIZE", onResize);
         EE.emit("FORCE_RESIZE");
+
+        updateParams();
+
+        // Listen for URL changes
+        window.addEventListener("popstate", updateParams);
+
+        // Cleanup the event listener on component unmount
+        return () => {
+            window.removeEventListener("popstate", updateParams);
+        };
     }, []);
 
     useEffect(() => {
-        const searchParams = new URLSearchParams(window.location.search);
-        const gameId = searchParams.get("gameId");
-
-        setSearchParams({
-            gameId,
-            token: searchParams.get("token"),
-            env: searchParams.get("env"),
-        });
-
-        if (gameId) {
+        if (searchParams.gameId) {
             document.getElementById(
                 "loading_popup_image"
-            ).style.backgroundImage = `url('/images/splash-screen--${searchParams.get(
-                "gameId"
-            )}.jpg')`;
+            ).style.backgroundImage = `url('/images/splash-screen--${searchParams.gameId}.jpg')`;
         }
-    }, [window.location.search]);
 
-    useEffect(() => {
-        searchParams?.token && verifyToken();
+        if (searchParams?.token) {
+            verifyToken();
+        }
     }, [searchParams]);
 
     const onResize = (data) => {
@@ -56,7 +64,7 @@ export const RelaxGamingLogin = () => {
         <div className="popup" id="loading_popup">
             <div
                 id="loading_popup_image"
-                style={{ backgroundColor: "#cccccc" }}
+                style={{ backgroundColor: "#000000" }}
             >
                 <div id="gameLoadingBack">
                     <div id="gameLoadingProgress"></div>
