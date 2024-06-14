@@ -81,7 +81,9 @@ class RelaxGamingServer {
     }
 
     public function handleUserConversion($tokenObj) {
-        $user = \VanguardLTE\User::where('customer_id', '=', $tokenObj['customerid'])->first();
+        $customerId = explode('_', $tokenObj['customerid'])[0];
+        $user = \VanguardLTE\User::where('customer_id', '=', $customerId)->first();
+        
         if (!$user) {
             $shop = \VanguardLTE\Shop::where('name', 'main_shop')->first();
             $mainShop = \VanguardLTE\User::where('username', 'main_shop')->first();
@@ -93,7 +95,7 @@ class RelaxGamingServer {
                 'role_id' => $role->id,
                 'status' => 'Active',
                 'created_at' => time(),
-                'customer_id' => $tokenObj['customerid'],
+                'customer_id' => $customerId,
                 'cashier_token' => $tokenObj['cashiertoken'],
                 'shop_id' => $shop->id,
                 'parent_id' => $mainShop->id,
@@ -101,11 +103,12 @@ class RelaxGamingServer {
                 'env' => $this->env
             ]);
             $newUser->setPasswordAttribute('password');
-            $newUser->save();
             $newUser->attachRole($role);
             if ($tokenObj['balance'] > 0) {
                 $newUser->balance = (string)((int)$tokenObj['balance']) / 100;
+                $newUser->currency = $tokenObj['customercurrency'];
             }
+            $newUser->save();
             // Assign the user to the demo shop
             \VanguardLTE\ShopUser::create([
                 'shop_id' => $shop->id,
@@ -115,6 +118,7 @@ class RelaxGamingServer {
             Auth::login($newUser, true);
         } else {
             $user->balance = (string)((int)$tokenObj['balance']) / 100;
+            $user->currency = $tokenObj['customercurrency'];
             $user->cashier_token = $tokenObj['cashiertoken'];
             $user->username = $tokenObj['username'];
             $user->env = $this->env;
