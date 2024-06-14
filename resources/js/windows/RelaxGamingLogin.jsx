@@ -8,6 +8,7 @@ export const RelaxGamingLogin = () => {
     const [searchParams, setSearchParams] = useState({});
 
     const updateParams = () => {
+        console.log("==window.location.search===", window.location.search)
         const searchParams = new URLSearchParams(window.location.search);
         const paramsObj = {};
         searchParams.forEach((value, key) => {
@@ -23,11 +24,15 @@ export const RelaxGamingLogin = () => {
         updateParams();
 
         // Listen for URL changes
-        window.addEventListener("popstate", updateParams);
+        window.addEventListener('popstate', updateParams);
+        window.addEventListener('hashchange', updateParams);
+        window.addEventListener('load', updateParams);
 
         // Cleanup the event listener on component unmount
         return () => {
-            window.removeEventListener("popstate", updateParams);
+            window.removeEventListener('popstate', updateParams);
+            window.removeEventListener('hashchange', updateParams);
+            window.removeEventListener('load', updateParams);
         };
     }, []);
 
@@ -56,7 +61,7 @@ export const RelaxGamingLogin = () => {
         var data = { gameId, token, env, _token };
         relaxGamingVerifyToken(data, (res) => {
             console.log("===Relax Gaming Verify Token Response===", res);
-            window.location.href = "/game/" + gameId + "?api_exit=/";
+            // window.location.href = "/game/" + gameId + "?api_exit=/";
         });
     }, [searchParams]);
 
