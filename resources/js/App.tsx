@@ -106,7 +106,8 @@ class App extends React.Component {
                     width: "100%",
                     justifyContent: "center",
                     alignItems: "center",
-										backgroundImage: "url('/images/background--default.jpg')"
+                    backgroundSize: 'cover',
+                    backgroundImage: "url('/images/background--default.jpg')"
                 }}
             >
                 <TopWindows />
