@@ -1,10 +1,10 @@
 import * as PIXI from "pixi.js";
 import { EE } from "../../../App";
-import { FlashObject } from "./FlashObject";
-import {SliderControl} from "./SliderControl";
-import {Buttons} from "./Buttons";
-import { convertTimeToStr, isSafari } from "../../../common/Utils";
-import { BonusWheelData } from "../../../server/server";
+// import { FlashObject } from "./FlashObject";
+// import {SliderControl} from "./SliderControl";
+// import {Buttons} from "./Buttons";
+// import { convertTimeToStr, isSafari } from "../../../common/Utils";
+// import { BonusWheelData } from "../../../server/server";
 
 export class HubDown extends PIXI.Sprite{
 	// cont:PIXI.Sprite = new PIXI.Sprite();
@@ -60,7 +60,7 @@ export class HubDown extends PIXI.Sprite{
 		EE.emit('FORCE_RESIZE');
 	}
 
-	onResize(data:any) {
+	onResize(_data:any) {
 		// this.user.y = (data.h/data.scale) - 150;
 		// this.wheel.y = (data.h/data.scale) - 169;
 		// this.dback.x = (data.w/data.scale)/2 - 331;
@@ -85,151 +85,151 @@ export class HubDown extends PIXI.Sprite{
 
 }
 
-class UserBlock extends PIXI.Sprite{
-	cont:PIXI.Sprite;
-	animate:PIXI.AnimatedSprite;
-	moneyuser: PIXI.Text;
-	constructor() {
-		super();
-		const styletext = new PIXI.TextStyle({
-			fontFamily: "Patua One",
-			fontSize: "22px",
-			fill: [
-				"#ffffff",
-				"#FCD13D",
-				],
-			dropShadow: true,
-			dropShadowBlur: 1,
-			dropShadowColor: "#A76520",
-			dropShadowDistance: 3,
-			align: "center",
-
-		});
-
-		const styletext2 = new PIXI.TextStyle({
-			fontFamily: "Roboto",
-			fontSize: "28px",
-			fill: [
-				"#ffffff",
-				"#37D8FC",
-			],
-			dropShadow: true,
-			dropShadowBlur: 2,
-			dropShadowColor: "#000000",
-			dropShadowDistance: 2,
-			align: "center",
-			fontWeight: "600"
-		});
-		//
-		this.cont = this.addChild(new PIXI.Sprite());
-		//
-		const json0 = PIXI.Loader.shared.resources["/images/fish/anim/glow3.json"].spritesheet;
-		const array0:any = [];
-		if(json0) {
-			Object.keys(json0.textures).sort().forEach((key) => {
-				array0.push(json0.textures[key]);
-			});
-		}
-
-		this.animate = new PIXI.AnimatedSprite(array0);
-		this.animate.animationSpeed = 0.3;
-		this.animate.loop = true;
-		this.animate.y = -52;
-		this.animate.x = -14;
-		this.animate.scale.set(0.9);
-		this.cont.addChild(this.animate);
-		this.animate.gotoAndPlay(1);
-		//
-		this.cont.addChild(new PIXI.Sprite(PIXI.Texture.from("/images/fish/user.png")));
-		//
-		var username:string = document.getElementById('root')?.getAttribute('username')!;
-		const nameuser = this.cont.addChild(new PIXI.Text(username, styletext));
-		nameuser.x = 90 - (nameuser.width/2);
-		nameuser.y = 77;
-
-		var balance:string = document.getElementById('root')?.getAttribute('balance')!;
-		this.moneyuser = this.cont.addChild(new PIXI.Text(balance, styletext2));
-		this.moneyuser.x = 95 - (this.moneyuser.width/2);
-		this.moneyuser.y = 102;
-		//
-		this.cont.interactive = true;
-		this.cont.buttonMode = true;
-		this.cont.on('pointerdown', ()=>{
-			EE.emit('SHOW_INFO');
-		})
-	}
-
-}
-class WheelButton extends PIXI.Sprite{
-	cont:PIXI.Sprite;
-	tim:any = 0;
-	constructor() {
-		super();
-		//
-		const styletext = new PIXI.TextStyle({
-			fontFamily: "Roboto",
-			fontSize: "26px",
-			fontWeight: "bold",
-			fill: [
-				"#ECFCFF",
-				"#2ED6FC",
-			],
-			dropShadow: true,
-			dropShadowBlur: 1,
-			dropShadowColor: "#000000",
-			dropShadowDistance: 2,
-			align: "center",
-		});
-		//
-		this.cont = this.addChild(new PIXI.Sprite());
-		//
-		const json0 = PIXI.Loader.shared.resources["/images/fish/anim/wheel.json"].spritesheet;
-		const array0:any = [];
-		if(json0) {
-			Object.keys(json0.textures).sort().forEach((key) => {
-				array0.push(json0.textures[key]);
-			});
-		}
-
-		const animate = new PIXI.AnimatedSprite(array0);
-		animate.animationSpeed = 0.3;
-		animate.loop = true;
-		this.cont.addChild(animate);
-		animate.gotoAndPlay(1);
-		//
-		const time = this.cont.addChild(new PIXI.Text("00:00:00", styletext));
-		time.x = 140 - (time.width/2);
-		time.y = 137;
-		//
-
-		this.tim = setInterval(()=>{
-			var next_bonus_time = BonusWheelData.bonus_time;
-			if(next_bonus_time != '')
-			{
-				var bonus_time = Date.parse(next_bonus_time);
-				if(isSafari)
-				{
-					bonus_time = new Date(next_bonus_time.replace(/-/g, '/')).getTime();
-				}
-				var now = new Date(new Date().toLocaleString('en', {timeZone: 'America/Bogota'}));
-				var sec = (bonus_time - now.getTime()) / 1000;
-				if(sec < 0)
-					sec = 0;
-				const timtext = convertTimeToStr(sec);
-				time.text =`${timtext[0]}:${timtext[1]}:${timtext[2]}`;
-				time.x = 140 - (time.width/2);
-			}
-		}, 1000);
-		//
-		this.cont.interactive = true;
-		this.cont.buttonMode = true;
-		this.cont.on('pointerdown', ()=>{
-			EE.emit('SHOW_WHEEL');
-		})
-	}
-
-	componentWillUnmount() {
-		clearInterval(this.tim);
-	}
-
-}
+// class UserBlock extends PIXI.Sprite{
+// 	cont:PIXI.Sprite;
+// 	animate:PIXI.AnimatedSprite;
+// 	moneyuser: PIXI.Text;
+// 	constructor() {
+// 		super();
+// 		const styletext = new PIXI.TextStyle({
+// 			fontFamily: "Patua One",
+// 			fontSize: "22px",
+// 			fill: [
+// 				"#ffffff",
+// 				"#FCD13D",
+// 				],
+// 			dropShadow: true,
+// 			dropShadowBlur: 1,
+// 			dropShadowColor: "#A76520",
+// 			dropShadowDistance: 3,
+// 			align: "center",
+//
+// 		});
+//
+// 		const styletext2 = new PIXI.TextStyle({
+// 			fontFamily: "Roboto",
+// 			fontSize: "28px",
+// 			fill: [
+// 				"#ffffff",
+// 				"#37D8FC",
+// 			],
+// 			dropShadow: true,
+// 			dropShadowBlur: 2,
+// 			dropShadowColor: "#000000",
+// 			dropShadowDistance: 2,
+// 			align: "center",
+// 			fontWeight: "600"
+// 		});
+// 		//
+// 		this.cont = this.addChild(new PIXI.Sprite());
+// 		//
+// 		const json0 = PIXI.Loader.shared.resources["/images/fish/anim/glow3.json"].spritesheet;
+// 		const array0:any = [];
+// 		if(json0) {
+// 			Object.keys(json0.textures).sort().forEach((key) => {
+// 				array0.push(json0.textures[key]);
+// 			});
+// 		}
+//
+// 		this.animate = new PIXI.AnimatedSprite(array0);
+// 		this.animate.animationSpeed = 0.3;
+// 		this.animate.loop = true;
+// 		this.animate.y = -52;
+// 		this.animate.x = -14;
+// 		this.animate.scale.set(0.9);
+// 		this.cont.addChild(this.animate);
+// 		this.animate.gotoAndPlay(1);
+// 		//
+// 		this.cont.addChild(new PIXI.Sprite(PIXI.Texture.from("/images/fish/user.png")));
+// 		//
+// 		var username:string = document.getElementById('root')?.getAttribute('username')!;
+// 		const nameuser = this.cont.addChild(new PIXI.Text(username, styletext));
+// 		nameuser.x = 90 - (nameuser.width/2);
+// 		nameuser.y = 77;
+//
+// 		var balance:string = document.getElementById('root')?.getAttribute('balance')!;
+// 		this.moneyuser = this.cont.addChild(new PIXI.Text(balance, styletext2));
+// 		this.moneyuser.x = 95 - (this.moneyuser.width/2);
+// 		this.moneyuser.y = 102;
+// 		//
+// 		this.cont.interactive = true;
+// 		this.cont.buttonMode = true;
+// 		this.cont.on('pointerdown', ()=>{
+// 			EE.emit('SHOW_INFO');
+// 		})
+// 	}
+//
+// }
+// class WheelButton extends PIXI.Sprite{
+// 	cont:PIXI.Sprite;
+// 	tim:any = 0;
+// 	constructor() {
+// 		super();
+// 		//
+// 		const styletext = new PIXI.TextStyle({
+// 			fontFamily: "Roboto",
+// 			fontSize: "26px",
+// 			fontWeight: "bold",
+// 			fill: [
+// 				"#ECFCFF",
+// 				"#2ED6FC",
+// 			],
+// 			dropShadow: true,
+// 			dropShadowBlur: 1,
+// 			dropShadowColor: "#000000",
+// 			dropShadowDistance: 2,
+// 			align: "center",
+// 		});
+// 		//
+// 		this.cont = this.addChild(new PIXI.Sprite());
+// 		//
+// 		const json0 = PIXI.Loader.shared.resources["/images/fish/anim/wheel.json"].spritesheet;
+// 		const array0:any = [];
+// 		if(json0) {
+// 			Object.keys(json0.textures).sort().forEach((key) => {
+// 				array0.push(json0.textures[key]);
+// 			});
+// 		}
+//
+// 		const animate = new PIXI.AnimatedSprite(array0);
+// 		animate.animationSpeed = 0.3;
+// 		animate.loop = true;
+// 		this.cont.addChild(animate);
+// 		animate.gotoAndPlay(1);
+// 		//
+// 		const time = this.cont.addChild(new PIXI.Text("00:00:00", styletext));
+// 		time.x = 140 - (time.width/2);
+// 		time.y = 137;
+// 		//
+//
+// 		this.tim = setInterval(()=>{
+// 			var next_bonus_time = BonusWheelData.bonus_time;
+// 			if(next_bonus_time != '')
+// 			{
+// 				var bonus_time = Date.parse(next_bonus_time);
+// 				if(isSafari)
+// 				{
+// 					bonus_time = new Date(next_bonus_time.replace(/-/g, '/')).getTime();
+// 				}
+// 				var now = new Date(new Date().toLocaleString('en', {timeZone: 'America/Bogota'}));
+// 				var sec = (bonus_time - now.getTime()) / 1000;
+// 				if(sec < 0)
+// 					sec = 0;
+// 				const timtext = convertTimeToStr(sec);
+// 				time.text =`${timtext[0]}:${timtext[1]}:${timtext[2]}`;
+// 				time.x = 140 - (time.width/2);
+// 			}
+// 		}, 1000);
+// 		//
+// 		this.cont.interactive = true;
+// 		this.cont.buttonMode = true;
+// 		this.cont.on('pointerdown', ()=>{
+// 			EE.emit('SHOW_WHEEL');
+// 		})
+// 	}
+//
+// 	componentWillUnmount() {
+// 		clearInterval(this.tim);
+// 	}
+//
+// }
