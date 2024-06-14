@@ -96,11 +96,53 @@
 }
 
 #loading_popup_image {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 3rem;
     background-size: cover;
     background-position: center;
     width: 100%;
     height: 100vh;
 }
+#lucky-hands-logo {
+    width: 250px;
+    max-height: 10%;
+    object-fit: contain;
+}
+#game-logo {
+    width: 500px;
+    max-width: 90%;
+    max-height: 50%;
+    object-fit: contain;
+}
+#loading-txt {
+    font-size: 18px;
+    color: white;
+}
+
+@media (orientation: portrait) {
+    #loading_popup_image {
+        gap: 3rem !important;
+    }
+}
+
+@media (max-width: 991px) {
+    #loading_popup_image {
+        gap: 1rem;
+    }
+    #lucky-hands-logo {
+        height: 30px;
+    }
+    #game-logo {
+        max-height: 40%;
+    }
+    #loading-txt {
+        font-size: 14px;
+    }
+}
+
 #loading_popup
 {
     width: 100%;

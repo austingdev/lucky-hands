@@ -30,10 +30,10 @@
     width: 45%;    
     background-size: cover;
     background-position: center;
-    position: fixed;
+    /* position: fixed;
     left: 50%;
     top: 80%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%); */
 }
 
 #progressPercent
@@ -45,7 +45,17 @@
     margin-top: 1px;    
 }
 
+@media (max-width: 991px) {
+    #progressPercent
+    {
+        font-size: 24px;
+    }
+}
+
 @media (orientation: portrait) {
+    #loading_popup_image {
+        gap: 3rem !important;
+    }
     #loadingVideo
     {
         display: none;
@@ -72,10 +82,10 @@
         width: 70%;    
         background-size: contain;
         background-position: center;
-        position: fixed;
+        /* position: fixed;
         left: 50%;
         top: 80%;
-        transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%); */
     }
 }
 

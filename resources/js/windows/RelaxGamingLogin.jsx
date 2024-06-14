@@ -6,9 +6,10 @@ import { post, relaxGamingVerifyToken } from "../server/server";
 
 export const RelaxGamingLogin = () => {
     const [searchParams, setSearchParams] = useState({});
+    const [imageLoaded, setImageLoaded] = useState(false);
 
     const updateParams = () => {
-        console.log("==window.location.search===", window.location.search)
+        console.log("==window.location.search===", window.location.search);
         const searchParams = new URLSearchParams(window.location.search);
         const paramsObj = {};
         searchParams.forEach((value, key) => {
@@ -24,25 +25,23 @@ export const RelaxGamingLogin = () => {
         updateParams();
 
         // Listen for URL changes
-        window.addEventListener('popstate', updateParams);
-        window.addEventListener('hashchange', updateParams);
-        window.addEventListener('load', updateParams);
+        window.addEventListener("popstate", updateParams);
+        window.addEventListener("hashchange", updateParams);
+        window.addEventListener("load", updateParams);
 
         // Cleanup the event listener on component unmount
         return () => {
-            window.removeEventListener('popstate', updateParams);
-            window.removeEventListener('hashchange', updateParams);
-            window.removeEventListener('load', updateParams);
+            window.removeEventListener("popstate", updateParams);
+            window.removeEventListener("hashchange", updateParams);
+            window.removeEventListener("load", updateParams);
         };
     }, []);
 
     useEffect(() => {
-        if (searchParams.gameId) {
-            document.getElementById(
-                "loading_popup_image"
-            ).style.backgroundImage = `url('/images/splash-screen--${searchParams.gameId}.jpg')`;
-        }
+        onResize();
+    }, [imageLoaded]);
 
+    useEffect(() => {
         if (searchParams?.token) {
             verifyToken();
         }
@@ -65,12 +64,32 @@ export const RelaxGamingLogin = () => {
         });
     }, [searchParams]);
 
+    const params = new URLSearchParams(window.location.search);
+
     return (
         <div className="popup" id="loading_popup">
             <div
                 id="loading_popup_image"
-                style={{ backgroundColor: "#000000" }}
+                style={{
+                    backgroundColor: "#000000",
+                    backgroundImage: `url('/images/background--${params.get(
+                        "gameId"
+                    )}.jpg')`,
+                }}
             >
+                <img
+                    id="lucky-hands-logo"
+                    src="/images/lucky-hands-logo.svg"
+                    alt=""
+                />
+                <img
+                    id="game-logo"
+                    src={`/images/logo--${params.get("gameId")}.png`}
+                    alt=""
+                />
+                <div id="loading-txt">
+                    Game may take up to 60 seconds to load
+                </div>
                 <div id="gameLoadingBack">
                     <div id="gameLoadingProgress"></div>
                     <p id="progressPercent">0.00%</p>
