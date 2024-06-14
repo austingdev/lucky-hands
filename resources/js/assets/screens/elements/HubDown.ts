@@ -7,24 +7,24 @@ import { convertTimeToStr, isSafari } from "../../../common/Utils";
 import { BonusWheelData } from "../../../server/server";
 
 export class HubDown extends PIXI.Sprite{
-	cont:PIXI.Sprite = new PIXI.Sprite();
-	user:UserBlock;
-	boosters:PIXI.Sprite = new PIXI.Sprite();
-	// rewards:PIXI.Sprite = new PIXI.Sprite();
-	wheel:PIXI.Sprite = new PIXI.Sprite();
-	back_l:PIXI.Sprite = new PIXI.Sprite();
-	back_ll:PIXI.Sprite = new PIXI.Sprite();
-	back_r:PIXI.Sprite = new PIXI.Sprite();
-	back_rr:PIXI.Sprite = new PIXI.Sprite();
-	dback:PIXI.Sprite = new PIXI.Sprite();
-	flashL:PIXI.Sprite = new PIXI.Sprite();
-	flashR:PIXI.Sprite = new PIXI.Sprite();
-	buttons:PIXI.Sprite = new PIXI.Sprite();
+	// cont:PIXI.Sprite = new PIXI.Sprite();
+	// user:UserBlock;
+	// boosters:PIXI.Sprite = new PIXI.Sprite();
+	// // rewards:PIXI.Sprite = new PIXI.Sprite();
+	// wheel:PIXI.Sprite = new PIXI.Sprite();
+	// back_l:PIXI.Sprite = new PIXI.Sprite();
+	// back_ll:PIXI.Sprite = new PIXI.Sprite();
+	// back_r:PIXI.Sprite = new PIXI.Sprite();
+	// back_rr:PIXI.Sprite = new PIXI.Sprite();
+	// dback:PIXI.Sprite = new PIXI.Sprite();
+	// flashL:PIXI.Sprite = new PIXI.Sprite();
+	// flashR:PIXI.Sprite = new PIXI.Sprite();
+	// buttons:PIXI.Sprite = new PIXI.Sprite();
 
 	constructor() {
 		super();
 		//
-		this.cont = this.addChild(new PIXI.Sprite());
+		// this.cont = this.addChild(new PIXI.Sprite());
 		// this.dback = this.cont.addChild(new PIXI.Sprite(PIXI.Texture.from("/images/fish/down_c.png")));
 		// this.back_l = this.cont.addChild(new PIXI.Sprite(PIXI.Texture.from("/images/fish/down_l.png")));
 		// this.back_ll = this.cont.addChild(new PIXI.Sprite(PIXI.Texture.from("/images/fish/down_ll.png")));
@@ -32,55 +32,55 @@ export class HubDown extends PIXI.Sprite{
 		// this.back_rr = this.cont.addChild(new PIXI.Sprite(PIXI.Texture.from("/images/fish/down_rr.png")));
 
 
-		this.dback.addChild(new SliderControl());
-		//
-		this.flashR = this.back_rr.addChild(new FlashObject());
-		this.flashR.x = -30;
-		this.flashR.y = -26;
-		this.flashR.scale.x=0.89;
-
-		this.flashL = this.back_ll.addChild(new FlashObject());
-		//this.flashL.anchor.x = 0.5;
-		this.flashL.x = -40;
-		this.flashL.y = -26;
-		this.flashL.scale.x=0.9;
+		// this.dback.addChild(new SliderControl());
+		// //
+		// this.flashR = this.back_rr.addChild(new FlashObject());
+		// this.flashR.x = -30;
+		// this.flashR.y = -26;
+		// this.flashR.scale.x=0.89;
+        //
+		// this.flashL = this.back_ll.addChild(new FlashObject());
+		// //this.flashL.anchor.x = 0.5;
+		// this.flashL.x = -40;
+		// this.flashL.y = -26;
+		// this.flashL.scale.x=0.9;
 		//this.flashL.x = -640;
 		//
-		this.user = this.cont.addChild(new UserBlock());
-		this.user.x = 205;
-
-		this.wheel = this.cont.addChild(new WheelButton());
-		this.wheel.x = 480;
-
-		this.buttons = this.cont.addChild(new Buttons());
-		this.buttons.x = 0;
-
-		this.onResize = this.onResize.bind(this);
+		// this.user = this.cont.addChild(new UserBlock());
+		// this.user.x = 205;
+        //
+		// this.wheel = this.cont.addChild(new WheelButton());
+		// this.wheel.x = 480;
+        //
+		// this.buttons = this.cont.addChild(new Buttons());
+		// this.buttons.x = 0;
+        //
+		// this.onResize = this.onResize.bind(this);
 		EE.addListener("RESIZE", this.onResize);
 		EE.emit('FORCE_RESIZE');
 	}
 
 	onResize(data:any) {
-		this.user.y = (data.h/data.scale) - 150;
-		this.wheel.y = (data.h/data.scale) - 169;
-		this.dback.x = (data.w/data.scale)/2 - 331;
-		this.dback.y = (data.h/data.scale) - 125;
-		this.back_l.y = (data.h/data.scale) - 125;
-		this.back_r.y = (data.h/data.scale) - 125;
-		this.back_l.x = 0;
-		this.back_r.x = (data.w/data.scale) - 104;
-		this.back_ll.width = this.back_rr.width = ((data.w/data.scale) - 208 - 662)/2;
-		this.back_ll.y = this.back_rr.y = (data.h/data.scale) - 79;
-		this.back_ll.x = 104;
-		this.back_rr.x = this.back_r.x - this.back_rr.width;
-		//this.flashL.width = this.flashR.width = this.back_ll.width;
-		this.buttons.x = this.back_rr.x - 10;
-		this.buttons.y = this.back_rr.y - 90;
-		//
-		let ds = data.scale;
-		if(ds<1) ds=1;
-		this.wheel.x = (data.w/data.scale)/2 - 650;
-		this.user.x = (data.w/data.scale)/2 - 870;
+		// this.user.y = (data.h/data.scale) - 150;
+		// this.wheel.y = (data.h/data.scale) - 169;
+		// this.dback.x = (data.w/data.scale)/2 - 331;
+		// this.dback.y = (data.h/data.scale) - 125;
+		// this.back_l.y = (data.h/data.scale) - 125;
+		// this.back_r.y = (data.h/data.scale) - 125;
+		// this.back_l.x = 0;
+		// this.back_r.x = (data.w/data.scale) - 104;
+		// this.back_ll.width = this.back_rr.width = ((data.w/data.scale) - 208 - 662)/2;
+		// this.back_ll.y = this.back_rr.y = (data.h/data.scale) - 79;
+		// this.back_ll.x = 104;
+		// this.back_rr.x = this.back_r.x - this.back_rr.width;
+		// //this.flashL.width = this.flashR.width = this.back_ll.width;
+		// this.buttons.x = this.back_rr.x - 10;
+		// this.buttons.y = this.back_rr.y - 90;
+		// //
+		// let ds = data.scale;
+		// if(ds<1) ds=1;
+		// this.wheel.x = (data.w/data.scale)/2 - 650;
+		// this.user.x = (data.w/data.scale)/2 - 870;
 	}
 
 }
