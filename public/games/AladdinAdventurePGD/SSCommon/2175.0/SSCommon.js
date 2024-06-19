@@ -666,7 +666,7 @@ var SS;
             a.S3URL = "";
             a.IgnoreVersionCtrl = !1;
             a.IsUseCheatKey = !1;
-            a.IsUseScoreBox = !0;
+            a.IsUseScoreBox = !1;
             a.IsUseShutter = !1;
             a.IsUseSlotSkillGame = !1;
             a.IsUseCellPhoneVerify = !1;
