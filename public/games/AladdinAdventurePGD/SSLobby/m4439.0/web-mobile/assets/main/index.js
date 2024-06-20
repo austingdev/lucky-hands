@@ -24979,7 +24979,7 @@ window.__require = function e(t, o, n) {
             }
             GetImage(e, t, o) {
                 if (e.indexOf("LoginBG") != -1) {
-                    e = e.replace("localhost:8000", "localhost:8000/games/AladdinAdventurePGD");
+                    e = e.replace("http://fishgames.luckyhands.local:8000", "http://fishgames.luckyhands.local:8000/games/AladdinAdventurePGD");
                 }
                 let n = this;
                 var i = new XMLHttpRequest;

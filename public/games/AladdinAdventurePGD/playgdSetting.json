@@ -1,0 +1,85 @@
+{
+    "Game":
+    {
+        "Dependency":
+        [
+			"Common"
+        ]
+    },
+    "GameIconMgr":
+    {
+        "hasPrefab": true
+    },
+    "Layer":
+    [],
+    "Lobby":
+    {
+        "CheckVersion":
+        {
+            "Timeout": 60
+        },
+        "Dependency":
+        [
+            "Common"
+        ],
+        "DownloadIcon":
+        {
+            "Timeout": 180
+        },
+        "DownloadResources":
+        {
+            "Timeout": 180
+        },
+        "DownloadSetting":
+        {
+            "Timeout": 60
+        },
+        "EnterLobby":
+        {
+            "Order":
+            [
+                "Popup"
+            ]
+        },
+        "WaitPacket":
+        {
+            "Timeout": 60
+        }
+    },
+    "LobbyCommon":
+    {
+        "Module":
+        [
+
+        ]
+    },
+    "LobbyMgr":
+    {
+        "Module":
+        [	
+			
+        ]
+    },
+    "LobbyScene":
+    {
+        "Background":
+        [],
+        "Foreground":
+        []
+    },
+	"FeatureIconGame": [
+		"FishBattleShip"
+	],
+	"FeatureUIGame": [
+		"FishBattleShip"
+	],
+	"PlayerStatus": {
+		"FPS": {
+			"Duration":  180,
+			"Frequency":  1000
+		},
+		"Ping": {
+			"Duration":  180
+		}
+	}
+}

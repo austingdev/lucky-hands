@@ -16417,7 +16417,8 @@ $jscomp.polyfill("Math.log2", function(g) {
                     var f = cc.path.basename(a),
                         l = a;
                     if (l.indexOf("Bundle") != -1) {
-                        l = l.replace("localhost:8000", "localhost:8000/games/AladdinAdventurePGD");
+                        // l = l.replace("localhost:8000", "localhost:8000/games/AladdinAdventurePGD");
+                        l = l.replace("http://fishgames.luckyhands.local:8000", "http://fishgames.luckyhands.local:8000/games/AladdinAdventurePGD");
                     }
                     x.test(l) || (l = "assets/" + f);
                     a = c.version || R.bundleVers[f];
