@@ -20,7 +20,7 @@ use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Collection;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Pagination\LengthAwarePaginator;
-
+use Illuminate\Support\Facades\URL;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -35,9 +35,9 @@ class AppServiceProvider extends ServiceProvider
         config(['app.name' => settings('app_name')]);
         \Illuminate\Database\Schema\Builder::defaultStringLength(191);
 
-         if($this->app->environment('production')) {
-            \URL::forceScheme('https');
-        }
+        //  if($this->app->environment('production')) {
+        //     URL::forceScheme('https');
+        // }
 
          Paginator::useBootstrap();;
 

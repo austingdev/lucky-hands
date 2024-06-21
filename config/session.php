@@ -189,6 +189,6 @@ return [
     | Supported: "lax", "strict"
     |
     */
-    'same_site' => 'None',
+    'same_site' => null,
 
 ];
