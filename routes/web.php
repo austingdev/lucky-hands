@@ -472,7 +472,7 @@ Route::domain('fishgames.'.config('app.domain'))->namespace('Frontend')->middlew
  *******************************************************************************************************
  */
 
-Route::domain('admin.'.config('app.domain'))->middleware(['checker'])->group(function () {
+Route::domain('fishadmin.'.config('app.domain'))->middleware(['checker'])->group(function () {
 
     Route::namespace('Backend')->group(function () {
         Route::get('login', [
@@ -486,7 +486,7 @@ Route::domain('admin.'.config('app.domain'))->middleware(['checker'])->group(fun
     });
 });
 
-Route::domain('admin.'.config('app.domain'))->middleware(['auth', 'checker'])->group(function () {
+Route::domain('fishadmin.'.config('app.domain'))->middleware(['auth', 'checker'])->group(function () {
     Route::namespace('Backend')->group(function () {
 
         Route::get('logout', [
