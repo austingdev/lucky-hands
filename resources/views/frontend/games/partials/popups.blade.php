@@ -108,7 +108,7 @@
                 }
             } else if (data.event == 'backToHub') {
                 console.log(333)
-                window.parent.parent.location = "\\";
+                window.parent.location = "\\";
             }
         } catch (e) {}
     })
