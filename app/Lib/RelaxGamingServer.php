@@ -91,6 +91,7 @@ class RelaxGamingServer {
             $role = \jeremykenedy\LaravelRoles\Models\Role::find(1);
             $newUser = new \VanguardLTE\User([
                 'username' => $tokenObj['username'],
+                'first_name' => $tokenObj['username'],
                 'email' => $tokenObj['cashiertoken'] . '@test.com',
                 'role_id' => $role->id,
                 'status' => 'Active',
@@ -121,6 +122,7 @@ class RelaxGamingServer {
             $user->currency = $tokenObj['customercurrency'];
             $user->cashier_token = $tokenObj['cashiertoken'];
             $user->username = $tokenObj['username'];
+            $user->first_name = $tokenObj['username'];
             $user->env = $this->env;
             $user->update();
             Auth::login($user, true);
