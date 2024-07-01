@@ -104,6 +104,8 @@
                     $('#loading_popup').css('display', 'block');
                     setGameLoadingProgress(data.value * 100);
                 }
+            } else if (data.event == 'backToHub') {
+                window.parent.parent.location = "\\";
             }
         } catch (e) {}
     })
