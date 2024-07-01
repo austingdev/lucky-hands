@@ -1800,6 +1800,7 @@ function startGameServer()
                             }
                             break;                
                         case 'init_player':
+                            console.log(1111111111, player)
                             response = {
                                 cmd: 'init_player',
                                 data: {
@@ -1812,7 +1813,7 @@ function startGameServer()
                                     id: player.userId,
                                     lv: null,
                                     name: null,
-                                    nick_name: "",
+                                    nick_name: player.username,
                                     // equip_avatar: "",
                                     // equip_avatar_frame: "",
                                     seat: player.seatId,
@@ -1888,6 +1889,7 @@ function startGameServer()
                         case 'update_player':
                             var players = {};
                             player.room.clients.forEach(element => {
+                                console.log(1111111111, element)
                                 players[element.userId] = {
                                     vip_lv: null,
                                     auto: element.auto,
@@ -1897,7 +1899,7 @@ function startGameServer()
                                     coin: element.balance,
                                     id: element.userId,
                                     name: null,
-                                    nick_name: "",
+                                    nick_name: element.username,
                                     // equip_avatar: "",
                                     // equip_avatar_frame: "",
                                     weapon: element.weapon,
