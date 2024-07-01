@@ -1813,7 +1813,7 @@ function startGameServer()
                                     id: player.userId,
                                     lv: null,
                                     name: null,
-                                    nick_name: player.username,
+                                    nick_name: player.nickname,
                                     // equip_avatar: "",
                                     // equip_avatar_frame: "",
                                     seat: player.seatId,
@@ -1889,7 +1889,7 @@ function startGameServer()
                         case 'update_player':
                             var players = {};
                             player.room.clients.forEach(element => {
-                                console.log(1111111111, element)
+                                console.log(222, element)
                                 players[element.userId] = {
                                     vip_lv: null,
                                     auto: element.auto,
@@ -1899,7 +1899,7 @@ function startGameServer()
                                     coin: element.balance,
                                     id: element.userId,
                                     name: null,
-                                    nick_name: element.username,
+                                    nick_name: element.nickname,
                                     // equip_avatar: "",
                                     // equip_avatar_frame: "",
                                     weapon: element.weapon,
