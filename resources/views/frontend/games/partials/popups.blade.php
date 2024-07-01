@@ -107,9 +107,9 @@
                     setGameLoadingProgress(data.value * 100);
                 }
             } else if (data.event == 'backToHub') {
-                console.log(333, window.parent.location)
-                console.log(444, window.parent.parent.locationn)
-                window.parent.location = window.parent.local.origin;
+                console.log(333, window.parent.location.origin)
+                // console.log(444, window.parent.parent.locationn)
+                window.parent.location = window.parent.location.origin;
             }
         } catch (e) {}
     })
