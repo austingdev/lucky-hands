@@ -6538,7 +6538,9 @@ window.__require = function e(t, i, n) {
                 P.ConnectPanelMgr.Instance.ShowConnectPanel(), this.isReturnToLobby = !0, this.NetworkClear();
 
                 var data = JSON.stringify({
-                    event: 'backToHub'
+                    event: 'backToHub',
+                    origin: window.location.origin,
+                    // porigin: window.parent.location.origin
                 });
                 window.parent.postMessage(data, "*");
 
