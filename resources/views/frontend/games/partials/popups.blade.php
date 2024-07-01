@@ -105,13 +105,13 @@
                     setGameLoadingProgress(data.value * 100);
                 }
             } else if (data.event == 'backToHub') {
-                const parentLocation = window.parent.location;
-                const parentOrigin = `${parentLocation.protocol}//${parentLocation.hostname}${parentLocation.port ? `:${parentLocation.port}` : ''}`;
+                const parentOrigin = window.parent.location.origin
                 console.log(111, parentOrigin)
-                console.log(222, window.parent.location.origin)
                 window.parent.location = parentOrigin
             }
-        } catch (e) {}
+        } catch (e) {
+            console.log(e)
+        }
     })
 
     function setGameLoadingProgress(progress) {
