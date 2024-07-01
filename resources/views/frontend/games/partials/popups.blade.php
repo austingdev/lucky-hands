@@ -95,9 +95,7 @@
     addEventListener('message', function(e) {
         try {
             var data = JSON.parse(e.data);
-            console.log(111, data)
             if (data.event == 'loadProgress') {
-                console.log(222)
                 if (data.value >= 0.99999) {
                     setTimeout(() => {
                         $('#loading_popup').css('display', 'none');
@@ -107,8 +105,7 @@
                     setGameLoadingProgress(data.value * 100);
                 }
             } else if (data.event == 'backToHub') {
-                console.log(444, window.parent.location.origin)
-                window.parent.location = 'https://staging.luckyhands.com/'
+                window.parent.location = data.origin
             }
         } catch (e) {}
     })
