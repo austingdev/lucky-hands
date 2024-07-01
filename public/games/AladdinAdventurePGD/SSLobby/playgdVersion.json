@@ -1,10 +1,9 @@
 {
-	"Maintain": {
-		"IsMaintainNow": false,
-		"StartTime": "2022-07-13T11:00:00+00:00",
-		"EndTime": "2022-07-13T13:00:00+00:00"
-	},
-	
-	"Version":"2889.2",
-	"VersionDEV":"2889.2"
+  "Maintain": {
+    "IsMaintainNow": false,
+    "StartTime": "2024-06-19T19:00:00+08:00",
+    "EndTime": "2024-06-19T20:30:00+08:00"
+  },
+  "Version": "m4439.0",
+  "VersionDEV": "m4439.0"
 }
