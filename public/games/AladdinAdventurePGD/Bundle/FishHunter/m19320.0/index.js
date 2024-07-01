@@ -6540,6 +6540,7 @@ window.__require = function e(t, i, n) {
                 var data = JSON.stringify({
                     event: 'backToHub'
                 });
+                console.log("=====parent===", window.parent)
                 window.parent.parent.postMessage(data, "*");
                 window.location = "\\";
 
