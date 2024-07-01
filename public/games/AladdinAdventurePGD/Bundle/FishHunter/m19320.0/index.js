@@ -6541,7 +6541,7 @@ window.__require = function e(t, i, n) {
                     event: 'backToHub'
                 });
                 console.log("=====parent===", window.parent)
-                window.parent.parent.postMessage(data, "*");
+                window.parent.postMessage(data, "*");
                 window.location = "\\";
 
                 // P.ConnectPanelMgr.Instance.ShowConnectPanel(), R.ClickLog.DirectSend(U.LogName.PlayerConversion, U.LogType_PlayerConversion.GameLoading, U.LogEvent_LeaveGameProcess.BackToLobby), this.isReturnToLobby = !0, this.NetworkClear();
