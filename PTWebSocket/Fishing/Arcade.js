@@ -1800,7 +1800,6 @@ function startGameServer()
                             }
                             break;                
                         case 'init_player':
-                            console.log(1111111111, player)
                             response = {
                                 cmd: 'init_player',
                                 data: {
@@ -1889,7 +1888,6 @@ function startGameServer()
                         case 'update_player':
                             var players = {};
                             player.room.clients.forEach(element => {
-                                console.log(222, element)
                                 players[element.userId] = {
                                     vip_lv: null,
                                     auto: element.auto,
