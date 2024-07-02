@@ -1,19 +1,13 @@
-<!DOCTYPE HTML>
-<html lang="en">
+<!DOCTYPE html>
+<html>
 
 <head>
-    <title>Monsters Frenzy</title>
-    <base href="/games/MonsterFrenzyPGD/SSLobby/2813.2/web-mobile/">
-
     <meta charset="utf-8">
+    <title></title>
+    <base href="/games/MonsterFrenzyPGD/SSLobby/m4439.0/web-mobile/">
 
-
-    <script type="text/javascript" async="" src="https://www.google-analytics.com/analytics.js"></script>
     <script src="../../../Plugin/LOGOSetting.js" charset="utf-8"></script>
-    <script src="../../../Plugin/install1891.js" charset="utf-8"></script>
-    <link rel="manifest" href="../../../LOGO/playgd/manifestAndroid_OriAny.webmanifest">
-    <script type="text/javascript" src="../../../pwacompat.min.js"></script>
-    <script src="https://www.googletagmanager.com/gtag/js?id=UA-167951248-1"></script>
+    <script src="../../../Plugin/install_3361.js" charset="utf-8"></script>
     <!--http://www.html5rocks.com/en/mobile/mobifying/-->
     <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1, minimum-scale=1,maximum-scale=1">
 
@@ -46,98 +40,134 @@
     <!--<link rel="apple-touch-icon-precomposed" href=".png" />-->
     <!-- <link rel="Shortcut Icon" type="image/x-icon" href="./favicon.ico" />-->
 
-    <link rel="stylesheet" type="text/css" href="../../../CocosLibrary/style-mobile1502.css">
+    <link rel="stylesheet" type="text/css" href="../../../CocosLibrary/style-mobile1502.css" />
 
     <script src="src/settings.js" charset="utf-8"></script>
-    <script src="../../../CocosLibrary/v243_main.js" charset="utf-8"></script>
+    <script src="../../../CocosLibrary/v249_main0203.1.js" charset="utf-8"></script>
 
     <script src="../../../Plugin/Device1824.js" charset="utf-8"></script>
     <script src="../../../Plugin/NoSleep1195.js" charset="utf-8"></script>
     <script src="../../../Plugin/PreventZoom.js" charset="utf-8"></script>
     <script src="../../../Plugin/xback.js" charset="utf-8"></script>
-
-    <!-- <link rel="icon" href="https://playgd.mobi/Icons/Android/playgd/icon-192x192.png" sizes="192x192">
-  <link rel="icon" href="https://playgd.mobi/Icons/Android/playgd/icon-152x152.png" sizes="152x152">
-  <link rel="icon" href="https://playgd.mobi/Icons/Android/playgd/icon-144x144.png" sizes="144x144">
-  <link rel="icon" href="https://playgd.mobi/Icons/Android/playgd/icon-128x128.png" sizes="128x128">
-  <link rel="icon" href="https://playgd.mobi/Icons/Android/playgd/icon-96x96.png" sizes="96x96">
-  <link rel="icon" href="https://playgd.mobi/Icons/Android/playgd/icon-72x72.png" sizes="72x72"> -->
-    <meta name="mobile-web-app-capable" content="yes">
-    <meta name="theme-color" content="#FFFFFF">
-    <meta name="x5-page-mode" content="app">
-    <meta name="browsermode" content="application">
+    <script src="../../../Plugin/loadEruda.js" charset="utf-8"></script>
+    <script src="../../../Plugin/InitFbSdk1901.js" charset="utf-8"></script>
+    <script src="../../../Plugin/indexDB_3910.js" charset="utf-8"></script>
 </head>
 
-<canvas id="GameCanvas" oncontextmenu="event.preventDefault()" tabindex="0"></canvas>
-<div> <img id="splash"></div>
-<!-- <div id="swipe"></div> -->
-<div id="orientation"></div>
+<body>
 
-<script type="text/javascript">
-    var orient = document.getElementById("orientation");
-    orient.style.setProperty("visibility", "hidden");
+    <canvas id="GameCanvas" oncontextmenu="event.preventDefault()" tabindex="0">
+    <iframe id="cookie"
+      style="height: 0px; width: 0px; overflow: hidden; border: 0px; visibility: hidden; position: absolute; opacity: 0;"></iframe>
+  </canvas>
+    <div> <img id="splash"></div>
+    <!--<script src="https://www.gstatic.com/firebasejs/7.14.6/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.14.6/firebase-messaging.js"></script>-->
 
-    var mob = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-    function checkOrientation() {
-        if (!mob) return;            
-        var orientation = (screen.orientation || {}).type || screen.mozOrientation || screen.msOrientation;            
-        if ((window.orientation !== 90 && window.orientation !== -90)  || orientation === "portrait-secondary" || orientation === "portrait-primary") {
-            orient.style.setProperty("visibility", "visible");                
-            return;
-        }
-        
-        orient.style.setProperty("visibility", "hidden");
-        // checkFS();
-    }
-    window.addEventListener("orientationchange", checkOrientation, false);
-    checkOrientation();
+    <div id="mask" class="mask">
+        <div style="z-index: 1001; top: 8vh; left: 50vw; transform: translate(-50%, -50%); position: fixed;">
+            <div id="mask_close" style="width:50vw; font-size:22px; font-weight:bold; color: #EEE8AA; display: none;"></div>
+        </div>
 
-    (function() {
-        if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.register('../../../firebase-messaging-sw.js')
-                .then(reg => console.log('Registration succeeded. Scope is ' + reg.scope))
-                .catch(err => console.log('Registration failed with ' + err));
-        }
+        <div id="swipe"></div>
+    </div>
 
-        if (typeof VConsole !== 'undefined') {
-            window.vConsole = new VConsole();
-        }
+    <div id="orientation"></div>
 
-        XBack.listen(function() {
-            var clickResult = confirm("Are you sure you want to exit?");
-            if (clickResult == true)
-                location.replace(location.href);
-            else
-                XBack.record(XBack.STATE);
-        });
+    <div id="bar" class="absvh"></div>
 
-        var cocos2d = document.createElement('script');
-        cocos2d.async = true;
-        cocos2d.src = window._CCSettings.debug ? '../../../CocosLibrary/v243_cocos2d-js1433.js' : '../../../CocosLibrary/v243_cocos2d-js-min1433.js';
-
-        var engineLoaded = function() {
-            document.body.removeChild(cocos2d);
-            cocos2d.removeEventListener('load', engineLoaded, false);
-            window.boot();
-            window.noSleep = new NoSleep();
-
-            if (window.PointerEvent) {
-                document.addEventListener('pointerdown', function enableNoSleep() {
-                    window.noSleep.enable();
-                }, true);
-            } else {
-                document.addEventListener('touchstart', function enableNoSleep() {
-                    window.noSleep.enable();
-                }, true);
-                document.addEventListener('mousedown', function enableNoSleep() {
-                    window.noSleep.enable();
-                }, true);
+    <script type="text/javascript">
+        (function() {
+            if ('serviceWorker' in navigator) {
+                navigator.serviceWorker.register('../../../firebase-messaging-sw.js')
+                    .then(reg => console.log('Registration succeeded. Scope is ' + reg.scope))
+                    .catch(err => console.log('Registration failed with ' + err));
             }
+
+            /*if("Notification" in window &&  "firebase" in window && location.protocol=="https:"){
+      // Your web app's Firebase configuration
+        var firebaseConfig = HostNameMapFBConfig[location.hostname];
+        if (firebaseConfig) {
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        const messaging = firebase.messaging();
+        messaging.onTokenRefresh(() => {
+          messaging.getToken().then((refreshedToken) => {
+          console.log('Token refreshed.');
+          }).catch((err) => {
+          console.log('Unable to retrieve refreshed token ', err);
+          });
+        });
+  
+        messaging.onMessage((payload) => {
+          console.log('Message received. ', payload);
+        });
+  
+        requestPermission();
+  
+        function requestPermission() {
+          console.log('Requesting permission...');
+          Notification.requestPermission().then((permission) => {
+          if (permission === 'granted') {
+            console.log('Notification permission granted.');
+            messaging.getToken().then((currentToken) => {
+            if (currentToken) {
+            } else {
+              console.log('No Instance ID token available. Request permission to generate one.');
+            }
+            }).catch((err) => {
+            console.log('An error occurred while retrieving token. ', err);
+            });
+          } else {
+            console.log('Unable to get permission to notify.');
+          }
+          });
         }
-        cocos2d.addEventListener('load', engineLoaded, false);
-        document.body.appendChild(cocos2d);
-    })();
-</script>
+        }
+      }*/
+
+            var img = document.getElementById("splash");
+            img.src = "../../../LOGO/" + window.gd_nowLOGO + "/splash.jpg";
+
+            if (typeof VConsole !== 'undefined') {
+                window.vConsole = new VConsole();
+            }
+
+            XBack.listen(function() {
+                var clickResult = confirm("Are you sure you want to exit?");
+                if (clickResult == true)
+                    location.replace(location.href);
+                else
+                    XBack.record(XBack.STATE);
+            });
+
+            var cocos2d = document.createElement('script');
+            cocos2d.async = true;
+            cocos2d.src = window._CCSettings.debug ? '../../../CocosLibrary/v2413_cocos2d-js.js' : '../../../CocosLibrary/v2413_cocos2d-js-min.js';
+
+            var engineLoaded = function() {
+                document.body.removeChild(cocos2d);
+                cocos2d.removeEventListener('load', engineLoaded, false);
+                window.boot();
+                window.noSleep = new NoSleep();
+
+                if (window.PointerEvent) {
+                    document.addEventListener('pointerdown', function enableNoSleep() {
+                        window.noSleep.enable();
+                    }, true);
+                } else {
+                    document.addEventListener('touchstart', function enableNoSleep() {
+                        window.noSleep.enable();
+                    }, true);
+                    document.addEventListener('mousedown', function enableNoSleep() {
+                        window.noSleep.enable();
+                    }, true);
+                }
+            }
+            cocos2d.addEventListener('load', engineLoaded, false);
+            document.body.appendChild(cocos2d);
+        })();
+    </script>
 
 
 </body>

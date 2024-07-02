@@ -1,9 +1,0 @@
-{
-  "Maintain":  {
-    "IsMaintainNow": false,
-    "StartTime":  "2021-01-28T09:00:00+00:00",
-    "EndTime":  "2021-01-28T12:00:00+00:00"
-  },
-  "Version": "8357.1",
-  "VersionDEV": "8357.1"
-}

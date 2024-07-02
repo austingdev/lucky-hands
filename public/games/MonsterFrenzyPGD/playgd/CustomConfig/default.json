@@ -1,0 +1,13 @@
+{
+  "useVirtualKeyboard": false,
+  "useCustomLoginBG": true,
+  "useGifLoginBG": false,
+  "useVideoLoginBG": false,
+  "customLoginBGName": "loginbg_nba.jpg",
+  "customLoginGifBGName": "",
+  "customLoginVideoBGName": "",
+  "allowRememberMe": true,
+  "autoLogout": false,
+  "useFacebook": true,
+  "facebookURL": "https://www.facebook.com/officialGoldenDragon"
+}

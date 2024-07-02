@@ -1,69 +1,340 @@
 {
-  "PreDownload":  {
-    "Common":  [
-      
+  "PreDownload": {
+    "Common": [
+      "Common",
+      "Profile"
     ],
-    "Lobby":  [
-      "BulletinBoard"
-    ]
-  },	
+    "Lobby": [
+      "BulletinBoard",
+      "FishHunter"
+    ],
+    "GameFeature": {
+      "FishBattleShip": {
+        "BundleName": "BattleShipOccupied",
+        "InLobby": true,
+        "InGame": true
+      }
+    }
+  },
+  "Common": {
+    "Version": "m4439.0",
+    "VersionDEV": "m4439.0"
+  },
   "BulletinBoard": {
-    "Version": "2599.3",
-    "VersionDEV": "2599.3",
+    "Version": "m4390.0",
+    "VersionDEV": "m4390.0",
     "path": "Prefabs/",
     "MainPrefab": "BulletinBoard"
   },
   "FishHunter": {
-    "Version": "2741.0",
-    "VersionDEV": "2741.0"
+    "Version": "m19320.0",
+    "VersionDEV": "m19320.0"
+  },
+  "FishHunterOptional": {
+    "Version": "m19320.0",
+    "VersionDEV": "m19320.0"
   },
   "FishHunterAladdin": {
     "Dependency": [
-      "FishHunter"
-    ],	  
-    "Version": "2599.0",
-    "VersionDEV": "2599.0"
+      "FishHunter",
+      "FishHunterOptional"
+    ],
+    "Version": "m19320.0",
+    "VersionDEV": "m19320.0"
   },
   "FishHunterGhost": {
     "Dependency": [
-      "FishHunter"
-    ],	  
-    "Version": "2599.0",
-    "VersionDEV": "2599.0"
+      "FishHunter",
+      "FishHunterOptional"
+    ],
+    "Version": "m19320.0",
+    "VersionDEV": "m19320.0"
   },
   "FishFortuneKings": {
     "Dependency": [
-      "FishHunter"
-    ],	  
-    "Version": "2599.0",
-    "VersionDEV": "2599.0"
+      "FishHunter",
+      "FishHunterOptional"
+    ],
+    "Version": "m19320.0",
+    "VersionDEV": "m19320.0"
+  },
+  "FishFortuneKingsLite": {
+    "Dependency": [
+      "FishHunter",
+      "FishHunterOptional",
+      "FishFortuneKings"
+    ],
+    "Version": "m19320.0",
+    "VersionDEV": "m19320.0"
   },
   "FishHunterKingKong": {
     "Dependency": [
-      "FishHunter"
-    ],	  
-    "Version": "2599.0",
-    "VersionDEV": "2599.0"
+      "FishHunter",
+      "FishHunterOptional"
+    ],
+    "Version": "m19320.0",
+    "VersionDEV": "m19320.0"
   },
   "FishHunterLuckyShamrock": {
     "Dependency": [
-      "FishHunter"
-    ],	  
-    "Version": "2599.0",
-    "VersionDEV": "2599.0"
+      "FishHunter",
+      "FishHunterOptional"
+    ],
+    "Version": "m19320.0",
+    "VersionDEV": "m19320.0"
   },
   "FishHunterThunderDragon": {
     "Dependency": [
-      "FishHunter"
-    ],	  
-    "Version": "2741.0",
-    "VersionDEV": "2741.0"
+      "FishHunter",
+      "FishHunterOptional"
+    ],
+    "Version": "m19320.0",
+    "VersionDEV": "m19320.0"
   },
   "MonstersFrenzy": {
     "Dependency": [
-      "FishHunter"
-    ],	  
-    "Version": "2741.0",
-    "VersionDEV": "2741.0"
+      "FishHunter",
+      "FishHunterOptional"
+    ],
+    "Version": "m19320.0",
+    "VersionDEV": "m19320.0"
+  },
+  "FishBattleShip": {
+    "Dependency": [
+      "FishHunter",
+      "FishHunterOptional"
+    ],
+    "Version": "m19320.0",
+    "VersionDEV": "m19320.0"
+  },
+  "FishKingOfCrab": {
+    "Dependency": [
+      "FishHunter",
+      "FishHunterOptional"
+    ],
+    "Version": "m19320.0",
+    "VersionDEV": "m19320.0"
+  },
+  "FishCircus": {
+    "Dependency": [
+      "FishHunter",
+      "FishHunterOptional"
+    ],
+    "Version": "m19320.0",
+    "VersionDEV": "m19320.0"
+  },
+  "FishGolden": {
+    "Dependency": [
+      "FishHunter",
+      "FishHunterOptional"
+    ],
+    "Version": "m19320.0",
+    "VersionDEV": "m19320.0"
+  },
+  "BattleShipOccupied": {
+    "Version": "m4104.0",
+    "VersionDEV": "m4104.0",
+    "path": "",
+    "MainPrefab": "BattleShipOccupiedUI"
+  },
+  "Avatar": {
+    "Version": "m4390.0",
+    "VersionDEV": "m4390.0"
+  },
+  "SquareGameIcon": {
+    "Version": "m4439.2",
+    "VersionDEV": "m4439.2"
+  },
+  "Profile": {
+    "Dependency": [
+      "Avatar",
+      "SquareGameIcon"
+    ],
+    "Version": "m4390.0",
+    "VersionDEV": "m4390.0",
+    "path": "Prefabs/",
+    "MainPrefab": "Profile"
+  },
+  "GameCloseTip": {
+    "Version": "m4104.0",
+    "VersionDEV": "m4104.0",
+    "path": "Prefabs/"
+  },
+  "SessionBonusMgr": {
+    "Version": "m4390.0",
+    "VersionDEV": "m4390.0",
+    "path": "Prefabs/"
+  },
+  "SessionBonus_7Day": {
+    "Version": "m4439.3",
+    "VersionDEV": "m4439.3",
+    "path": "Prefabs/",
+    "MainPrefab": "SessionBonus_7Day"
+  },
+  "JPReward": {
+    "Dependency": [
+      "Common"
+    ],
+    "Version": "m4104.0",
+    "VersionDEV": "m4104.0",
+    "path": "Prefabs/"
+  },
+  "SystemBackground": {
+    "Dependency": [
+      "Common"
+    ],
+    "Version": "m4104.0",
+    "VersionDEV": "m4104.0",
+    "path": "Prefabs/",
+    "MainPrefab": "playgdSystemBackground"
+  },
+  "SlotCommonUI": {
+    "Version": "16274.0",
+    "VersionDEV": "16274.0",
+    "path": "Prefabs/"
+  },
+  "PlayerStatus": {
+    "Version": "m4390.0",
+    "VersionDEV": "m4390.0",
+    "path": "Prefabs/",
+    "MainPrefab": "PlayerStatus"
+  },
+  "Purchase": {
+    "Version": "m4104.0",
+    "VersionDEV": "m4104.0",
+    "path": "Prefabs/"
+  },
+  "BuyBonus": {
+    "Version": "m19382.1",
+    "VersionDEV": "m19382.1",
+    "path": "Prefabs/"
+  },
+  "DailyFree": {
+    "Version": "m4104.0",
+    "VersionDEV": "m4104.0",
+    "path": "Prefabs/"
+  },
+  "ExtraFree": {
+    "Version": "m4104.0",
+    "VersionDEV": "m4104.0",
+    "path": "Prefab/"
+  },
+  "QuestSystem": {
+    "Version": "4170.0",
+    "VersionDEV": "4170.0",
+    "path": "Prefabs/",
+    "MainPrefab": "QuestSystem"
+  },
+  "LuckyScratch": {
+    "Version": "m4390.0",
+    "VersionDEV": "m4390.0",
+    "path": "Prefabs/",
+    "MainPrefab": "LuckyScratch"
+  },
+  "LuckyShop": {
+    "Dependency": [
+      "Common"
+    ],
+    "Version": "m4398.4",
+    "VersionDEV": "m4398.4",
+    "path": "Prefabs/",
+    "MainPrefab": "LuckyShop"
+  },
+  "LuckyWheel": {
+    "Dependency": [
+      "Common"
+    ],
+    "Version": "m4439.0",
+    "VersionDEV": "m4439.0",
+    "path": "Prefabs/",
+    "MainPrefab": "LuckyWheel"
+  },
+  "WheelOfFun": {
+    "Dependency": [
+      "Common"
+    ],
+    "Version": "m4439.0",
+    "VersionDEV": "m4439.0",
+    "path": ""
+  },
+  "ReferralCode": {
+    "Version": "m4439.0",
+    "VersionDEV": "m4439.0",
+    "path": "Prefabs/",
+    "MainPrefab": "ReferralCode"
+  },
+  "EmailBonus": {
+    "Version": "m4439.0",
+    "VersionDEV": "m4439.0",
+    "path": "Prefabs/",
+    "MainPrefab": "EmailBonus"
+  },
+  "Skin_Default": {
+    "Dependency": [
+      "DailyFree"
+    ],
+    "Version": "m4439.0",
+    "VersionDEV": "m4439.0",
+    "path": "Prefabs/"
+  },
+  "Skin_Patrick": {
+    "Version": "m4391.1",
+    "VersionDEV": "m4391.1",
+    "path": "Prefabs/"
+  },
+  "Skin_Easter": {
+    "Version": "m4391.1",
+    "VersionDEV": "m4391.1",
+    "path": "Prefabs/"
+  },
+  "Skin_Memorial": {
+    "Version": "m4391.1",
+    "VersionDEV": "m4391.1",
+    "path": "Prefabs/"
+  },
+  "Skin_Father": {
+    "Version": "m4431.0",
+    "VersionDEV": "m4431.0",
+    "path": "Prefabs/"
+  },
+  "Skin_74": {
+    "Version": "m4391.1",
+    "VersionDEV": "m4391.1",
+    "path": "Prefabs/"
+  },
+  "Skin_Labor": {
+    "Version": "m4391.1",
+    "VersionDEV": "m4391.1",
+    "path": "Prefabs/"
+  },
+  "Skin_Halloween": {
+    "Version": "m4391.1",
+    "VersionDEV": "m4391.1",
+    "path": "Prefabs/"
+  },
+  "Skin_ThxGiv": {
+    "Version": "m4391.1",
+    "VersionDEV": "m4391.1",
+    "path": "Prefabs/"
+  },
+  "Skin_Xmas": {
+    "Version": "m4391.1",
+    "VersionDEV": "m4391.1",
+    "path": "Prefabs/"
+  },
+  "Skin_NewYear": {
+    "Version": "m4391.1",
+    "VersionDEV": "m4391.1",
+    "path": "Prefabs/"
+  },
+  "Skin_Ann": {
+    "Version": "m4391.1",
+    "VersionDEV": "m4391.1",
+    "path": "Prefabs/"
+  },
+  "Mail": {
+    "Version": "m4439.0",
+    "VersionDEV": "m4439.0",
+    "path": "Prefabs/"
   }
 }
