@@ -110,11 +110,11 @@
                 const queryParams = new URLSearchParams(url.search);
                 const env = queryParams.get('env');
 
-                var lhOrigin = process.env.LH_BASE_URL_DEV;
+                var lhOrigin = "{{ env('LH_BASE_URL_DEV') }}"
                 if (env === 'stage') {
-                    lhOrigin = process.env.LH_BASE_URL_STAGING;
+                    lhOrigin = "{{ env('LH_BASE_URL_STAGING') }}"
                 } else if (env === 'prod') {
-                    lhOrigin = process.env.LH_BASE_URL_PROD;
+                    lhOrigin = "{{ env('LH_BASE_URL_PROD') }}"
                 }
                 console.log(444444, fishgameUrl, env, lhOrigin)
 
