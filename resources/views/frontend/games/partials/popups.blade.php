@@ -105,7 +105,8 @@
                     setGameLoadingProgress(data.value * 100);
                 }
             } else if (data.event == 'backToHub') {
-                console.log(444444)
+                console.log(444444, window.location.href)
+                console.log(333, window.parent.location.origin)
                 window.parent.location.href = 'https://staging.luckyhands.com/'
             }
         } catch (e) {
