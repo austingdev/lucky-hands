@@ -105,9 +105,21 @@
                     setGameLoadingProgress(data.value * 100);
                 }
             } else if (data.event == 'backToHub') {
-                console.log(444444, window.location.href, document.referrer)
+                const fishgameUrl = document.referrer
+                const url = new URL(fishgameUrl);
+                const queryParams = new URLSearchParams(url.search);
+                const env = queryParams.get('env');
+
+                var lhOrigin = process.env.LH_BASE_URL_DEV;
+                if (env === 'stage') {
+                    lhOrigin = process.env.LH_BASE_URL_STAGING;
+                } else if (env === 'prod') {
+                    lhOrigin = process.env.LH_BASE_URL_PROD;
+                }
+                console.log(444444, fishgameUrl, env, lhOrigin)
+
                 console.log(333, window.parent.location.origin)
-                window.parent.location.href = 'https://staging.luckyhands.com/'
+                window.parent.location.href = lhOrigin
             }
         } catch (e) {
             console.log(e)
