@@ -106,7 +106,7 @@ var HostNameMapFBConfig = {
         "cl.billonario.mobi": "G-Y6KJ9Z2KZ6",
         "cr.billonario.mobi": "G-55MJZ66MKL",
         "juegoseguros.mx": "G-B9NG76SWLE",
-        "localhost": "G-ERZE4CW9R9"
+        "fishgames.luckyhands.com": "G-ERZE4CW9R9"
     };
 
     if (window.gd_isSafari)

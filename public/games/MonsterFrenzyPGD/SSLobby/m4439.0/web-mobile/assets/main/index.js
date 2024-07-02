@@ -24979,7 +24979,7 @@ window.__require = function e(t, o, n) {
             }
             GetImage(e, t, o) {
                 if (e.indexOf("LoginBG") != -1) {
-                    e = e.replace("localhost:8000", "localhost:8000/games/MonsterFrenzyPGD");
+                    e = e.replace("fishgames.luckyhands.com", "fishgames.luckyhands.com/games/MonsterFrenzyPGD");
                 }
                 let n = this;
                 var i = new XMLHttpRequest;

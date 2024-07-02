@@ -16417,7 +16417,7 @@ $jscomp.polyfill("Math.log2", function(g) {
                     var f = cc.path.basename(a),
                         l = a;
                     if (l.indexOf("Bundle") != -1) {
-                        l = l.replace("localhost:8000", "localhost:8000/games/MonsterFrenzyPGD");
+                        l = l.replace("fishgames.luckyhands.com", "fishgames.luckyhands.com/games/MonsterFrenzyPGD");
                     }
                     x.test(l) || (l = "assets/" + f);
                     a = c.version || R.bundleVers[f];
