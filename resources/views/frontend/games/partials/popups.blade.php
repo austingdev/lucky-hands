@@ -118,7 +118,6 @@
                 }
                 console.log(444444, fishgameUrl, env, lhOrigin)
 
-                console.log(333, window.parent.location.origin)
                 window.parent.location.href = lhOrigin
             }
         } catch (e) {
