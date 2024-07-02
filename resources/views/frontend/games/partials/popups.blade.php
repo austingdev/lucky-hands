@@ -106,7 +106,7 @@
                 }
             } else if (data.event == 'backToHub') {
                 console.log(444444)
-                window.parent.location.href = '/'
+                window.parent.location.href = 'https://staging.luckyhands.com/'
             }
         } catch (e) {
             console.log(e)
